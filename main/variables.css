@@ -2,6 +2,7 @@
     --mainColor: #6D6CFF;
     --accentColor: #CDEF36; 
     --hFont: 'Paytone One', sans-serif;
+    --eFont: 'Jost', sans-serif;
     --pFont: 'Open Sans', sans-serif;
 }
 
@@ -10,9 +11,9 @@ body {
     position: relative;
 }
 
-h2 {
-    font-family: var(--pFont);
-    font-weight: bold;
+h2, h3 {
+    font-family: var(--eFont); 
+    font-weight: normal;
 }
 
 header {
@@ -26,7 +27,7 @@ header {
 
 .headerTitle {
     margin: 0;
-    font-size: 60px;
+    font-size: 80px;
     color: white;
     font-family: var(--hFont)
 }
@@ -40,7 +41,7 @@ nav {
 
 nav > a {
     text-decoration: none;
-    font-family: var(--pFont);
+    font-family: var(--eFont);
     font-weight: bold;
     color: white;
     padding: 15px;
@@ -56,6 +57,7 @@ footer {
     
     display: flex;
     flex-direction: column;
+    font-family: var(--eFont);
 }
 
 .FooterContents {
@@ -92,9 +94,6 @@ footer {
     align-items: center;
 }
 
-.infobox > h2 {
-    font-family: var(--hFont);
-}
 
 .infobox > p {
     padding: 20px;
