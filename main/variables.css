@@ -1,0 +1,103 @@
+:root {
+    --mainColor: #6D6CFF;
+    --accentColor: #CDEF36; 
+    --hFont: 'Paytone One', sans-serif;
+    --pFont: 'Open Sans', sans-serif;
+}
+
+body {
+    margin: 0;
+    position: relative;
+}
+
+h2 {
+    font-family: var(--pFont);
+    font-weight: bold;
+}
+
+header {
+    background-color: var(--mainColor);
+    height: 20vh;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerTitle {
+    margin: 0;
+    font-size: 60px;
+    color: white;
+    font-family: var(--hFont)
+}
+
+nav {
+    background-color: var(--mainColor);
+    height: 10vh;
+    display: flex;
+    justify-content: flex-end;
+}
+
+nav > a {
+    text-decoration: none;
+    font-family: var(--pFont);
+    font-weight: bold;
+    color: white;
+    padding: 15px;
+    margin: 10px;
+    background-color: #ffffff78;
+    border-radius: 5%;
+   
+}
+
+footer {
+    background-color: var(--mainColor);
+    height: 30vh;
+    
+    display: flex;
+    flex-direction: column;
+}
+
+.FooterContents {
+    display: flex;
+   
+
+}
+
+.socialMediaWrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#OmUtbytesstudier {
+    height: 60vh;
+    display: flex;
+}
+
+.heropic {
+    width: 50vw;
+   
+    background-image: url("heropic.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.infobox {
+    width: 50vw;
+    border: solid var(--accentColor) 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.infobox > h2 {
+    font-family: var(--hFont);
+}
+
+.infobox > p {
+    padding: 20px;
+    line-height: 3vh;
+    font-family: var(--pFont);
+}
