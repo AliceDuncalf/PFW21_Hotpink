@@ -93,9 +93,45 @@ footer {
     align-items: center;
 }
 
+#HittaProgram {
+    background-color: var(--mainColor);
+    width: 100%;
+    height: 500px;
+
+}
+
+#HittaProgram > h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.categories {
+    background-color: white;
+    width: 90vw;
+    height: 50px;
+    margin: auto;
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+} 
+
+.programbox {
+    background-color: white;
+    width: 90vw;
+    height: 300px;
+    margin: auto;
+}
 
 .infobox > p {
     padding: 20px;
     line-height: 3vh;
     font-family: var(--pFont);
+}
+
+.selectBox {
+    background-color: black;
+    width: 10px;
+    height: 10px;
 }
