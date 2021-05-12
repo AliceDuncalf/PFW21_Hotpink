@@ -10,8 +10,19 @@ function DOMcategoryDiv() {
     let categoryName = FIELDS.map(obj => obj.name);
     
       categoryName.forEach(category => {
+
         let div = document.createElement("div");
-        div.innerHTML = `<button></button><div>${category}</div`
+        div.innerHTML = `<button id="#${category}"></button><div>${category}</div`
+        document.getElementById(`${category}`).addEventListener("click", () => {
+          PROGRAMMES.filter(programme => {
+            if (programme.subjectID === category.id)
+            
+            document.querySelector(".programbox").innerHTML = `
+              ${programme.name}
+           `;
+
+          });
+        });
         div.classList.add("categoryBox")
         document.querySelector(".categories").append(div);
     });
@@ -19,24 +30,103 @@ function DOMcategoryDiv() {
 };
 DOMcategoryDiv();
 
-PROGRAMMES.forEach(programme => {
-    document.querySelector(".programbox").append(DOMProgramme(programme))
-})
-
-function DOMProgramme(programme) {
-  let container = document.createElement("div");
-  container.classList.add("programme");
-
-  container.innerHTML = `
-    <div>${programme.name}</div>
-  `;
-
-  return container;
-}
 
 
-document.querySelector(".categories > div:first-child > button").addEventListener("click", ()=> {
-  console.log("hej");
-});
 
 
+
+
+
+
+
+
+
+// PROGRAMMES.forEach(programme => {
+//     document.querySelector(".programbox").append(DOMProgramme(programme))
+// })
+
+// function DOMProgramme(programme) {
+//   let container = document.createElement("div");
+//   container.classList.add("programbox");
+
+//   container.innerHTML = `
+//     <div>${programme.name}</div>
+//   `;
+
+//   return container;
+// }
+
+//event click till matematik
+// document.querySelector(".categories > div:first-child > button").addEventListener("click", ()=> {
+//   let programContent = document.createElement("div");
+//   programContent.classList.add("programContent");
+//   document.querySelector(".programbox").append(programContent);
+
+//   let programFilter = PROGRAMMES.filter(obj => obj.subjectID);
+//   console.log(programFilter);
+
+//   let subjectID = FIELDS.map(obj => obj.id);
+//   console.log(subjectID);
+
+//     PROGRAMMES.filter(program => {
+//     if (programFilter === subjectID) {
+
+//       let matematikArray = [];
+//       matematikArray.push(program.name);
+//       console.log(matematikArray);
+//     };
+//   })
+
+// });
+
+
+//_________________________________________________________________________________________________________________________
+//nytt försök
+// document.querySelector(".categories > div:first-child > button").addEventListener("click", ()=> {
+//   let programContent = document.createElement("div");
+//   programContent.classList.add("programContent");
+//   document.querySelector(".programbox").append(programContent);
+
+
+
+
+
+
+// });
+
+// document.querySelector(".categories > div:first-child > button").addEventListener("click", ()=> {
+// let programmeSubjectID = PROGRAMMES.map(obj => obj.subjectID);
+// console.log(programmeSubjectID);
+
+//   programmeSubjectID.forEach(obj => {
+//     FIELDS.forEach(field => {
+//       if (obj === field) {
+
+//          let matematikArray = [];
+//             matematikArray.push(field.name);
+//             console.log(matematikArray);
+//            };
+//     })
+//   })
+
+// });
+
+
+//______________________________________________________________________________________________________________________
+// function findProgrammes(){
+  
+// FIELDS.forEach(field => {
+
+      
+
+//       PROGRAMMES.forEach( programme => {
+//           if (programme.subjectID === field.id) {
+//             let matematikArray = [];
+//             matematikArray.push(programme.name);
+//             console.log(matematikArray);
+//           }
+//       });
+//   });
+// }
+
+// findProgrammes();
