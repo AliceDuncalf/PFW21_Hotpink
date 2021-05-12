@@ -13,10 +13,26 @@ function DOMcategoryDiv() {
         let div = document.createElement("div");
         div.innerHTML = `<button></button><div>${category}</div`
         div.classList.add("categoryBox")
-        document.querySelector(".categories").append(div);    
-         
+        document.querySelector(".categories").append(div);
     });
+
+    
+
 };
 
 DOMcategoryDiv();
 
+
+//fattae noll av vad ja försöker göra hahha
+function filterProgramme(){
+  let FieldID = FIELDS.map(obj => obj.id);
+  let subjectID = PROGRAMMES.map(obj => obj.subjectID)
+
+  if (FieldID === subjectID) {
+    return subjectID;
+}
+
+
+};
+
+filterProgramme();
