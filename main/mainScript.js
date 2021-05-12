@@ -16,23 +16,27 @@ function DOMcategoryDiv() {
         document.querySelector(".categories").append(div);
     });
 
-    
-
 };
-
 DOMcategoryDiv();
 
+PROGRAMMES.forEach(programme => {
+    document.querySelector(".programbox").append(DOMProgramme(programme))
+})
 
-//fattae noll av vad ja försöker göra hahha
-function filterProgramme(){
-  let FieldID = FIELDS.map(obj => obj.id);
-  let subjectID = PROGRAMMES.map(obj => obj.subjectID)
+function DOMProgramme(programme) {
+  let container = document.createElement("div");
+  container.classList.add("programme");
 
-  if (FieldID === subjectID) {
-    return subjectID;
+  container.innerHTML = `
+    <div>${programme.name}</div>
+  `;
+
+  return container;
 }
 
 
-};
+document.querySelector(".categories > div:first-child > button").addEventListener("click", ()=> {
+  console.log("hej");
+});
 
-filterProgramme();
+
