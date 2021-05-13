@@ -107,11 +107,10 @@ footer {
 }
 
 .categories {
-    background-color: white;
+    background-color: var(--mainColor);
     width: 90vw;
     height: 50px;
     margin: auto;
-    border: 1px solid black;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -123,7 +122,15 @@ footer {
     height: 300px;
     margin: auto;
     overflow-y: scroll;
+    scrollbar-width: thin; 
+    border: 1px solid black;
+    
 }
+
+button:focus {
+    background-color: black;
+}
+
 
 .infobox > p {
     padding: 20px;
@@ -144,4 +151,25 @@ footer {
 .programContent {
     background-color: blueviolet;
     height: 20px;
+}
+
+.programmeContentDiv {
+    border: 1px solid black;
+    margin: 10px;
+    padding: 10px;
+    background-color: white;
+} 
+
+
+
+#programmeInfo {
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+#programmeName {
+    width: auto;
+    padding-bottom: 5px;
+    font-weight: bold;
 }
