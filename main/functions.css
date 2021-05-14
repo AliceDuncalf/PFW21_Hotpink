@@ -1,0 +1,17 @@
+
+#results, #selectWrapper {
+    display: flex;
+}
+
+#selectWrapper > select {
+    width: 100vw;
+}
+
+.contentWrapper {
+    width: 25vw;
+    border: solid 3px var(--accentColor);
+}
+
+img {
+    width: 100%;
+}
