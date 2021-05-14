@@ -74,3 +74,6 @@ function GetCountryFromCityID() {
 function clearAll(){
   document.querySelector("programbox").innerHTML = "";
 }
+
+
+//hejhej
