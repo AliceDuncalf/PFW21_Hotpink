@@ -35,7 +35,12 @@ function getCities(countryid){
     let cities = [];
      CITIES.forEach(city => {
         if(city.countryID == countryid) {
+            let option = document.createElement("OPTION");
+            selectCities.append(option);
+            option.innerHTML =`${countries.name}`;
+            country.push(countries);
             cities.push(city);
+
         }
     })
     return cities;
@@ -78,7 +83,7 @@ function selection(country) {
                 document.getElementById("results").innerHTML ="";
                 contentCreator(countries.name, countries.imagesNormal, countries.text);
                 console.log(countries);   
-                selectCities.append(getCities(countries.id));
+                selectCities.append(getCities(1));
             }
         })
     })
