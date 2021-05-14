@@ -23,6 +23,8 @@ function DOMcategoryDiv() {
           console.log(FilterArray);
 
           FilterArray.forEach(program => {
+
+         
             
           //console.log(program.name);
            let programmeContentDiv = document.createElement("div");
@@ -55,7 +57,7 @@ function GetUniversityNameFromProgramme(id) {
   return UNIVERSITIES.find(univerity => univerity.id === id).name;
 };
 
-//Hittar namnet på den staden som programmet är i
+//Hittar namnet på den staden som programmet är i, men är typ fel ?
 function GetCityFromUniverityID(id) {
 
   return CITIES.find(city => city.id === id).name;
