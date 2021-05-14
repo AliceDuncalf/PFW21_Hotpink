@@ -24,8 +24,6 @@ function DOMcategoryDiv() {
 
           FilterArray.forEach(program => {
 
-         
-            
           //console.log(program.name);
            let programmeContentDiv = document.createElement("div");
            programmeContentDiv.classList.add("programmeContentDiv")
@@ -78,7 +76,7 @@ function clearAll(){
 
 
 
-
+//hej
 
 
 
