@@ -12,12 +12,12 @@ function DOMcategoryDiv() {
     console.log(categoryName);
     
       categoryName.forEach(category => {
-
         let div = document.createElement("div");
         div.classList.add("categoryBox")
         document.querySelector(".categories").append(div);
         div.innerHTML = `<button id="${category.name}"></button><div>${category.name}</div`
         div.querySelector(`#${category.name}`).addEventListener("click", () => {
+
 
           let FilterArray = PROGRAMMES.filter(programme => programme.subjectID === category.id);
           FilterArray.filter(obj => obj.name);

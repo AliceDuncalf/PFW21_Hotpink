@@ -16,6 +16,20 @@ let selectCities = document.getElementById("selectCities");
 let selectUniversities = document.getElementById("selectUniversities");
 let selectProgrammes = document.getElementById("selectProgrammes");
 
+/*programmeNames.sort(function(a,b) {
+    if (a.name.toLowerCase() < b.name.toLowerCase()
+      ) return -1;
+    if (a.name.toLowerCase() > b.name.toLowerCase()
+      ) return 1;
+    return 0;
+  }); */
+
+function get_Country(countryid) {
+    let country = {};
+    country.cities = getCities(countryid);
+    return country;
+}
+console.log(get_Country(0));
 
 function getCities(countryid){
     let cities = [];
@@ -26,19 +40,78 @@ function getCities(countryid){
     })
     return cities;
 }
+console.log(getCities(1));
 
-function get_Country(countryid) {
-    let country = {};
-    country.cities = getCities(countryid);
+function getUniversities(cityid) {
+    let universities = [];
+    UNIVERSITIES.forEach(university => {
+        if(university.cityID == cityid) {
+            universities.push(university)
+        }
+    })
+    return universities;
+}
+
+function getProgrammes(universityid){
+    let programmes = [];
+    PROGRAMMES.forEach(program => {
+        if(program.universityID == universityid) {
+            programmes.push(program);
+        }
+    })
+    return programmes;
+}
+console.log(getProgrammes(1))
+
+//let data = {COUNTRIES, CITIES, UNIVERSITIES, PROGRAMMES};
+
+function selection(country) {
+    country = [];
+    COUNTRIES.forEach(countries => {
+        let option = document.createElement("OPTION");
+        selectCountries.append(option);
+        option.innerHTML =`${countries.name}`;
+        country.push(countries);
+
+        selectCountries.addEventListener("change",(e) => {
+            if (countries.name == e.target.value) {
+                document.getElementById("results").innerHTML ="";
+                contentCreator(countries.name, countries.imagesNormal, countries.text);
+                console.log(countries);   
+                selectCities.append(getCities(countries.id));
+            }
+        })
+    })
+
     return country;
 }
-console.log(get_Country(1));
+console.log(selection());
+
+function contentCreator(titel, img, info) {
+    let content = document.createElement("div");
+    content.classList.add("contentWrapper");
+    content.innerHTML =`<h3>${titel}</h3>
+                        <img src="filer/Images/${img[1]}">
+                        <div>${info}</div>`;
+    document.getElementById("results").append(content);
+    return titel, img, info;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 // funktion med landets namn och id
-function getCountries() {
+/*function getCountries() {
     //Delar upp land och skapar options för varje, lägger till ett klick-event på valt land-id
     COUNTRIES.forEach(country => { 
         let countryname = country.name;
@@ -47,8 +120,8 @@ function getCountries() {
         countryOption.innerHTML = `${countryname}
                                     `;
      
-            countryOption.addEventListener("click", (clicked) => {
-            console.log(clicked);
+            countryOption.addEventListener("change", () => {
+            document.getElementById("results").innerHTML ="";
             let countryFilter = COUNTRIES.filter(obj => obj.name == countryname);  
             let chosenCountryID = countryFilter.map(obj => obj.id); 
             console.log(chosenCountryID);
@@ -63,9 +136,7 @@ function getCountries() {
                                         <div>${country.text}</div>
                                         <div>VISA:${country.visa}</div>
                                         `; //fixa så flagga allt läggs till här (flagga pch språk), ändra visa värdet?
-            if(clicked === true) {
-                console.log("hej");
-            }
+            
 
             //I det klick-eventet kommer de städer upp som matchar med de landet som är valt
             CITIES.forEach(city => {
@@ -122,7 +193,7 @@ function getCountries() {
                                                 programText = program.text;
 
                                             })*/
-                                            programContent.innerHTML = `<h3>${program.name}</h3>
+                                            /*programContent.innerHTML = `<h3>${program.name}</h3>
                                                         <div>ENTRY GRADES: ${program.entryGrades}</div>
                                                         <div>SUCESS RATE: ${program.successRate}</div>
                                                         <div>PROGRAM LEVEL: ${program.level}</div>
@@ -147,6 +218,6 @@ function getCountries() {
 }
 
 getCountries();
-
+*/
 
    
