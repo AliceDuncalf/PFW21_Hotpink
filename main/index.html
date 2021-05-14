@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="variables.css">
+    <link rel="stylesheet" href="functions.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;400;500&family=Open+Sans:wght@400;600&family=Paytone+One&display=swap" rel="stylesheet"> 
     <title>Document</title>
@@ -19,6 +20,7 @@
         <a href="#HittaUtbildning">Hitta utbildning</a>
     </nav>
     <main>
+        <div>REKLAM</div>
         <div id ="OmUtbytesstudier">
             <div class="heropic"></div>
             <div class="infobox">
@@ -33,7 +35,15 @@
         </div>
         <div id="HittaUtbildning">
             <h2>Hitta din utbildning</h2>
+            <div id="selectWrapper">
+                <select id="selectCountries"></select>
+                <select id="selectCities"></select>
+                <select id="selectUniversities"></select>
+                <select id="selectProgrammes"></select>
+            </div>
         </div>
+        <div id="results"></div>
+        <div>REKLAM</div>
     </main>
     <footer>
         <div class="FooterContents">
@@ -47,5 +57,9 @@
             <div>Twitter</div>
         </div>
     </footer>
+    <script src="Filer/commentsProgramme.js"></script>
+    <script src="Filer/database.js"></script>
+    <script src="Filer/database_base.js"></script>
+    <script src="mainScript.js"></script>
 </body>
 </html>
