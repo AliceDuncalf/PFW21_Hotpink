@@ -79,3 +79,5 @@ function getCountryFromUniverityID(id) {
 function clearAll() {
   document.querySelector(".programbox").innerHTML = "";
 };
+
+//hej
