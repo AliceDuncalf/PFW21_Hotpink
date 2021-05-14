@@ -160,16 +160,17 @@ button:focus {
     background-color: white;
 } 
 
-
-
 #programmeInfo {
     display: flex;
     justify-content: space-between;
-    
 }
 
 #programmeName {
     width: auto;
     padding-bottom: 5px;
     font-weight: bold;
+}
+
+#programmeInfo > div {
+    width: 40%;
 }

@@ -32,7 +32,7 @@ function get_Country(countryid) {
     country.cities = getCities(countryid);
     return country;
 }
-console.log(get_Country(1));
+//console.log(get_Country(1));
 
 
 

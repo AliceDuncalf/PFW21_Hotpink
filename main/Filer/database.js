@@ -84,7 +84,7 @@ universitet.
 setTimeout(() => {
     // Inne i en setTimeout Så att konstanten DB deklareras
     // innan vi loggar den.
-    console.log(DB); 
+   // console.log(DB); 
 }, 1);
 
 
