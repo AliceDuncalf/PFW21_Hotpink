@@ -16,7 +16,7 @@ let selectCities = document.getElementById("selectCities");
 let selectUniversities = document.getElementById("selectUniversities");
 let selectProgrammes = document.getElementById("selectProgrammes");
 
-selectCountries.innerHTML = `<option>VÄLJ LAND</option>`;
+selectCountries.innerHTML = `<option>Välj land</option>`;
 
 function sortNames(programmeNames){
     programmeNames.sort(function(a,b) {
@@ -108,8 +108,7 @@ function selectionCountry(countries) {
                 document.getElementById("resultsProgram").innerHTML ="";
 
                 contentCountry(country.name, "country", country.flag, country.imagesNormal[0], country.text, country.visa);
-                getLanguage(country.languageID, "country");
-                //selectCities.textContent ="";  
+                getLanguage(country.languageID, "country"); 
                 selectCities.append(getCities(country.id));
             }
         })
@@ -121,7 +120,7 @@ selectionCountry();
 
 function getCities(countryid){
     sortNames(CITIES);
-    selectCities.innerHTML = `<option>VÄLJ STAD</option>`;
+    selectCities.innerHTML = `<option>Välj stad</option>`;
     let cities = [];
      CITIES.forEach(city => {
         if(city.countryID == countryid) {
@@ -151,11 +150,10 @@ function getCities(countryid){
 
 function getUniversities(cityid) {
     sortNames(UNIVERSITIES);
-    selectUniversities.innerHTML = `<option>VÄLJ UNIVERSITET</option>`;
+    selectUniversities.innerHTML = `<option>Välj universitet</option>`;
     let universities = [];
     UNIVERSITIES.forEach(university => {
         if(university.cityID == cityid) {
-            universities.push(university)
             let option = document.createElement("OPTION");
             selectUniversities.append(option);
             option.innerHTML =`${university.name}`;
@@ -164,9 +162,11 @@ function getUniversities(cityid) {
         selectUniversities.addEventListener("change", (e)=> {
             if(university.name == e.target.value) {
                 document.getElementById("resultsUniversity").innerHTML ="";
-                document.getElementById("resultsProgram").innerHTML ="";
+                document.getElementById("resultsProgram").innerHTML =""; 
+                
                 contentUniversity(university.name, "university");
                 getClubsforUniversity(university.id);
+                
                 selectProgrammes.innerHTML ="";  
                 selectProgrammes.append(getProgrammes(university.id));
             }
@@ -178,7 +178,7 @@ function getUniversities(cityid) {
 
 function getProgrammes(universityid){
     sortNames(PROGRAMMES);
-    selectProgrammes.innerHTML = `<option>VÄLJ PROGRAM</option>`;
+    selectProgrammes.innerHTML = `<option>Välj program</option>`;
     let programmes = [];
     PROGRAMMES.forEach(program => {
         if(program.universityID == universityid) {
@@ -224,7 +224,7 @@ function getLanguage(id, type="") {
         if(lang.id == id) {
             let languageContainer = document.createElement("div");
             document.querySelector(`.${type}LanguageWrapper`).append(languageContainer);
-            languageContainer.innerHTML = `Språk: ${lang.name}`;
+            languageContainer.innerHTML = `Språk: ${lang.name}${lang.flag}`;
         }
     })
     return language;
