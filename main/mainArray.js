@@ -38,7 +38,7 @@ function contentCountry(titel, element ="", flag, img, info, visa) {
                         <img src="filer/Images/${img}" alt="country">
                         <div>${info}</div>
                         <div>Visa: ${visa}</div>
-                        <div></div>`;
+                        <div class="countryLanguageWrapper"></div>`;
     
     document.getElementById(`resultsCountry`).append(content);
     return titel, element, flag, img, info, visa;
@@ -72,8 +72,9 @@ function contentProgram(titel, element ="", entrygrades, exchangeSt, level, loca
     let content = document.createElement("div");
     content.classList.add(`${element}Wrapper`);
     content.innerHTML =`<h3>${titel}</h3>
+                        <div class="programLanguageWrapper"></div>
                         <div>Entry grades: ${entrygrades}</div>
-                        <div>Sucess rate: ${sucessRate}%</div>
+                        <div>Sucess rate: ${sucessRate}</div>
                         <div>Exchange students: ${exchangeSt}</div>
                         <div>Local students: ${localSt}</div>
                         <div>Level: ${level}</div>
@@ -91,6 +92,7 @@ function getCountry(countryid) {
 }
 
 function selectionCountry(countries) {
+    sortNames(COUNTRIES);
     countries = [];
     COUNTRIES.forEach(country => {
         let option = document.createElement("OPTION");
@@ -104,19 +106,19 @@ function selectionCountry(countries) {
                 document.getElementById("resultsCity").innerHTML ="";
 
                 contentCountry(country.name, "country", country.flag, country.imagesNormal[0], country.text, country.visa);
-                getLanguage(country.languageID);
+                getLanguage(country.languageID, "country");
                 //selectCities.textContent ="";  
                 selectCities.append(getCities(country.id));
             }
         })
     })
-    sortNames(countries); //funkar inte
     return countries;
 }
 selectionCountry();
 
 
 function getCities(countryid){
+    sortNames(CITIES);
     selectCities.innerHTML = `<option>VÄLJ STAD</option>`;
     let cities = [];
      CITIES.forEach(city => {
@@ -144,6 +146,7 @@ function getCities(countryid){
 
 
 function getUniversities(cityid) {
+    sortNames(UNIVERSITIES);
     selectUniversities.innerHTML = `<option>VÄLJ UNIVERSITET</option>`;
     let universities = [];
     UNIVERSITIES.forEach(university => {
@@ -169,6 +172,7 @@ function getUniversities(cityid) {
 }
 
 function getProgrammes(universityid){
+    sortNames(PROGRAMMES);
     selectProgrammes.innerHTML = `<option>VÄLJ PROGRAM</option>`;
     let programmes = [];
     PROGRAMMES.forEach(program => {
@@ -185,7 +189,7 @@ function getProgrammes(universityid){
                 selectProgrammes.innerHTML ="";  
                 selectProgrammes.append(getProgrammes(program.id));
                 contentProgram(program.name, "program", program.entryGrades, program.exchangeStudents, program.level, program.localStudents, program.successRate);
-                getLanguage(program.id);
+                getLanguage(program.language, "program");
                 getCommentsforProgram(program.id);
             }
         })
@@ -210,11 +214,12 @@ function getClubsforUniversity(universityid){
 getClubsforUniversity(); //får inte ut de i olika divar
 
 
-function getLanguage(id) {
+function getLanguage(id, type="") {
     let language = LANGUAGES.forEach(lang => {
         if(lang.id == id) {
-            languageContainer = document.createElement("div");
-            languageContainer.innerHTML = `${lang.name}`;
+            let languageContainer = document.createElement("div");
+            document.querySelector(`.${type}LanguageWrapper`).append(languageContainer);
+            languageContainer.innerHTML = `Språk: ${lang.name}`;
         }
     })
     return language;
@@ -234,6 +239,8 @@ function getCommentsforCity(cityid) {
     return cityComments;
 }
 
+
+
 function getCommentsforProgram(programid) {
     let programComments = COMMENTS_PROGRAMME.forEach(comment => {
         if(comment.programmeID == programid) {
@@ -248,10 +255,21 @@ function getCommentsforProgram(programid) {
 }
 
 
-
-//koppla språk till land och program
+function visaResult(result) {
+    result = COUNTRIES.forEach(country => {
+        if(country.visa == true) {
+            return "Ja"
+        } else {
+            return "Nej"
+        }
+    })
+    return result;
+}
+console.log(visaResult(1));
 
 //if visa == true return JA else return NEJ
+
+//fixa entrygrades och successrate
 
 //level - 1 Bachelor etc? 
 
