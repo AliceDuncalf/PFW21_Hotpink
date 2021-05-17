@@ -10,40 +10,40 @@ function DOMcategoryDiv() {
 
   let categoryName = FIELDS.map(obj => obj);
   //console.log(categoryName);
-
   categoryName.forEach(category => {
 
     let div = document.createElement("div");
     div.classList.add("categoryBox")
     document.querySelector(".categories").append(div);
     div.innerHTML = `<button id="${category.name}"></button><div>${category.name}</div`
+
     div.querySelector(`#${category.name}`).addEventListener("click", () => {
 
+      if (programBox.innerHTML !== "") {
+        clearAll(); 
+      } 
 
       let FilterArray = PROGRAMMES.filter(programme => programme.subjectID === category.id);
       FilterArray.filter(obj => obj.name);
-      console.log(FilterArray);
-
+      //console.log(FilterArray);
       FilterArray.forEach(program => {
-
-        //console.log(program.name);
+      //console.log(program.name);
         let programmeContentDiv = document.createElement("div");
         programmeContentDiv.classList.add("programmeContentDiv")
         programmeContentDiv.innerHTML = `
               <div id="programmeName">${program.name}</div>
               <div id="programmeInfo">
-
                 <div id="university">${GetUniversityNameFromProgramme(program.universityID)}</div>
                 <div id="country">${getCountryFromUniverityID(program.universityID)}</div>
                 <div id="city">${GetCityFromUniverityID(program.universityID)}</div>
-
               </div>
             `;
         document.querySelector(".programbox").append(programmeContentDiv);
-
-
       });
+      
     });
+
+
   });
 };
 DOMcategoryDiv();
@@ -55,7 +55,6 @@ function GetUniversityNameFromProgramme(id) {
   let UniversityObject = UNIVERSITIES.find(univerity => univerity.id === id);
   return UniversityObject.name;
 };
-
 
 //Hittar namnet på den STADEN som universitet ligger i
 function GetCityFromUniverityID(id) {
@@ -75,9 +74,8 @@ function getCountryFromUniverityID(id) {
 
 
 
-//Nollställa programmen, men har inte anropat funktionen så den fungerar
+//Nollställa programmen
 function clearAll() {
   document.querySelector(".programbox").innerHTML = "";
 };
 
-//hej
