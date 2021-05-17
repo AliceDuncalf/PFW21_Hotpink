@@ -104,6 +104,8 @@ function selectionCountry(countries) {
             if (country.name == e.target.value) {
                 document.getElementById("resultsCountry").innerHTML ="";
                 document.getElementById("resultsCity").innerHTML ="";
+                document.getElementById("resultsUniversity").innerHTML ="";
+                document.getElementById("resultsProgram").innerHTML ="";
 
                 contentCountry(country.name, "country", country.flag, country.imagesNormal[0], country.text, country.visa);
                 getLanguage(country.languageID, "country");
@@ -132,7 +134,9 @@ function getCities(countryid){
         selectCities.addEventListener("change",(e) => {
             if(city.name == e.target.value) {
                 document.getElementById("resultsCity").innerHTML ="";
-                console.log(e.target.value);
+                document.getElementById("resultsUniversity").innerHTML ="";
+                document.getElementById("resultsProgram").innerHTML ="";
+   
                 contentCity(city.name, "city", city.imagesNormal[0], city.text, city.sun);
 
                 getCommentsforCity(city.id);
@@ -160,6 +164,7 @@ function getUniversities(cityid) {
         selectUniversities.addEventListener("change", (e)=> {
             if(university.name == e.target.value) {
                 document.getElementById("resultsUniversity").innerHTML ="";
+                document.getElementById("resultsProgram").innerHTML ="";
                 contentUniversity(university.name, "university");
                 getClubsforUniversity(university.id);
                 selectProgrammes.innerHTML ="";  
