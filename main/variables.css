@@ -100,7 +100,7 @@ footer {
 
 }
 
-#HittaProgram > h2 {
+#HittaProgram > h2, #HittaUtbildning > h2 {
     display: flex;
     justify-content: center;
     align-items: center;

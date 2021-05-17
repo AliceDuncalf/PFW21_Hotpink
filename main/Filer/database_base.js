@@ -73,10 +73,10 @@ universitet.
 */
 
 
-const DB = JSON.parse(`
+/*const DB = JSON.parse(`
 
 
 
 `);
 
-console.log(DB);
+console.log(DB);*/
