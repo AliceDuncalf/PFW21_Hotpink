@@ -16,15 +16,29 @@ let selectCities = document.getElementById("selectCities");
 let selectUniversities = document.getElementById("selectUniversities");
 let selectProgrammes = document.getElementById("selectProgrammes");
 
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
 selectCountries.innerHTML = `<option>VÄLJ LAND</option>`;
 
 function sortNames(programmeNames){
     programmeNames.sort(function(a,b) {
+<<<<<<< Updated upstream
+=======
+=======
+/*programmeNames.sort(function(a,b) {
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
     if (a.name.toLowerCase() < b.name.toLowerCase()
       ) return -1;
     if (a.name.toLowerCase() > b.name.toLowerCase()
       ) return 1;
     return 0;
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
   })
   return programmeNames
 }
@@ -86,10 +100,22 @@ function contentProgram(titel, element ="", entrygrades, exchangeSt, level, loca
 
 
 function getCountry(countryid) {
+<<<<<<< Updated upstream
+=======
+=======
+  }); */
+
+function get_Country(countryid) {
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
     let country = {};
     country.cities = getCities(countryid);
     return country;
 }
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
 
 function selectionCountry(countries) {
     sortNames(COUNTRIES);
@@ -118,6 +144,12 @@ function selectionCountry(countries) {
 }
 selectionCountry();
 
+<<<<<<< Updated upstream
+=======
+=======
+console.log(get_Country(0));
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 
 function getCities(countryid){
     sortNames(CITIES);
@@ -147,10 +179,49 @@ function getCities(countryid){
     })
     return cities;
 }
+console.log(getCities(1));
 
-function get_Country(countryid) {
-    let country = {};
-    country.cities = getCities(countryid);
+function getUniversities(cityid) {
+    let universities = [];
+    UNIVERSITIES.forEach(university => {
+        if(university.cityID == cityid) {
+            universities.push(university)
+        }
+    })
+    return universities;
+}
+
+function getProgrammes(universityid){
+    let programmes = [];
+    PROGRAMMES.forEach(program => {
+        if(program.universityID == universityid) {
+            programmes.push(program);
+        }
+    })
+    return programmes;
+}
+console.log(getProgrammes(1))
+
+//let data = {COUNTRIES, CITIES, UNIVERSITIES, PROGRAMMES};
+
+function selection(country) {
+    country = [];
+    COUNTRIES.forEach(countries => {
+        let option = document.createElement("OPTION");
+        selectCountries.append(option);
+        option.innerHTML =`${countries.name}`;
+        country.push(countries);
+
+        selectCountries.addEventListener("change",(e) => {
+            if (countries.name == e.target.value) {
+                document.getElementById("results").innerHTML ="";
+                contentCreator(countries.name, countries.imagesNormal, countries.text);
+                console.log(countries);   
+                selectCities.append(getCities(countries.id));
+            }
+        })
+    })
+
     return country;
 }
 //console.log(get_Country(1));
@@ -159,7 +230,7 @@ function get_Country(countryid) {
 
 
 // funktion med landets namn och id
-function getCountries() {
+/*function getCountries() {
     //Delar upp land och skapar options för varje, lägger till ett klick-event på valt land-id
     COUNTRIES.forEach(country => { 
         let countryname = country.name;
@@ -168,8 +239,8 @@ function getCountries() {
         countryOption.innerHTML = `${countryname}
                                     `;
      
-            countryOption.addEventListener("click", (clicked) => {
-            console.log(clicked);
+            countryOption.addEventListener("change", () => {
+            document.getElementById("results").innerHTML ="";
             let countryFilter = COUNTRIES.filter(obj => obj.name == countryname);  
             let chosenCountryID = countryFilter.map(obj => obj.id); 
             console.log(chosenCountryID);
@@ -184,10 +255,12 @@ function getCountries() {
                                         <div>${country.text}</div>
                                         <div>VISA:${country.visa}</div>
                                         `; //fixa så flagga allt läggs till här (flagga pch språk), ändra visa värdet?
-            if(clicked === true) {
-                console.log("hej");
-            }
+            
 
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
 function getUniversities(cityid) {
     sortNames(UNIVERSITIES);
     selectUniversities.innerHTML = `<option>VÄLJ UNIVERSITET</option>`;
@@ -209,10 +282,89 @@ function getUniversities(cityid) {
                 selectProgrammes.innerHTML ="";  
                 selectProgrammes.append(getProgrammes(university.id));
             }
+<<<<<<< Updated upstream
+=======
+=======
+            //I det klick-eventet kommer de städer upp som matchar med de landet som är valt
+            CITIES.forEach(city => {
+                if(chosenCountryID == city.countryID) {
+                    let cityName = city.name;
+                    let cityOption = document.createElement("OPTION");
+                    selectCities.append(cityOption);
+                    cityOption.innerHTML = `${cityName}
+                                            `;                        
+                //skapar ett klick-event där vald stad får all info    
+                cityOption.addEventListener("click", () => {
+                    let cityContent = document.createElement("div");
+                    document.getElementById("results").append(cityContent);
+                    cityContent.classList.add("contentWrapper");
+                    cityContent.innerHTML = `<h3>${city.name}</h3>
+                                            <div>${city.sun}</div>
+                                            <img src ="filer/Images/${city.imagesNormal[1]}">
+                                            <div>${city.text}</div>
+                                            <div>KOMMENTARER</div>`
+                    
+                    //när stad är vald så kommer universitet som matchar stadens id                        
+                    UNIVERSITIES.forEach(uni => {
+                        if(city.id == uni.cityID) {
+                            let uniName = uni.name;
+                            let uniOption = document.createElement("OPTION");
+                            selectUniversities.append(uniOption);
+                            uniOption.innerHTML = `${uniName}`;
+                            
+                            //skapar ett klick-event där vald universitet får all info
+                            uniOption.addEventListener("click", () => {
+                                let uniContent = document.createElement("div");
+                                document.getElementById("results").append(uniContent);
+                                uniContent.classList.add("contentWrapper");
+                                uniContent.innerHTML = `<h3>${uni.name}</h3>
+                                                        <div>KLUBBAR</div>
+                                                        <div></div>`;
+
+                                //när universitet är vald så kommer program som matchar universitetets id    
+                                PROGRAMMES.forEach(program => {
+                                    if(uni.id == program.universityID) {
+                                        let programName = program.name;
+                                        let programOption = document.createElement("OPTION");
+                                        selectProgrammes.append(programOption);
+                                        programOption.innerHTML = `${programName}`;
+                                        
+                                        //klick-event som skapar div med info om programmet som är valt
+                                        programOption.addEventListener("click", () => {
+                                            let programContent = document.createElement("div");
+                                            document.getElementById("results").append(programContent);
+                                            programContent.classList.add("contentWrapper");
+
+                                            /*COMMENTS_PROGRAMME.forEach(program => {
+                                                programAlias = program.alias;
+                                                programText = program.text;
+
+                                            })*/
+                                            /*programContent.innerHTML = `<h3>${program.name}</h3>
+                                                        <div>ENTRY GRADES: ${program.entryGrades}</div>
+                                                        <div>SUCESS RATE: ${program.successRate}</div>
+                                                        <div>PROGRAM LEVEL: ${program.level}</div>
+                                                        <div>EXCHANGE STUDENTS: ${program.exchangeStudents}</div>
+                                                        <div>LOCAL STUDENTS: ${program.localStudents}</div>
+                                                        <div>KOMMENTARER</div>`;
+
+
+                                        })
+                                    }
+                                })
+                            })
+                        }
+                    })
+                })
+            } 
+            })           
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
             
         })
     })
     return universities;
+<<<<<<< Updated upstream
 }
 
 function getProgrammes(universityid){
@@ -241,6 +393,93 @@ function getProgrammes(universityid){
     return programmes;
 }
 
+=======
+}
+
+function getProgrammes(universityid){
+    sortNames(PROGRAMMES);
+    selectProgrammes.innerHTML = `<option>VÄLJ PROGRAM</option>`;
+    let programmes = [];
+    PROGRAMMES.forEach(program => {
+        if(program.universityID == universityid) {
+            programmes.push(program);
+            let option = document.createElement("OPTION");
+            selectProgrammes.append(option);
+            option.innerHTML =`${program.name}`;
+            programmes.push(program);
+        }
+        selectProgrammes.addEventListener("change", (e)=> {
+            if(program.name == e.target.value) {
+                document.getElementById("resultsProgram").innerHTML ="";
+                selectProgrammes.innerHTML ="";  
+                selectProgrammes.append(getProgrammes(program.id));
+                contentProgram(program.name, "program", program.entryGrades, program.exchangeStudents, program.level, program.localStudents, program.successRate);
+                getLanguage(program.language, "program");
+                getCommentsforProgram(program.id);
+            }
+        })
+    })
+    return programmes;
+}
+
+<<<<<<< Updated upstream
+
+//hämta klubbar med medlemmar till universitet
+function getClubsforUniversity(universityid){
+    let universityClubs = CLUBS.forEach(club => {
+        if(club.universityID == universityid) {
+            let clubsWrapper = document.createElement("div");
+            document.querySelector(".universityWrapper").append(clubsWrapper)
+            clubsWrapper.innerHTML =`<div>${club.name}</div>
+                                     <div>${club.memberCount}</div>`
+        }
+    })
+
+    return universityClubs;
+}
+getClubsforUniversity(); //får inte ut de i olika divar
+
+
+function getLanguage(id, type="") {
+    let language = LANGUAGES.forEach(lang => {
+        if(lang.id == id) {
+            let languageContainer = document.createElement("div");
+            document.querySelector(`.${type}LanguageWrapper`).append(languageContainer);
+            languageContainer.innerHTML = `Språk: ${lang.name}`;
+        }
+    })
+    return language;
+}
+
+function getCommentsforCity(cityid) {
+    let cityComments = COMMENTS_CITY.forEach(comment => {
+        if(comment.cityID == cityid) {
+            let commentCityWrapper = document.createElement("div");
+            document.getElementById("commentsCityWrapper").append(commentCityWrapper); 
+            commentCityWrapper.innerHTML = `
+                                        <div>${comment.alias}</div>
+                                        <div>${comment.text}</div>
+                                        `;
+        }
+    })
+    return cityComments;
+}
+
+
+
+function getCommentsforProgram(programid) {
+    let programComments = COMMENTS_PROGRAMME.forEach(comment => {
+        if(comment.programmeID == programid) {
+            let commentProgramWrapper = document.createElement("div");
+            document.getElementById("commentsProgramWrapper").append(commentProgramWrapper);
+            commentProgramWrapper.innerHTML =`<div>${comment.alias}</div>
+                                              <div>${comment.text}</div>`
+
+        }
+    })
+    return programComments;
+}
+>>>>>>> Stashed changes
 
 //hämta klubbar med medlemmar till universitet
 function getClubsforUniversity(universityid){
@@ -317,3 +556,28 @@ console.log(visaResult(1));
 
 //level - 1 Bachelor etc? 
 
+<<<<<<< Updated upstream
+=======
+function visaResult(result) {
+    result = COUNTRIES.forEach(country => {
+        if(country.visa == true) {
+            return "Ja"
+        } else {
+            return "Nej"
+        }
+    })
+    return result;
+}
+console.log(visaResult(1));
+
+//if visa == true return JA else return NEJ
+
+//fixa entrygrades och successrate
+
+//level - 1 Bachelor etc? 
+=======
+getCountries();
+*/
+>>>>>>> Stashed changes
+
+>>>>>>> Stashed changes
