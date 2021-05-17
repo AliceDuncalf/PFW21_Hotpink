@@ -8,7 +8,7 @@ let selectCities = document.getElementById("selectCities");
 let selectUniversities = document.getElementById("selectUniversities");
 let selectProgrammes = document.getElementById("selectProgrammes");
 
-selectCountries.innerHTML = `<option>VÄLJ LAND</option>`;
+selectCountries.innerHTML = `<option>Välj land</option>`;
 
 function sortNames(programmeNames){
     programmeNames.sort(function(a,b) {
@@ -29,8 +29,8 @@ function contentCountry(titel, element ="", flag, img, info, visa) {
     content.innerHTML =`<h3>${titel}<img class="flag" src="filer/Images/${flag}" alt="Flag"></h3>
                         <img src="filer/Images/${img}" alt="country">
                         <div>${info}</div>
-                        <div>Visa: ${visa}</div>
-                        <div class="countryLanguageWrapper"></div>`;
+                        <div class="countryLanguageWrapper"></div>
+                        <div>Visa: ${visa}</div>`;
     
     document.getElementById(`resultsCountry`).append(content);
     return titel, element, flag, img, info, visa;
@@ -101,6 +101,7 @@ function selectionCountry(countries) {
 
                 contentCountry(country.name, "country", country.flag, country.imagesNormal[0], country.text, country.visa);
                 getLanguage(country.languageID, "country");
+                
                 //selectCities.textContent ="";  
                 selectCities.append(getCities(country.id));
             }
@@ -227,13 +228,17 @@ function getCommentsforCity(cityid) {
             commentCityWrapper.innerHTML = `
                                         <div>${comment.alias}</div>
                                         <div>${comment.text}</div>
-                                        `;
+                                        <div>${comment.date["year"]}/${comment.date["month"]}/${comment.date["day"]}</div>
+                                        <div id="starsCityWrapper">
+                                            <div>Betyg:</div>
+                                            <div>Uteliv: ${comment.stars["out"]}
+                                            Mat: ${comment.stars["food"]}
+                                            Boende: ${comment.stars["accomodation"]}</div>
+                                        </div>`;
         }
     })
     return cityComments;
 }
-
-
 
 function getCommentsforProgram(programid) {
     let programComments = COMMENTS_PROGRAMME.forEach(comment => {
@@ -241,7 +246,14 @@ function getCommentsforProgram(programid) {
             let commentProgramWrapper = document.createElement("div");
             document.getElementById("commentsProgramWrapper").append(commentProgramWrapper);
             commentProgramWrapper.innerHTML =`<div>${comment.alias}</div>
-                                              <div>${comment.text}</div>`
+                                              <div>${comment.text}</div>
+                                              <div>${comment.date["year"]}/${comment.date["month"]}/${comment.date["day"]}</div>
+                                              <div id="starsProgramWrapper">
+                                                  <div>Betyg:</div>
+                                                  <div>Lärare: ${comment.stars["teachers"]}
+                                                  Studenter: ${comment.stars["students"]}
+                                                  Kurser: ${comment.stars["courses"]}</div>
+                                              </div>`;
 
         }
     })
@@ -249,17 +261,10 @@ function getCommentsforProgram(programid) {
 }
 
 
-/*function visaResult(result) {
-    result = COUNTRIES.forEach(country => {
-        if(country.visa == true) {
-            return "Ja"
-        } else {
-            return "Nej"
-        }
-    })
-    return result;
-}
-console.log(visaResult(1)); */
+
+/*if (visa == true) {
+    return "Ja"
+} else {return "Nej"}*/
 
 //if visa == true return JA else return NEJ
 

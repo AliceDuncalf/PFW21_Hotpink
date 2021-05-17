@@ -14,7 +14,7 @@ option {
 
 .countryWrapper, .cityWrapper, .universityWrapper, .programWrapper {
     width: 24vw;
-    height: 80vh;
+    height: 100vh;
     border: solid 3px var(--accentColor);
 }
 
