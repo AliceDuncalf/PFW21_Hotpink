@@ -25,3 +25,9 @@ img {
 .flag {
     width: 4vw;
 }
+
+#commentsCityWrapper, #commentsProgramWrapper {
+    font-size: 13px;
+    overflow-y: scroll;
+    height: 20vh;
+}

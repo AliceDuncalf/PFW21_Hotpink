@@ -31,56 +31,56 @@ function sortNames(programmeNames){
 
 
 
-function contentCountry(titel, element ="", flag, img, info, visa, lang) {
+function contentCountry(titel, element ="", flag, img, info, visa) {
     let content = document.createElement("div");
     content.classList.add(`${element}Wrapper`);
     content.innerHTML =`<h3>${titel}<img class="flag" src="filer/Images/${flag}" alt="Flag"></h3>
                         <img src="filer/Images/${img}" alt="country">
                         <div>${info}</div>
                         <div>Visa: ${visa}</div>
-                        <div>Språk: ${lang}</div>`;
+                        <div></div>`;
     
     document.getElementById(`resultsCountry`).append(content);
-    return titel, element, flag, img, info, visa, lang;
+    return titel, element, flag, img, info, visa;
 }
 
-function contentCity(titel, element ="", img, info) {
+function contentCity(titel, element ="", img, info, sunDays) {
     let content = document.createElement("div");
     content.classList.add(`${element}Wrapper`);
-    content.innerHTML =`<h3>${titel}</h3>
+    content.innerHTML =`<h3>${titel}
+                            <div>Soldagar: ${sunDays}</div>
+                        </h3>
                         <img src="filer/Images/${img}" alt="city">
                         <div>${info}</div>
-                        <div>KOMMENTARER</div>`;
+                        <div id="commentsCityWrapper"></div> `;
     
     document.getElementById(`resultsCity`).append(content);
-    return titel, element, img, info;
+    return titel, element, img, info, sunDays;
 }
 
 function contentUniversity(titel, element ="") {
     let content = document.createElement("div");
     content.classList.add(`${element}Wrapper`);
-    content.innerHTML =`<h3>${titel}</h3>
-                        `;
+    content.innerHTML =`<h3>${titel}</h3>`;
     
-    document.getElementById(`resultsUniversity`).append(content, getClubsforUniversity());
+    document.getElementById(`resultsUniversity`).append(content);
 
-    return titel, element, getClubsforUniversity(club);
+    return titel, element;
 }
 
-function contentProgram(titel, element ="", entrygrades, exchangeSt, lang, level, localSt, sucessRate) {
+function contentProgram(titel, element ="", entrygrades, exchangeSt, level, localSt, sucessRate) {
     let content = document.createElement("div");
     content.classList.add(`${element}Wrapper`);
     content.innerHTML =`<h3>${titel}</h3>
                         <div>Entry grades: ${entrygrades}</div>
-                        <div>Sucess rate: ${sucessRate}</div>
+                        <div>Sucess rate: ${sucessRate}%</div>
                         <div>Exchange students: ${exchangeSt}</div>
                         <div>Local students: ${localSt}</div>
                         <div>Level: ${level}</div>
-                        <div>Language: ${lang}</div>
-                        <div>KOMMENTARER</div>`;
+                        <div id="commentsProgramWrapper"></div>`;
     
     document.getElementById(`resultsProgram`).append(content);
-    return titel, element, entrygrades, exchangeSt, lang, level, localSt, sucessRate;
+    return titel, element, entrygrades, exchangeSt, level, localSt, sucessRate;
 }
 
 
@@ -101,9 +101,10 @@ function selectionCountry(countries) {
         selectCountries.addEventListener("change",(e) => {
             if (country.name == e.target.value) {
                 document.getElementById("resultsCountry").innerHTML ="";
-                //splice
-                contentCountry(country.name, "country", country.flag, country.imagesNormal[0], country.text, country.visa, getLanguage(country.languageID));
-                console.log(countries); 
+                document.getElementById("resultsCity").innerHTML ="";
+
+                contentCountry(country.name, "country", country.flag, country.imagesNormal[0], country.text, country.visa);
+                getLanguage(country.languageID);
                 //selectCities.textContent ="";  
                 selectCities.append(getCities(country.id));
             }
@@ -130,7 +131,9 @@ function getCities(countryid){
             if(city.name == e.target.value) {
                 document.getElementById("resultsCity").innerHTML ="";
                 console.log(e.target.value);
-                contentCity(city.name, "city", city.imagesNormal[0], city.text);
+                contentCity(city.name, "city", city.imagesNormal[0], city.text, city.sun);
+
+                getCommentsforCity(city.id);
                 selectUniversities.innerHTML ="";  
                 selectUniversities.append(getUniversities(city.id));
             }
@@ -154,7 +157,8 @@ function getUniversities(cityid) {
         selectUniversities.addEventListener("change", (e)=> {
             if(university.name == e.target.value) {
                 document.getElementById("resultsUniversity").innerHTML ="";
-                contentUniversity(university.name, "university", getClubsforUniversity(university.id));
+                contentUniversity(university.name, "university");
+                getClubsforUniversity(university.id);
                 selectProgrammes.innerHTML ="";  
                 selectProgrammes.append(getProgrammes(university.id));
             }
@@ -180,7 +184,9 @@ function getProgrammes(universityid){
                 document.getElementById("resultsProgram").innerHTML ="";
                 selectProgrammes.innerHTML ="";  
                 selectProgrammes.append(getProgrammes(program.id));
-                contentProgram(program.name, "program", program.entryGrades, program.successRate, program.exchangeStudents, program.localStudents, program.level, program.language);
+                contentProgram(program.name, "program", program.entryGrades, program.exchangeStudents, program.level, program.localStudents, program.successRate);
+                getLanguage(program.id);
+                getCommentsforProgram(program.id);
             }
         })
     })
@@ -190,37 +196,62 @@ function getProgrammes(universityid){
 
 //hämta klubbar med medlemmar till universitet
 function getClubsforUniversity(universityid){
-    let universityClubs = [];
-    let universityMembers = [];
-    CLUBS.forEach(club => {
+    let universityClubs = CLUBS.forEach(club => {
         if(club.universityID == universityid) {
-            let clubDiv = document.createElement("div");
-            universityClubs.push(club.name);
-            universityMembers.push(club.memberCount);
-            clubDiv.append(universityMembers, universityClubs);
-            console.log(clubDiv)
+            let clubsWrapper = document.createElement("div");
+            document.querySelector(".universityWrapper").append(clubsWrapper)
+            clubsWrapper.innerHTML =`<div>${club.name}</div>
+                                     <div>${club.memberCount}</div>`
         }
     })
 
-    return universityClubs, universityMembers;
+    return universityClubs;
 }
 getClubsforUniversity(); //får inte ut de i olika divar
 
 
-function getLanguage(countryid) {
-    let langCountry = [];
-    LANGUAGES.forEach(lang => {
-        if(lang.id == countryid) {
-            langCountry.push(lang.name);
+function getLanguage(id) {
+    let language = LANGUAGES.forEach(lang => {
+        if(lang.id == id) {
+            languageContainer = document.createElement("div");
+            languageContainer.innerHTML = `${lang.name}`;
         }
     })
-    return langCountry;
+    return language;
 }
 
-//hämta kommentarer till stad
+function getCommentsforCity(cityid) {
+    let cityComments = COMMENTS_CITY.forEach(comment => {
+        if(comment.cityID == cityid) {
+            let commentCityWrapper = document.createElement("div");
+            document.getElementById("commentsCityWrapper").append(commentCityWrapper); 
+            commentCityWrapper.innerHTML = `
+                                        <div>${comment.alias}</div>
+                                        <div>${comment.text}</div>
+                                        `;
+        }
+    })
+    return cityComments;
+}
 
-//hämta kommentarer till land
+function getCommentsforProgram(programid) {
+    let programComments = COMMENTS_PROGRAMME.forEach(comment => {
+        if(comment.programmeID == programid) {
+            let commentProgramWrapper = document.createElement("div");
+            document.getElementById("commentsProgramWrapper").append(commentProgramWrapper);
+            commentProgramWrapper.innerHTML =`<div>${comment.alias}</div>
+                                              <div>${comment.text}</div>`
+
+        }
+    })
+    return programComments;
+}
+
+
 
 //koppla språk till land och program
 
 //if visa == true return JA else return NEJ
+
+//level - 1 Bachelor etc? 
+
