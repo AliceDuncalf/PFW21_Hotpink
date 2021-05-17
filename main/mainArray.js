@@ -154,6 +154,7 @@ function getUniversities(cityid) {
     sortNames(UNIVERSITIES);
     selectUniversities.innerHTML = `<option>VÄLJ UNIVERSITET</option>`;
     let universities = [];
+    
     UNIVERSITIES.forEach(university => {
         if(university.cityID == cityid) {
             universities.push(university)
@@ -161,7 +162,7 @@ function getUniversities(cityid) {
             selectUniversities.append(option);
             option.innerHTML =`${university.name}`;
             universities.push(university);
-        
+        }    
             selectUniversities.addEventListener("change", (e)=> {
             if(university.name == e.target.value) {
                 document.getElementById("resultsUniversity").innerHTML ="";
@@ -171,7 +172,6 @@ function getUniversities(cityid) {
                 selectProgrammes.innerHTML ="";  
                 selectProgrammes.append(getProgrammes(university.id));
             }
-            
         })
     })
     return universities;
@@ -261,7 +261,7 @@ function getCommentsforProgram(programid) {
 }
 
 
-function visaResult(result) {
+/*function visaResult(result) {
     result = COUNTRIES.forEach(country => {
         if(country.visa == true) {
             return "Ja"
@@ -271,7 +271,7 @@ function visaResult(result) {
     })
     return result;
 }
-console.log(visaResult(1));
+console.log(visaResult(1)); */
 
 //if visa == true return JA else return NEJ
 
