@@ -15,7 +15,7 @@ function DOMcategoryDiv() {
     let div = document.createElement("div");
     div.classList.add("categoryBox")
     document.querySelector(".categories").append(div);
-    div.innerHTML = `<button id="${category.name}"></button><div>${category.name}</div`
+    div.innerHTML = `<input type="checkbox" id="${category.name}"></input><div>${category.name}</div`
 
     div.querySelector(`#${category.name}`).addEventListener("click", () => {
 
@@ -78,3 +78,61 @@ function getCountryFromUniverityID(id) {
 function clearAll() {
   document.querySelector(".programbox").innerHTML = "";
 };
+
+
+function createLevelOptions(){
+    LEVELS.forEach(level => {
+        let checkbox = document.createElement("INPUT")
+        checkbox.setAttribute("type", "checkbox");
+        checkbox.classList.add(".checkbox",`${level}` )
+        let div = document.createElement("DIV")
+        document.querySelector("#levelsDiv").append(checkbox, div);
+        div.innerHTML = `${level}
+        `;
+    });
+  
+}; 
+createLevelOptions();
+
+
+function GetBachelorProgrammes() {
+    document.querySelector(".Bachelor").addEventListener("click", () => {
+        console.log("clicked");
+        let BachelorProgrammes = [];
+        PROGRAMMES.forEach(program => {
+            if (program.level == LEVELS.indexOf("Bachelor")) {
+            BachelorProgrammes.push(program.name)
+        }
+    });
+    console.log(BachelorProgrammes);
+    return BachelorProgrammes;
+    });
+};
+
+function GetMasterProgrammes() {
+    document.querySelector(".Master").addEventListener("click", () => {
+        console.log("clicked");
+        let MasterProgrammes = [];
+        PROGRAMMES.forEach(program => {
+            if (program.level == LEVELS.indexOf("Master")) {
+            MasterProgrammes.push(program.name)
+            }
+        });
+        console.log(MasterProgrammes);
+        return MasterProgrammes;
+    });
+}
+
+GetBachelorProgrammes();
+GetMasterProgrammes();
+
+
+// PROGRAMMES.forEach(program => {
+//     if (program.level == LEVELS.indexOf("Master")) {
+//     console.log("hej"); 
+// }
+// });
+
+
+
+
