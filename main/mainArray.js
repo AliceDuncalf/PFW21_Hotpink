@@ -1,13 +1,5 @@
 "use strict";
 
-//få ut bild och info till land (språk, visa)
-//inte kunna klicka på ett ämne och få en till div utan tömma och lägga ny
-//få ut kommentarer till stad och program
-//sortera stad/uni/program i bokstavsordning 
-//kolla över namn på variablar så att allt är tydligt
-
-
-
 //globala variablar
 
 //select element i HTML
@@ -203,8 +195,6 @@ function getProgrammes(universityid){
     return programmes;
 }
 
-
-//hämta klubbar med medlemmar till universitet
 function getClubsforUniversity(universityid){
     let universityClubs = CLUBS.forEach(club => {
         if(club.universityID == universityid) {
@@ -217,8 +207,6 @@ function getClubsforUniversity(universityid){
 
     return universityClubs;
 }
-getClubsforUniversity(); //får inte ut de i olika divar
-
 
 function getLanguage(id, type="") {
     let language = LANGUAGES.forEach(lang => {
