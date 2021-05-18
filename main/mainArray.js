@@ -31,7 +31,7 @@ function contentCountry(titel, element ="", flag, img, info, visa) {
                         </div>
                         <img src="filer/Images/${img}" alt="country">
                         <div>${info}</div>
-                        <div id="hej">
+                        <div id="countryInfoBox">
                             <div>Visa: ${visa}</div>
                             <div class="countryLanguageWrapper"></div>
                         </div>`;

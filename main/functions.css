@@ -1,34 +1,8 @@
-* {
-    margin: 0;
-}
-
 #allResults, #selectWrapper {
-    display: flex;
-   
-}
-
-#selectWrapper > select {
-    width: 100vw;
-    font-family: var(--eFont);
-}
-
-option {
-    font-family: var(--eFont);
-}
-
-.countryWrapper, .cityWrapper, .universityWrapper, .programWrapper {
-    width: 24vw;
-    height: 100vh;
-    border: solid 3px var(--accentColor);
-    background-color: white;
-}
-
-img {
-    width: 100%;
-}
-
-.flag {
-    width: 4vw;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 0 2vw;
+    gap: 1vw;
 }
 
 #commentsCityWrapper, #commentsProgramWrapper {
@@ -39,23 +13,43 @@ img {
     border: 2px solid black;
 }
 
-#name {
-    height: 10%;
-    padding: 3%;
-    border-bottom: 3px solid var(--accentColor);
+#countryInfoBox {
+    background-color: var(--mainColor);
+    height: 20%;
+    margin-top: 50px;
 }
 
-#HittaUtbildning {
-    background-color: var(--mainColor);
-    margin-top: 100px;
+.countryWrapper, .cityWrapper, .universityWrapper, .programWrapper {
+    height: 100vh;
+    border: solid 3px var(--accentColor);
+    background-color: white;
+}
+
+.flag {
+    width: 4vw;
+}
+
+img {
+    width: 100%;
 }
 
 #info {
     margin: 10px;
 }
 
-#hej {
-    background-color: var(--mainColor);
-    height: 20%;
-    margin-top: 50px;
+#name {
+    height: 10%;
+    padding: 3%;
+    border-bottom: 3px solid var(--accentColor);
 }
+
+option {
+    font-family: var(--eFont);
+}
+
+#selectWrapper > select {
+    height: 5vh;
+    font-family: var(--eFont);
+}
+
+
