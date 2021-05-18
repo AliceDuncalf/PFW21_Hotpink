@@ -26,11 +26,11 @@ function sortNames(programmeNames){
 function contentCountry(titel, element ="", flag, img, info, visa) {
     let content = document.createElement("div");
     content.classList.add(`${element}Wrapper`);
-    content.innerHTML =`<div id="name">
+    content.innerHTML =`<div class="name">
                             <h3>${titel}</h3><img class="flag" src="filer/Images/${flag}" alt="Flag">
                         </div>
                         <img src="filer/Images/${img}" alt="country">
-                        <div>${info}</div>
+                        <div class="description">${info}</div>
                         <div id="countryInfoBox">
                             <div>Visa: ${visa}</div>
                             <div class="countryLanguageWrapper"></div>
@@ -43,13 +43,12 @@ function contentCountry(titel, element ="", flag, img, info, visa) {
 function contentCity(titel, element ="", img, info, sunDays) {
     let content = document.createElement("div");
     content.classList.add(`${element}Wrapper`);
-    content.innerHTML =`<div id="name">
-                            <h3>${titel}
-                                <div>Soldagar: ${sunDays}</div>
-                            </h3>
+    content.innerHTML =`<div class="name">
+                            <h3>${titel}</h3>
+                            <p>Soldagar: ${sunDays}</p>
                         </div>    
                         <img src="filer/Images/${img}" alt="city">
-                        <div>${info}</div>
+                        <div class="description">${info}</div>
                         <div id="commentsCityWrapper"></div> `;
     
     document.getElementById(`resultsCity`).append(content);
@@ -59,7 +58,7 @@ function contentCity(titel, element ="", img, info, sunDays) {
 function contentUniversity(titel, element ="") {
     let content = document.createElement("div");
     content.classList.add(`${element}Wrapper`);
-    content.innerHTML =`<div id="name">
+    content.innerHTML =`<div class="name">
                             <h3>${titel}</h3>
                         </div>`;
     
@@ -71,7 +70,7 @@ function contentUniversity(titel, element ="") {
 function contentProgram(titel, element ="", entrygrades, exchangeSt, level, localSt, sucessRate) {
     let content = document.createElement("div");
     content.classList.add(`${element}Wrapper`);
-    content.innerHTML =`<div id="name">
+    content.innerHTML =`<div class="name">
                             <h3>${titel}</h3>
                         </div>
                         <div class="programLanguageWrapper"></div>

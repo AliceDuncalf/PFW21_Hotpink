@@ -123,7 +123,7 @@ input:after {
 
 #levelsDiv {
     margin: 0 2vw;
-    height: 50px;
+    height: 9vh;
     display: flex;
     justify-content: flex-end;
     align-items: center;
