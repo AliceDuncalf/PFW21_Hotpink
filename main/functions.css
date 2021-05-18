@@ -59,3 +59,16 @@ img {
     height: 20%;
     margin-top: 50px;
 }
+
+#clubsAndMembers {
+    background-color: yellow;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+#nameAndMembers {
+    display: flex;
+    margin: 10px;
+    justify-content: space-between;
+}
