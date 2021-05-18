@@ -15,12 +15,16 @@ function DOMcategoryDiv() {
     let div = document.createElement("div");
     div.classList.add("categoryBox")
     document.querySelector(".categories").append(div);
-    div.innerHTML = `<input type="checkbox" id="${category.name}"></input><div>${category.name}</div`
+    div.innerHTML = `<input type="checkbox" value="${category.name}" id="${category.name}"><label for="${category.name}">${category.name}</label></input>`;
+
+
 
     div.querySelector(`#${category.name}`).addEventListener("click", () => {
 
+
       if (programBox.innerHTML !== "") {
         clearAll(); 
+        programBox.scrollTop =0;
       } 
 
       let FilterArray = PROGRAMMES.filter(programme => programme.subjectID === category.id);
@@ -77,16 +81,26 @@ function clearAll() {
 };
 
 
+
+
+
+
+
+
+
 function createLevelOptions(){
     LEVELS.forEach(level => {
-        let checkbox = document.createElement("INPUT")
-        checkbox.setAttribute("type", "checkbox");
-        checkbox.setAttribute("value", `${level}`);
-        checkbox.classList.add(`${level}`)
-        let div = document.createElement("DIV")
-        document.querySelector("#levelsDiv").append(checkbox, div);
-        div.innerHTML = `${level}
+        let div = document.createElement("div")
+        div.innerHTML = `
+        <input type="checkbox" value="${level}" class="${level}"><label for="${level}">${level}</label></input>
         `;
+        // checkbox.setAttribute("type", "checkbox");
+        // checkbox.setAttribute("value", `${level}`);
+        // checkbox.classList.add(`${level}`)
+        // let div = document.createElement("DIV")
+        document.querySelector("#levelsDiv").append(div);
+        // div.innerHTML = `${level}
+        // `;
     }); 
 }; 
 createLevelOptions();
