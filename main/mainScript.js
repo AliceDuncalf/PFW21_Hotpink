@@ -25,9 +25,8 @@ function DOMcategoryDiv() {
 
       let FilterArray = PROGRAMMES.filter(programme => programme.subjectID === category.id);
       FilterArray.filter(obj => obj.name);
-      //console.log(FilterArray);
+      console.log(FilterArray);
       FilterArray.forEach(program => {
-      //console.log(program.name);
         let programmeContentDiv = document.createElement("div");
         programmeContentDiv.classList.add("programmeContentDiv")
         programmeContentDiv.innerHTML = `

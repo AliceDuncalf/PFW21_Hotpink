@@ -1,6 +1,10 @@
+* {
+    margin: 0;
+}
 
 #allResults, #selectWrapper {
     display: flex;
+   
 }
 
 #selectWrapper > select {
@@ -14,8 +18,9 @@ option {
 
 .countryWrapper, .cityWrapper, .universityWrapper, .programWrapper {
     width: 24vw;
-    height: 80vh;
+    height: 100vh;
     border: solid 3px var(--accentColor);
+    background-color: white;
 }
 
 img {
@@ -29,5 +34,28 @@ img {
 #commentsCityWrapper, #commentsProgramWrapper {
     font-size: 13px;
     overflow-y: scroll;
+    scrollbar-width: thin; 
     height: 20vh;
+    border: 2px solid black;
+}
+
+#name {
+    height: 10%;
+    padding: 3%;
+    border-bottom: 3px solid var(--accentColor);
+}
+
+#HittaUtbildning {
+    background-color: var(--mainColor);
+    margin-top: 100px;
+}
+
+#info {
+    margin: 10px;
+}
+
+#hej {
+    background-color: var(--mainColor);
+    height: 20%;
+    margin-top: 50px;
 }
