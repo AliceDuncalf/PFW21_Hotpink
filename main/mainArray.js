@@ -115,7 +115,7 @@ selectionCountry();
 
 function getCities(countryid){
     sortNames(CITIES);
-    selectCities.innerHTML = `<option>VÄLJ STAD</option>`;
+    selectCities.innerHTML = `<option>Välj stad</option>`;
     let cities = [];
      CITIES.forEach(city => {
         if(city.countryID == countryid) {
@@ -146,12 +146,12 @@ function getCities(countryid){
 
 function getUniversities(cityid) {
     sortNames(UNIVERSITIES);
-    selectUniversities.innerHTML = `<option>VÄLJ UNIVERSITET</option>`;
+    selectUniversities.innerHTML = `<option>Välj universitet</option>`;
     let universities = [];
     
     UNIVERSITIES.forEach(university => {
         if(university.cityID == cityid) {
-            universities.push(university)
+            
             let option = document.createElement("OPTION");
             selectUniversities.append(option);
             option.innerHTML =`${university.name}`;
@@ -173,11 +173,11 @@ function getUniversities(cityid) {
 
 function getProgrammes(universityid){
     sortNames(PROGRAMMES);
-    selectProgrammes.innerHTML = `<option>VÄLJ PROGRAM</option>`;
+    selectProgrammes.innerHTML = `<option>Välj program</option>`;
     let programmes = [];
+    
     PROGRAMMES.forEach(program => {
         if(program.universityID == universityid) {
-            programmes.push(program);
             let option = document.createElement("OPTION");
             selectProgrammes.append(option);
             option.innerHTML =`${program.name}`;
@@ -186,8 +186,8 @@ function getProgrammes(universityid){
         selectProgrammes.addEventListener("change", (e)=> {
             if(program.name == e.target.value) {
                 document.getElementById("resultsProgram").innerHTML ="";
-                selectProgrammes.innerHTML ="";  
-                selectProgrammes.append(getProgrammes(program.id));
+                //selectProgrammes.innerHTML ="";  
+                //selectProgrammes.append(getProgrammes(program.id));
                 contentProgram(program.name, "program", program.entryGrades, program.exchangeStudents, program.level, program.localStudents, program.successRate);
                 getLanguage(program.language, "program");
                 getCommentsforProgram(program.id);
