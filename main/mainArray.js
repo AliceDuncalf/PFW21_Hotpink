@@ -206,6 +206,7 @@ function getProgrammes(universityid){
         selectProgrammes.innerHTML="";
         console.log("clicked");
         console.log(lev.target.value);
+        
         let levelProgrammes = programmes.filter(chosen => {
             if (chosen.level == LEVELS.indexOf(lev.target.value)) {
                 let option = document.createElement("OPTION");
