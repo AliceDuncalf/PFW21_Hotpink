@@ -78,21 +78,21 @@ function clearAll() {
 };
 
 
-/*function createLevelOptions(){
+function createLevelOptions(){
     LEVELS.forEach(level => {
         let checkbox = document.createElement("INPUT")
         checkbox.setAttribute("type", "checkbox");
-        checkbox.classList.add(".checkbox",`${level}` )
+        checkbox.setAttribute("value", `${level}`);
+        checkbox.classList.add(`${level}`)
         let div = document.createElement("DIV")
         document.querySelector("#levelsDiv").append(checkbox, div);
         div.innerHTML = `${level}
         `;
-    });
-  
+    }); 
 }; 
 createLevelOptions();
 
-
+/*
 function GetBachelorProgrammes() {
     document.querySelector(".Bachelor").addEventListener("click", () => {
         console.log("clicked");
