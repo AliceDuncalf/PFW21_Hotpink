@@ -183,7 +183,7 @@ function getProgrammes(universityid){
     sortNames(PROGRAMMES);
     selectProgrammes.innerHTML = `<option>VÄLJ PROGRAM</option>`;
     let programmes = [];
-    PROGRAMMES.forEach(program => {
+    let programOptions = PROGRAMMES.forEach(program => {
         if(program.universityID == universityid) {
             programmes.push(program)
             let option = document.createElement("OPTION");
@@ -194,26 +194,27 @@ function getProgrammes(universityid){
         selectProgrammes.addEventListener("change", (e)=> {
             if(program.name == e.target.value) {
                 document.getElementById("resultsProgram").innerHTML ="";
-                selectProgrammes.innerHTML ="";  
-                selectProgrammes.append(getProgrammes(program.id));
+                //selectProgrammes.innerHTML ="";  
+                //selectProgrammes.append(getProgrammes(program.id));
                 contentProgram(program.name, "program", program.entryGrades, program.exchangeStudents, program.level, program.localStudents, program.successRate);
                 getLanguage(program.language, "program");
                 getCommentsforProgram(program.id);
             }
         })
     })
-    /*document.querySelector(".Master").addEventListener("click", () => {
-        console.log("clicked");
+    document.querySelector(".Master").addEventListener("click", (lev) => { //vad kan stå istället för .Master som queryselector?
         selectProgrammes.innerHTML="";
-        let masterProgrammes = programmes.filter(obj => {
-            if (obj.level == LEVELS.indexOf("Master")) {
+        console.log("clicked");
+        console.log(lev.target.value);
+        let levelProgrammes = programmes.filter(chosen => {
+            if (chosen.level == LEVELS.indexOf(lev.target.value)) {
                 let option = document.createElement("OPTION");
                 selectProgrammes.append(option);
-                option.innerHTML =`${obj.name}`;
+                option.innerHTML =`${chosen.name}`;
             }
         });
-        return masterProgrammes;
-    }); */
+        return levelProgrammes;
+    }); 
     return programmes;
 }
 
@@ -286,3 +287,5 @@ console.log(visaResult(1)); */
 //fixa entrygrades och successrate
 
 //level - 1 Bachelor etc? 
+
+// fråga om undefined i klubbar
