@@ -71,15 +71,13 @@ function getCountryFromUniverityID(id) {
 }
 //console.log(getCountryFromUniverityID(10));
 
-
-
 //Nollställa programmen
 function clearAll() {
   document.querySelector(".programbox").innerHTML = "";
 };
 
 
-function createLevelOptions(){
+/*function createLevelOptions(){
     LEVELS.forEach(level => {
         let checkbox = document.createElement("INPUT")
         checkbox.setAttribute("type", "checkbox");
@@ -108,7 +106,7 @@ function GetBachelorProgrammes() {
     });
 };
 
-function GetMasterProgrammes() {
+/*function GetMasterProgrammes() {
     document.querySelector(".Master").addEventListener("click", () => {
         console.log("clicked");
         let MasterProgrammes = [];
@@ -123,7 +121,9 @@ function GetMasterProgrammes() {
 }
 
 GetBachelorProgrammes();
-GetMasterProgrammes();
+
+
+GetMasterProgrammes(); */
 
 
 // PROGRAMMES.forEach(program => {
