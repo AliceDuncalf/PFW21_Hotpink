@@ -23,17 +23,17 @@ function sortNames(programmeNames){
 
 
 
-function contentCountry(titel, element ="", flag, img, info, visa) {
+function contentCountry(titel, element ="", flag, img, info) {
     let content = document.createElement("div");
     content.classList.add(`${element}Wrapper`);
     content.innerHTML =`<h3>${titel}<img class="flag" src="filer/Images/${flag}" alt="Flag"></h3>
                         <img src="filer/Images/${img}" alt="country">
                         <div>${info}</div>
                         <div class="countryLanguageWrapper"></div>
-                        <div>Visa: ${visa}</div>`;
+                        `;
     
     document.getElementById(`resultsCountry`).append(content);
-    return titel, element, flag, img, info, visa;
+    return titel, element, flag, img, info;
 }
 
 function contentCity(titel, element ="", img, info, sunDays) {
@@ -101,6 +101,7 @@ function selectionCountry(countries) {
 
                 contentCountry(country.name, "country", country.flag, country.imagesNormal[0], country.text, country.visa);
                 getLanguage(country.languageID, "country");
+                getVisa(country.id);
                 
                 //selectCities.textContent ="";  
                 selectCities.append(getCities(country.id));
@@ -260,13 +261,19 @@ function getCommentsforProgram(programid) {
     return programComments;
 }
 
+function getVisa(countryVisa){
+    countryVisa = COUNTRIES.find(obj => obj.id == countryVisa).visa;
+    let visaContainer = document.createElement("div");
+    document.querySelector(".countryWrapper").append(visaContainer);
+    
+    if (countryVisa == true) {
+        visaContainer.innerHTML ="Visum: Ja";
+    } else {
+        visaContainer.innerHTML="Visum: Nej";
+    }
+    return countryVisa;
+}
 
-
-/*if (visa == true) {
-    return "Ja"
-} else {return "Nej"}*/
-
-//if visa == true return JA else return NEJ
 
 //fixa entrygrades och successrate
 
