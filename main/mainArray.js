@@ -175,11 +175,11 @@ function getProgrammes(universityid){
     let programmes = [];
     PROGRAMMES.forEach(program => {
         if(program.universityID == universityid) {
-            programmes.push(program);
+            programmes.push(program)
             let option = document.createElement("OPTION");
             selectProgrammes.append(option);
             option.innerHTML =`${program.name}`;
-            programmes.push(program);
+            console.log(programmes);
         }
         selectProgrammes.addEventListener("change", (e)=> {
             if(program.name == e.target.value) {
@@ -192,6 +192,18 @@ function getProgrammes(universityid){
             }
         })
     })
+    /*document.querySelector(".Master").addEventListener("click", () => {
+        console.log("clicked");
+        selectProgrammes.innerHTML="";
+        let masterProgrammes = programmes.filter(obj => {
+            if (obj.level == LEVELS.indexOf("Master")) {
+                let option = document.createElement("OPTION");
+                selectProgrammes.append(option);
+                option.innerHTML =`${obj.name}`;
+            }
+        });
+        return masterProgrammes;
+    }); */
     return programmes;
 }
 
@@ -232,8 +244,6 @@ function getCommentsforCity(cityid) {
     })
     return cityComments;
 }
-
-
 
 function getCommentsforProgram(programid) {
     let programComments = COMMENTS_PROGRAMME.forEach(comment => {
