@@ -84,26 +84,27 @@ function clearAll() {
 
 
 
-
+console.log(LEVELS.indexOf("Bachelor"))
 
 
 
 function createLevelOptions(){
-    LEVELS.forEach(level => {
-        let div = document.createElement("div")
-        div.innerHTML = `
-        <input type="checkbox" value="${level}" class="${level}"><label for="${level}">${level}</label></input>
-        `;
-        // checkbox.setAttribute("type", "checkbox");
-        // checkbox.setAttribute("value", `${level}`);
-        // checkbox.classList.add(`${level}`)
-        // let div = document.createElement("DIV")
-        document.querySelector("#levelsDiv").append(div);
-        // div.innerHTML = `${level}
-        // `;
-    }); 
+  let boxes = [];
+
+  LEVELS.forEach(level => {
+    let checkbox = document.createElement("INPUT")
+    checkbox.setAttribute("type", "checkbox");
+    checkbox.setAttribute("value", `${level}`)
+    checkbox.classList.add(`${level}`);
+    let levelNameTag = document.createElement("DIV");
+    levelNameTag.innerHTML = `${level}`;
+    document.querySelector("#levelsDiv").append(checkbox, levelNameTag);
+    boxes.push(checkbox.value);
+  });
+  return boxes;
 }; 
-createLevelOptions();
+console.log(createLevelOptions());
+
 
 /*
 function GetBachelorProgrammes() {

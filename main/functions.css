@@ -1,3 +1,7 @@
+* {
+    margin: 0;
+}
+
 #allResults, #selectWrapper {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -5,12 +9,29 @@
     gap: 1vw;
 }
 
+#clubsAndMembers {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 10px;
+    border-radius: 5px;
+    border: solid 1px var(--accentColor);
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
 #commentsCityWrapper, #commentsProgramWrapper {
     font-size: 13px;
     overflow-y: scroll;
     scrollbar-width: thin; 
     height: 20vh;
-    border: 2px solid var(--mainColor);
+    padding: 0 10px;
+}
+
+#commentsCityWrapper > div, #commentsProgramWrapper > div {
+    border: solid 1px var(--mainColor);
+    padding: 10px 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
 
 #countryInfoBox {
@@ -19,15 +40,24 @@
 }
 
 .countryWrapper, .cityWrapper, .universityWrapper, .programWrapper {
-    width: 24vw;
     height: 100vh;
     border: solid 3px var(--accentColor);
     background-color: white;
 }
 
+.countryLanguageWrapper > div{
+    background-color: var(--accentColor);
+    padding: 16px 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: var(--breadFontSz);
+}
+
 .description {
     padding: 10px;
     margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: var(--breadFontSz);
 }
 
 .flag {
@@ -43,14 +73,50 @@ img {
 }
 
 .name {
+    height: 10vh;
     padding: 10px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
+#nameAndMembers {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--accentColor);
+    padding: 16px 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: var(--breadFontSz);
+}
 
 option {
     font-family: var(--eFont);
+}
+
+.programLanguageWrapper, .programInfoBox > div {
+    background-color: var(--accentColor);
+    padding: 16px 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: var(--breadFontSz);
+}
+
+.reviewName {
+    font-weight: bold;
+}
+
+.reviewTitle {
+    background-color: var(--accentColor);
+    padding: 16px 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: var(--breadFontSz);
+}
+
+.reviewTop {
+    display: flex;
+    justify-content: space-between;
 }
 
 #selectWrapper > select {
@@ -58,21 +124,3 @@ option {
     font-family: var(--eFont);
 }
 
-#hej {
-    background-color: var(--mainColor);
-    height: 20%;
-    margin-top: 50px;
-}
-
-#clubsAndMembers {
-    background-color: yellow;
-    display: flex;
-    justify-content: space-between;
-    margin: 10px;
-}
-
-#nameAndMembers {
-    display: flex;
-    margin: 10px;
-    justify-content: space-between;
-}

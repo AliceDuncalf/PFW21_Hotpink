@@ -7,7 +7,7 @@
 
     --titelFontSz: 3vw;
     --secondFontSz: 2vw;
-    --breadFontSz: 1vw;
+    --breadFontSz: 85%;
 
 }
 
@@ -74,7 +74,7 @@ header {
 }
 
 #HittaProgram, #HittaUtbildning {
-    font-family: var(--eFont);
+    font-family: var(--pFont);
     background-color: var(--mainColor);
     border-bottom: 5px solid var(--accentColor);
     border-top: 5px solid var(--accentColor);
@@ -119,6 +119,7 @@ input:after {
     padding: 20px;
     line-height: 3vh;
     font-family: var(--pFont);
+    font-size: var(--breadFontSz);
 }
 
 #levelsDiv {
@@ -176,6 +177,7 @@ nav > a {
 .programbox > div:last-child {
     margin-bottom: 0;
 }
+
 
 /* button {
     
