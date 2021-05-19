@@ -15,19 +15,22 @@ function DOMcategoryDiv() {
     let div = document.createElement("div");
     div.classList.add("categoryBox")
     document.querySelector(".categories").append(div);
-    div.innerHTML = `<button id="${category.name}"></button><div>${category.name}</div`
+    div.innerHTML = `<input type="checkbox" value="${category.name}" id="${category.name}"><label for="${category.name}">${category.name}</label></input>`;
+
+
 
     div.querySelector(`#${category.name}`).addEventListener("click", () => {
 
+
       if (programBox.innerHTML !== "") {
         clearAll(); 
+        programBox.scrollTop =0;
       } 
 
       let FilterArray = PROGRAMMES.filter(programme => programme.subjectID === category.id);
       FilterArray.filter(obj => obj.name);
-      //console.log(FilterArray);
+      console.log(FilterArray);
       FilterArray.forEach(program => {
-      //console.log(program.name);
         let programmeContentDiv = document.createElement("div");
         programmeContentDiv.classList.add("programmeContentDiv")
         programmeContentDiv.innerHTML = `
@@ -72,9 +75,77 @@ function getCountryFromUniverityID(id) {
 }
 //console.log(getCountryFromUniverityID(10));
 
-
-
 //Nollställa programmen
 function clearAll() {
   document.querySelector(".programbox").innerHTML = "";
 };
+
+
+
+
+
+
+
+
+
+function createLevelOptions(){
+    LEVELS.forEach(level => {
+        let div = document.createElement("div")
+        div.innerHTML = `
+        <input type="checkbox" value="${level}" class="${level}"><label for="${level}">${level}</label></input>
+        `;
+        // checkbox.setAttribute("type", "checkbox");
+        // checkbox.setAttribute("value", `${level}`);
+        // checkbox.classList.add(`${level}`)
+        // let div = document.createElement("DIV")
+        document.querySelector("#levelsDiv").append(div);
+        // div.innerHTML = `${level}
+        // `;
+    }); 
+}; 
+createLevelOptions();
+
+/*
+function GetBachelorProgrammes() {
+    document.querySelector(".Bachelor").addEventListener("click", () => {
+        console.log("clicked");
+        let BachelorProgrammes = [];
+        PROGRAMMES.forEach(program => {
+            if (program.level == LEVELS.indexOf("Bachelor")) {
+            BachelorProgrammes.push(program.name)
+        }
+    });
+    console.log(BachelorProgrammes);
+    return BachelorProgrammes;
+    });
+};
+
+/*function GetMasterProgrammes() {
+    document.querySelector(".Master").addEventListener("click", () => {
+        console.log("clicked");
+        let MasterProgrammes = [];
+        PROGRAMMES.forEach(program => {
+            if (program.level == LEVELS.indexOf("Master")) {
+            MasterProgrammes.push(program.name)
+            }
+        });
+        console.log(MasterProgrammes);
+        return MasterProgrammes;
+    });
+}
+
+GetBachelorProgrammes();
+
+
+GetMasterProgrammes(); */
+
+
+// PROGRAMMES.forEach(program => {
+//     if (program.level == LEVELS.indexOf("Master")) {
+//     console.log("hej"); 
+// }
+// });
+
+
+
+

@@ -10,15 +10,15 @@ let selectProgrammes = document.getElementById("selectProgrammes");
 
 selectCountries.innerHTML = `<option>Välj land</option>`;
 
-function sortNames(programmeNames){
-    programmeNames.sort(function(a,b) {
-    if (a.name.toLowerCase() < b.name.toLowerCase()
-      ) return -1;
-    if (a.name.toLowerCase() > b.name.toLowerCase()
-      ) return 1;
-    return 0;
-  })
-  return programmeNames
+function sortNames(programmeNames) {
+    programmeNames.sort(function (a, b) {
+        if (a.name.toLowerCase() < b.name.toLowerCase()
+        ) return -1;
+        if (a.name.toLowerCase() > b.name.toLowerCase()
+        ) return 1;
+        return 0;
+    })
+    return programmeNames
 }
 
 
@@ -26,7 +26,9 @@ function sortNames(programmeNames){
 function contentCountry(titel, element ="", flag, img, info) {
     let content = document.createElement("div");
     content.classList.add(`${element}Wrapper`);
-    content.innerHTML =`<h3>${titel}<img class="flag" src="filer/Images/${flag}" alt="Flag"></h3>
+    content.innerHTML =`<div class="name">
+                            <h3>${titel}</h3><img class="flag" src="filer/Images/${flag}" alt="Flag">
+                        </div>
                         <img src="filer/Images/${img}" alt="country">
                         <div>${info}</div>
                         <div class="countryLanguageWrapper"></div>
@@ -36,34 +38,39 @@ function contentCountry(titel, element ="", flag, img, info) {
     return titel, element, flag, img, info;
 }
 
-function contentCity(titel, element ="", img, info, sunDays) {
+function contentCity(titel, element = "", img, info, sunDays) {
     let content = document.createElement("div");
     content.classList.add(`${element}Wrapper`);
-    content.innerHTML =`<h3>${titel}
-                            <div>Soldagar: ${sunDays}</div>
-                        </h3>
+    content.innerHTML =`<div class="name">
+                            <h3>${titel}</h3>
+                            <p>Soldagar: ${sunDays}</p>
+                        </div>    
                         <img src="filer/Images/${img}" alt="city">
-                        <div>${info}</div>
+                        <div class="description">${info}</div>
                         <div id="commentsCityWrapper"></div> `;
-    
+
     document.getElementById(`resultsCity`).append(content);
     return titel, element, img, info, sunDays;
 }
 
-function contentUniversity(titel, element ="") {
+function contentUniversity(titel, element = "") {
     let content = document.createElement("div");
     content.classList.add(`${element}Wrapper`);
-    content.innerHTML =`<h3>${titel}</h3>`;
-    
+    content.innerHTML =`<div class="name">
+                            <h3>${titel}</h3>
+                        </div>`;
+
     document.getElementById(`resultsUniversity`).append(content);
 
     return titel, element;
 }
 
-function contentProgram(titel, element ="", entrygrades, exchangeSt, level, localSt, sucessRate) {
+function contentProgram(titel, element = "", entrygrades, exchangeSt, level, localSt, sucessRate) {
     let content = document.createElement("div");
     content.classList.add(`${element}Wrapper`);
-    content.innerHTML =`<h3>${titel}</h3>
+    content.innerHTML =`<div class="name">
+                            <h3>${titel}</h3>
+                        </div>
                         <div class="programLanguageWrapper"></div>
                         <div>Entry grades: ${entrygrades}</div>
                         <div>Sucess rate: ${sucessRate}</div>
@@ -71,7 +78,7 @@ function contentProgram(titel, element ="", entrygrades, exchangeSt, level, loca
                         <div>Local students: ${localSt}</div>
                         <div>Level: ${level}</div>
                         <div id="commentsProgramWrapper"></div>`;
-    
+
     document.getElementById(`resultsProgram`).append(content);
     return titel, element, entrygrades, exchangeSt, level, localSt, sucessRate;
 }
@@ -89,15 +96,15 @@ function selectionCountry(countries) {
     COUNTRIES.forEach(country => {
         let option = document.createElement("OPTION");
         selectCountries.append(option);
-        option.textContent =`${country.name}`;
+        option.textContent = `${country.name}`;
         countries.push(country);
 
-        selectCountries.addEventListener("change",(e) => {
+        selectCountries.addEventListener("change", (e) => {
             if (country.name == e.target.value) {
-                document.getElementById("resultsCountry").innerHTML ="";
-                document.getElementById("resultsCity").innerHTML ="";
-                document.getElementById("resultsUniversity").innerHTML ="";
-                document.getElementById("resultsProgram").innerHTML ="";
+                document.getElementById("resultsCountry").innerHTML = "";
+                document.getElementById("resultsCity").innerHTML = "";
+                document.getElementById("resultsUniversity").innerHTML = "";
+                document.getElementById("resultsProgram").innerHTML = "";
 
                 contentCountry(country.name, "country", country.flag, country.imagesNormal[0], country.text, country.visa);
                 getLanguage(country.languageID, "country");
@@ -113,29 +120,29 @@ function selectionCountry(countries) {
 selectionCountry();
 
 
-function getCities(countryid){
+function getCities(countryid) {
     sortNames(CITIES);
     selectCities.innerHTML = `<option>Välj stad</option>`;
     let cities = [];
-     CITIES.forEach(city => {
-        if(city.countryID == countryid) {
+    CITIES.forEach(city => {
+        if (city.countryID == countryid) {
             let option = document.createElement("OPTION");
             selectCities.append(option);
-            option.textContent =`${city.name}`;
+            option.textContent = `${city.name}`;
             cities.push(city);
-        
+
         }
-        selectCities.addEventListener("change",(e) => {
-            if(city.name == e.target.value) {
-                document.getElementById("resultsCity").innerHTML ="";
+        selectCities.addEventListener("change", (e) => {
+            if (city.name == e.target.value) {
+                document.getElementById("resultsCity").innerHTML = "";
                 console.log(e.target.value);
-                document.getElementById("resultsUniversity").innerHTML ="";
-                document.getElementById("resultsProgram").innerHTML ="";
-   
+                document.getElementById("resultsUniversity").innerHTML = "";
+                document.getElementById("resultsProgram").innerHTML = "";
+
                 contentCity(city.name, "city", city.imagesNormal[0], city.text, city.sun);
 
                 getCommentsforCity(city.id);
-                selectUniversities.innerHTML ="";  
+                selectUniversities.innerHTML = "";
                 selectUniversities.append(getUniversities(city.id));
             }
         })
@@ -148,22 +155,22 @@ function getUniversities(cityid) {
     sortNames(UNIVERSITIES);
     selectUniversities.innerHTML = `<option>Välj universitet</option>`;
     let universities = [];
-    
+
     UNIVERSITIES.forEach(university => {
         if(university.cityID == cityid) {
             
             let option = document.createElement("OPTION");
             selectUniversities.append(option);
-            option.innerHTML =`${university.name}`;
+            option.innerHTML = `${university.name}`;
             universities.push(university);
-        }    
-            selectUniversities.addEventListener("change", (e)=> {
-            if(university.name == e.target.value) {
-                document.getElementById("resultsUniversity").innerHTML ="";
-                document.getElementById("resultsProgram").innerHTML ="";
+        }
+        selectUniversities.addEventListener("change", (e) => {
+            if (university.name == e.target.value) {
+                document.getElementById("resultsUniversity").innerHTML = "";
+                document.getElementById("resultsProgram").innerHTML = "";
                 contentUniversity(university.name, "university");
                 getClubsforUniversity(university.id);
-                selectProgrammes.innerHTML ="";  
+                selectProgrammes.innerHTML = "";
                 selectProgrammes.append(getProgrammes(university.id));
             }
         })
@@ -171,7 +178,7 @@ function getUniversities(cityid) {
     return universities;
 }
 
-function getProgrammes(universityid){
+function getProgrammes(universityid) {
     sortNames(PROGRAMMES);
     selectProgrammes.innerHTML = `<option>Välj program</option>`;
     let programmes = [];
@@ -180,8 +187,8 @@ function getProgrammes(universityid){
         if(program.universityID == universityid) {
             let option = document.createElement("OPTION");
             selectProgrammes.append(option);
-            option.innerHTML =`${program.name}`;
-            programmes.push(program);
+            option.innerHTML = `${program.name}`;
+            console.log(programmes);
         }
         selectProgrammes.addEventListener("change", (e)=> {
             if(program.name == e.target.value) {
@@ -194,25 +201,51 @@ function getProgrammes(universityid){
             }
         })
     })
+    document.querySelector(".Master").addEventListener("click", (lev) => { //vad kan stå istället för .Master som queryselector?
+        selectProgrammes.innerHTML = "";
+        console.log("clicked");
+        console.log(lev.target.value);
+
+        let levelProgrammes = programmes.filter(chosen => {
+            if (chosen.level == LEVELS.indexOf(lev.target.value)) {
+                let option = document.createElement("OPTION");
+                selectProgrammes.append(option);
+                option.innerHTML = `${chosen.name}`;
+            }
+        });
+        return levelProgrammes;
+    });
     return programmes;
 }
 
-function getClubsforUniversity(universityid){
+function getClubsforUniversity(universityid) {
+    let clubsAndMembers = document.createElement("div");
+    clubsAndMembers.innerHTML = `
+        <div id="clubsAndMembers">
+            <div>Klubbar</div>
+            <div>Medlemmar</div>
+        </div>
+    `;
+    document.querySelector(".universityWrapper").append(clubsAndMembers)
     let universityClubs = CLUBS.forEach(club => {
-        if(club.universityID == universityid) {
+        if (club.universityID == universityid) {
             let clubsWrapper = document.createElement("div");
             document.querySelector(".universityWrapper").append(clubsWrapper)
-            clubsWrapper.innerHTML =`<div>${club.name}</div>
-                                     <div>${club.memberCount}</div>`
+            clubsWrapper.innerHTML = `
+                <div id="nameAndMembers">
+                    <div>${club.name}</div>
+                    <div>${club.memberCount}</div>
+                </div>
+            `;
         }
     })
 
     return universityClubs;
 }
 
-function getLanguage(id, type="") {
+function getLanguage(id, type = "") {
     let language = LANGUAGES.forEach(lang => {
-        if(lang.id == id) {
+        if (lang.id == id) {
             let languageContainer = document.createElement("div");
             document.querySelector(`.${type}LanguageWrapper`).append(languageContainer);
             languageContainer.innerHTML = `Språk: ${lang.name}`;
@@ -223,9 +256,9 @@ function getLanguage(id, type="") {
 
 function getCommentsforCity(cityid) {
     let cityComments = COMMENTS_CITY.forEach(comment => {
-        if(comment.cityID == cityid) {
+        if (comment.cityID == cityid) {
             let commentCityWrapper = document.createElement("div");
-            document.getElementById("commentsCityWrapper").append(commentCityWrapper); 
+            document.getElementById("commentsCityWrapper").append(commentCityWrapper);
             commentCityWrapper.innerHTML = `
                                         <div>${comment.alias}</div>
                                         <div>${comment.text}</div>
@@ -243,7 +276,7 @@ function getCommentsforCity(cityid) {
 
 function getCommentsforProgram(programid) {
     let programComments = COMMENTS_PROGRAMME.forEach(comment => {
-        if(comment.programmeID == programid) {
+        if (comment.programmeID == programid) {
             let commentProgramWrapper = document.createElement("div");
             document.getElementById("commentsProgramWrapper").append(commentProgramWrapper);
             commentProgramWrapper.innerHTML =`<div>${comment.alias}</div>
@@ -278,3 +311,5 @@ function getVisa(countryVisa){
 //fixa entrygrades och successrate
 
 //level - 1 Bachelor etc? 
+
+// fråga om undefined i klubbar

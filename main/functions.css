@@ -1,33 +1,78 @@
-
 #allResults, #selectWrapper {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 0 2vw;
+    gap: 1vw;
 }
 
-#selectWrapper > select {
-    width: 100vw;
-    font-family: var(--eFont);
+#commentsCityWrapper, #commentsProgramWrapper {
+    font-size: 13px;
+    overflow-y: scroll;
+    scrollbar-width: thin; 
+    height: 20vh;
+    border: 2px solid var(--mainColor);
 }
 
-option {
-    font-family: var(--eFont);
+#countryInfoBox {
+    padding: 10px;
+    border: solid 2px var(--mainColor)
 }
 
 .countryWrapper, .cityWrapper, .universityWrapper, .programWrapper {
     width: 24vw;
     height: 100vh;
     border: solid 3px var(--accentColor);
+    background-color: white;
+}
+
+.description {
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.flag {
+    width: 37%;
 }
 
 img {
     width: 100%;
 }
 
-.flag {
-    width: 4vw;
+#info {
+    margin: 10px;
 }
 
-#commentsCityWrapper, #commentsProgramWrapper {
-    font-size: 13px;
-    overflow-y: scroll;
-    height: 20vh;
+.name {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+option {
+    font-family: var(--eFont);
+}
+
+#selectWrapper > select {
+    height: 5vh;
+    font-family: var(--eFont);
+}
+
+#hej {
+    background-color: var(--mainColor);
+    height: 20%;
+    margin-top: 50px;
+}
+
+#clubsAndMembers {
+    background-color: yellow;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+#nameAndMembers {
+    display: flex;
+    margin: 10px;
+    justify-content: space-between;
 }
