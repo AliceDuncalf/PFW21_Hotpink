@@ -75,3 +75,11 @@ option {
     margin: 10px;
     justify-content: space-between;
 }
+
+.countryFlag {
+    width: 5vw;
+}
+
+#programmeInfo > div:first-child {
+    flex-basis: 90vw;
+}

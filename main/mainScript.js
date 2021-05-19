@@ -17,7 +17,7 @@ function DOMcategoryDiv() {
     document.querySelector(".categories").append(div);
     div.innerHTML = `<input type="checkbox" value="${category.name}" id="${category.name}"><label for="${category.name}">${category.name}</label></input>`;
 
-
+   
 
     div.querySelector(`#${category.name}`).addEventListener("click", () => {
 
@@ -37,8 +37,8 @@ function DOMcategoryDiv() {
               <div id="programmeName">${program.name}</div>
               <div id="programmeInfo">
                 <div id="university">${GetUniversityNameFromProgramme(program.universityID)}</div>
-                <div id="country">${getCountryFromUniverityID(program.universityID)}</div>
                 <div id="city">${GetCityFromUniverityID(program.universityID)}</div>
+                <div id="country">${getCountryFromUniverityID(program.universityID)}</div><img class="countryFlag" src="filer/Images/${getCountryFlagFromUniverityID(program.universityID)}">
               </div>
             `;
         document.querySelector(".programbox").append(programmeContentDiv);
@@ -81,6 +81,12 @@ function clearAll() {
 };
 
 
+function getCountryFlagFromUniverityID(id) {
+  let cityID = UNIVERSITIES.find(uni => uni.id === id).cityID; //cityID 0
+  let countryID = CITIES.find(city => city.id === cityID).countryID // countryID 0
+  let countryFlag = COUNTRIES.find(country => country.id === countryID).flag
+  return countryFlag
+}
 
 
 
