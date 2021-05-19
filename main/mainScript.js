@@ -88,20 +88,20 @@ console.log(LEVELS.indexOf("Bachelor"))
 
 
 
-function createLevelOptions(){
-  let boxes = [];
+function createLevelOptions(checkbox){
+  //let boxes = [];
 
   LEVELS.forEach(level => {
-    let checkbox = document.createElement("INPUT")
+    checkbox = document.createElement("INPUT")
     checkbox.setAttribute("type", "checkbox");
     checkbox.setAttribute("value", `${level}`)
     checkbox.classList.add(`${level}`);
     let levelNameTag = document.createElement("DIV");
     levelNameTag.innerHTML = `${level}`;
     document.querySelector("#levelsDiv").append(checkbox, levelNameTag);
-    boxes.push(checkbox.value);
+    //boxes.push(checkbox.value);
   });
-  return boxes;
+  return checkbox;
 }; 
 console.log(createLevelOptions());
 

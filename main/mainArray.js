@@ -190,9 +190,9 @@ function getProgrammes(universityid) {
             let option = document.createElement("OPTION");
             selectProgrammes.append(option);
             option.innerHTML = `${program.name}`;
-            programmes.push(program.level)
+            programmes.push(program.level, program.name)
         }
-        console.log(programmes);
+
         selectProgrammes.addEventListener("change", (e)=> {
             if(program.name == e.target.value) {
                 document.getElementById("resultsProgram").innerHTML ="";
@@ -204,22 +204,22 @@ function getProgrammes(universityid) {
             }
         })
     })
-    document.querySelector(".Master").addEventListener("click", (lev) => { //vad kan stå istället för .Master som queryselector?
+    document.querySelector(".Master").addEventListener("click", (level) => { //vad kan stå istället för .Master som queryselector?
         selectProgrammes.innerHTML = "";
         console.log("clicked");
-        console.log(lev.target.value);
+        console.log(level.target.value);
         
         let levelProgrammes = [];
 
         programmes.filter(chosen => {
-            if (chosen == LEVELS.indexOf(lev.target.value)) {
-                let option = document.createElement("OPTION");
-                option.innerHTML = `${chosen.name}`;
-                selectProgrammes.append(option);
-                levelProgrammes.push(option);
+            if (chosen == LEVELS.indexOf(level.target.value)) {
+                let levOption = document.createElement("OPTION");
+                selectProgrammes.append(levOption);
+                levOption.innerHTML = `${}`;
+                levelProgrammes.push(levOption.name);   
             }
+            console.log(levelProgrammes);
         });
-        console.log(levelProgrammes)
         return levelProgrammes;
     });
     return programmes;

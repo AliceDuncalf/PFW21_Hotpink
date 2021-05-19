@@ -58,6 +58,9 @@
     margin-top: 10px;
     margin-bottom: 10px;
     font-size: var(--breadFontSz);
+    height: 25vh;
+    overflow-y: scroll;
+    scrollbar-width: thin;
 }
 
 .flag {
