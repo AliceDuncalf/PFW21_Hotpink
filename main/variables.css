@@ -32,6 +32,9 @@ body {
 .countryFlag {
     width: 5vw;
 }
+#country {
+    margin-right: 15px;
+}
 
 .checkbox {
     width: 20px;
@@ -50,6 +53,13 @@ footer {
     display: flex;
     flex-direction: column;
     font-family: var(--eFont);
+}
+
+#FlagAndCountry {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    
 }
 
 header {
@@ -212,6 +222,7 @@ button:focus {
 #programmeInfo {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 #programmeName {
@@ -220,6 +231,6 @@ button:focus {
     font-weight: bold;
 }
 
-#programmeInfo > div {
-    width: 40%;
+#programmeInfo > div:first-child {
+    flex-basis: 50vw;
 }
