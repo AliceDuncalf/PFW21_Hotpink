@@ -81,6 +81,12 @@ function clearAll() {
 };
 
 
+function getCountryFlagFromUniverityID(id) {
+  let cityID = UNIVERSITIES.find(uni => uni.id === id).cityID; //cityID 0
+  let countryID = CITIES.find(city => city.id === cityID).countryID // countryID 0
+  let countryFlag = COUNTRIES.find(country => country.id === countryID).flag
+  return countryFlag
+}
 
 
 
