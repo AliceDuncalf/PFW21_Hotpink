@@ -29,6 +29,10 @@ body {
     justify-content: space-between;
 } 
 
+.countryFlag {
+    width: 5vw;
+}
+
 .checkbox {
     width: 20px;
     background-color: black;

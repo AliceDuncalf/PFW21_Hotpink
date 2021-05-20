@@ -79,12 +79,7 @@ function getCountryFromUniverityID(id) {
 }
 //console.log(getCountryFromUniverityID(10));
 
-//Nollställa programmen
-function clearAll() {
-  document.querySelector(".programbox").innerHTML = "";
-};
-
-
+//tar fram flagga till vaje land
 function getCountryFlagFromUniverityID(id) {
   let cityID = UNIVERSITIES.find(uni => uni.id === id).cityID; //cityID 0
   let countryID = CITIES.find(city => city.id === cityID).countryID // countryID 0
@@ -97,7 +92,7 @@ function getCountryFlagFromUniverityID(id) {
 
 
 
-
+// skapar levelsOptions
 function createLevelOptions(){
     LEVELS.forEach(level => {
         let div = document.createElement("div")
@@ -148,13 +143,6 @@ GetBachelorProgrammes();
 
 
 GetMasterProgrammes(); */
-
-
-// PROGRAMMES.forEach(program => {
-//     if (program.level == LEVELS.indexOf("Master")) {
-//     console.log("hej"); 
-// }
-// });
 
 
 
