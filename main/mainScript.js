@@ -15,15 +15,19 @@ function DOMcategoryDiv() {
     let div = document.createElement("div");
     div.classList.add("categoryBox")
     document.querySelector(".categories").append(div);
-    div.innerHTML = `<input type="checkbox" value="${category.name}" id="${category.name}"><label for="${category.name}">${category.name}</label></input>`;
+    div.innerHTML = `<input type="checkbox" value="${category.name}" class="categoryname" id="${category.name}"><label for="${category.name}">${category.name}</label></input>`;
 
 
 
     div.querySelector(`#${category.name}`).addEventListener("click", () => {
+      document.querySelectorAll(".categoryname").forEach(knapp => {
+        knapp.checked = false
+      });
 
+      div.querySelector(`#${category.name}`).checked = true
 
       if (programBox.innerHTML !== "") {
-        clearAll(); 
+        document.querySelector(".programbox").innerHTML = "";
         programBox.scrollTop =0;
       } 
 
