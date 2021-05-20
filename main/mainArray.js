@@ -3,7 +3,7 @@
 //globala variablar
 
 //select element i HTML
-let selectCountries = document.getElementById("selectCountries"); //borde dessa vara globala variablar? 
+let selectCountries = document.getElementById("selectCountries");
 let selectCities = document.getElementById("selectCities");
 let selectUniversities = document.getElementById("selectUniversities");
 let selectProgrammes = document.getElementById("selectProgrammes");
@@ -75,9 +75,15 @@ function contentProgram(titel, element = "", exchangeSt, localSt, level, entrygr
                             <div>Utbytesstudenter: ${exchangeSt}</div>
                             <div>Studenter: ${localSt}</div>
                             <div>Nivå: ${level}</div>
+                        </div> 
+                        <div class="entryAndSucessWrapper">
+                            <div id="programYear">År:</div>   
+                            <div id="entryGrades">Behörighetskrav:</div>
+                            <div id="entryGradesContent">${entrygrades}</div>
+                        
+                            <div id="sucessRate">Sucess Rate:</div>
+                            <div id="sucessRateContent">${sucess}</div>
                         </div>    
-                        <div>Behörighetskrav: ${entrygrades}</div>
-                        <div>Sucess Rate: ${sucess}</div>
                         <div id="commentsProgramWrapper"></div>`;
 
     document.getElementById(`resultsProgram`).append(content);
@@ -159,13 +165,13 @@ function getUniversities(cityid) {
     let universities = [];
 
     UNIVERSITIES.forEach(university => {
-        if(university.cityID == cityid) {
-            
+        if(university.cityID == cityid) { 
             let option = document.createElement("OPTION");
             selectUniversities.append(option);
             option.innerHTML = `${university.name}`;
             universities.push(university);
         }
+
         selectUniversities.addEventListener("change", (e) => {
             if (university.name == e.target.value) {
                 document.getElementById("resultsUniversity").innerHTML = "";
@@ -183,6 +189,7 @@ function getUniversities(cityid) {
 function getProgrammes(universityid) {
     sortNames(PROGRAMMES);
     selectProgrammes.innerHTML = `<option>Välj program</option>`;
+    
     let programmes = [];
     
     PROGRAMMES.forEach(program => {
@@ -190,38 +197,40 @@ function getProgrammes(universityid) {
             let option = document.createElement("OPTION");
             selectProgrammes.append(option);
             option.innerHTML = `${program.name}`;
-            programmes.push(program.level, program.name)
+            programmes.push(program)
         }
+     
+        programmes.forEach(program => {
+            selectProgrammes.addEventListener("change", (e)=> {
+                if(program.name == e.target.value) {
+                    document.getElementById("resultsProgram").innerHTML ="";           
+                    contentProgram(program.name, "program", program.exchangeStudents, program.localStudents, program.level, program.entryGrades, program.successRate);
+                    getLanguage(program.language, "program");
+                    getCommentsforProgram(program.id);
+                }
+            })
 
-        selectProgrammes.addEventListener("change", (e)=> {
-            if(program.name == e.target.value) {
-                document.getElementById("resultsProgram").innerHTML ="";
-                //selectProgrammes.innerHTML ="";  
-                //selectProgrammes.append(getProgrammes(program.id)); 
-                contentProgram(program.name, "program", program.exchangeStudents, program.localStudents, program.level, program.entryGrades, program.successRate);
-                getLanguage(program.language, "program");
-                getCommentsforProgram(program.id);
-            }
         })
-    })
-    document.querySelector(".Master").addEventListener("click", (level) => { //vad kan stå istället för .Master som queryselector?
-        selectProgrammes.innerHTML = "";
-        console.log("clicked");
-        console.log(level.target.value);
         
-        let levelProgrammes = [];
-
-        programmes.filter(chosen => {
-            if (chosen == LEVELS.indexOf(level.target.value)) {
-                let levOption = document.createElement("OPTION");
-                selectProgrammes.append(levOption);
-                levOption.innerHTML = `${}`;
-                levelProgrammes.push(levOption.name);   
-            }
-            console.log(levelProgrammes);
+    })
+    document.querySelectorAll(".checkbox").forEach(checkbox => {
+        checkbox.addEventListener("click", (level) => { 
+    
+            selectProgrammes.innerHTML = "";
+            console.log("clicked");
+            console.log(level.target.value);
+    
+            programmes.filter(chosen => {
+                if (chosen.level == LEVELS.indexOf(level.target.value)) {
+                    let levOption = document.createElement("OPTION");
+                    selectProgrammes.append(levOption);
+                    levOption.innerHTML = `${chosen.name}`;
+                   
+                }
+            });
         });
-        return levelProgrammes;
-    });
+    })
+ 
     return programmes;
 }
 
@@ -236,6 +245,9 @@ function getClubsforUniversity(universityid) {
     document.querySelector(".universityWrapper").append(clubsAndMembers)
     let universityClubs = CLUBS.forEach(club => {
         if (club.universityID == universityid) {
+            if(club.name == undefined) {
+                return ;
+            }
             let clubsWrapper = document.createElement("div");
             document.querySelector(".universityWrapper").append(clubsWrapper)
             clubsWrapper.innerHTML = `
@@ -320,8 +332,9 @@ function getVisa(countryVisa){
 }
 
 
+
 //fixa entrygrades och successrate
 
-//level - 1 Bachelor etc? 
+//levels - fixa så att första option går att trycka på 
 
-// fråga om undefined i klubbar
+//lägga till text när ingenting har blivit klickat på eller om recensioner inte finns

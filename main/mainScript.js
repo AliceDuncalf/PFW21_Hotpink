@@ -82,71 +82,20 @@ function clearAll() {
 
 
 
-
-
-console.log(LEVELS.indexOf("Bachelor"))
-
-
-
 function createLevelOptions(checkbox){
-  //let boxes = [];
 
   LEVELS.forEach(level => {
     checkbox = document.createElement("INPUT")
+    
     checkbox.setAttribute("type", "checkbox");
     checkbox.setAttribute("value", `${level}`)
-    checkbox.classList.add(`${level}`);
+    checkbox.classList.add(`checkbox`);
+    
     let levelNameTag = document.createElement("DIV");
     levelNameTag.innerHTML = `${level}`;
     document.querySelector("#levelsDiv").append(checkbox, levelNameTag);
-    //boxes.push(checkbox.value);
+  
   });
   return checkbox;
 }; 
 console.log(createLevelOptions());
-
-
-/*
-function GetBachelorProgrammes() {
-    document.querySelector(".Bachelor").addEventListener("click", () => {
-        console.log("clicked");
-        let BachelorProgrammes = [];
-        PROGRAMMES.forEach(program => {
-            if (program.level == LEVELS.indexOf("Bachelor")) {
-            BachelorProgrammes.push(program.name)
-        }
-    });
-    console.log(BachelorProgrammes);
-    return BachelorProgrammes;
-    });
-};
-
-/*function GetMasterProgrammes() {
-    document.querySelector(".Master").addEventListener("click", () => {
-        console.log("clicked");
-        let MasterProgrammes = [];
-        PROGRAMMES.forEach(program => {
-            if (program.level == LEVELS.indexOf("Master")) {
-            MasterProgrammes.push(program.name)
-            }
-        });
-        console.log(MasterProgrammes);
-        return MasterProgrammes;
-    });
-}
-
-GetBachelorProgrammes();
-
-
-GetMasterProgrammes(); */
-
-
-// PROGRAMMES.forEach(program => {
-//     if (program.level == LEVELS.indexOf("Master")) {
-//     console.log("hej"); 
-// }
-// });
-
-
-
-

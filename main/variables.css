@@ -1,12 +1,12 @@
 :root {
-    --mainColor: #6D6CFF;
-    --accentColor: #CDEF36; 
+    --mainColor: #9688E5;
+    --accentColor: #DCD7FF;
     --hFont: 'Paytone One', sans-serif;
     --eFont: 'Jost', sans-serif;
     --pFont: 'Open Sans', sans-serif;
 
     --titelFontSz: 3vw;
-    --secondFontSz: 2vw;
+    --secondFontSz: 4vw;
     --breadFontSz: 85%;
 
 }
@@ -20,9 +20,9 @@ body {
 }
 
 .categories {
-    background-color: var(--mainColor);
+    /*background-color: var(--mainColor);*/
     height: 50px;
-    margin: 0 2vw;
+    margin: 0 10vw;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -48,6 +48,10 @@ footer {
     font-family: var(--eFont);
 }
 
+.footerSocialMediaLinks {
+    width: 50px;
+}
+
 header {
     background-color: var(--mainColor);
     height: 20vh;
@@ -66,7 +70,6 @@ header {
 
 .heropic {
     width: 50vw;
-    border: solid var(--accentColor) 5px;
     background-image: url("heropic.jpg");
     background-size: cover;
     background-position: center;
@@ -76,8 +79,8 @@ header {
 #HittaProgram, #HittaUtbildning {
     font-family: var(--pFont);
     background-color: var(--mainColor);
-    border-bottom: 5px solid var(--accentColor);
-    border-top: 5px solid var(--accentColor);
+    /*border-bottom: 5px solid var(--accentColor);
+    border-top: 5px solid var(--accentColor); */
 
     margin-top: 100px;
     padding-top: 20px;
@@ -91,19 +94,25 @@ header {
 
     font-family: var(--eFont); 
     font-weight: bold;
-    font-size: var(--titelFontSz);
+    font-size: 38px;
     color: white;
+    background-color: var(--mainColor);
+    margin: 20px 0px;
 }
 
 .infobox {
     width: 50vw;
-    border: solid var(--accentColor) 5px;
+    border: solid var(--accentColor) 2px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.infobox > h2 {font-family: var(--eFont); font-size: var(--secondFontSz);}
+.infobox > h2 {
+    font-family: var(--eFont); 
+    font-size: 38px;
+    margin-top: 20px;
+}
 
 input:focus {
     background-color: black;
@@ -146,7 +155,12 @@ nav > a {
     padding: 15px;
     margin: 10px;
     background-color: #ffffff78;
-    border-radius: 5px;  
+    border-radius: 5px; 
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 #OmUtbytesstudier {
@@ -167,9 +181,8 @@ nav > a {
 }
 
 .programbox {
-    background-color: var(--mainColor);
     height: 50vh;
-    margin: 0 2vw;
+    margin: 0 10vw;
     overflow-y: scroll;
     scrollbar-width: thin; 
     

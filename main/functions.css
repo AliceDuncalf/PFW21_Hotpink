@@ -27,6 +27,8 @@
     padding: 0 10px;
 }
 
+#commentsProgramWrapper {height: 30vh;}
+
 #commentsCityWrapper > div, #commentsProgramWrapper > div {
     border: solid 1px var(--mainColor);
     padding: 10px 10px;
@@ -43,6 +45,7 @@
     height: 100vh;
     border: solid 3px var(--accentColor);
     background-color: white;
+    border-radius: 5px;
 }
 
 .countryLanguageWrapper > div{
@@ -58,9 +61,37 @@
     margin-top: 10px;
     margin-bottom: 10px;
     font-size: var(--breadFontSz);
-    height: 25vh;
+    height: 20vh;
     overflow-y: scroll;
     scrollbar-width: thin;
+}
+
+.entryAndSucessWrapper {
+    padding: 10px 10px;
+    height: 15vh;
+    border-radius: 5px;
+    background-color: var(--accentColor);
+    font-size: var(--breadFontSz);
+
+    /*display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr);*/
+    margin-bottom: 10px;
+}
+
+#entryGradesContent {grid-area: 3/2/4/3;}
+#sucessRateContent {grid-area: 2/2/3/3;}
+
+#programYear {
+    grid-area: 1/1/2/2;
+}
+
+#sucessRate {
+    grid-area: 2/1/3/2;
+}
+
+#entryGrades {
+    grid-area: 3/1/4/2;
 }
 
 .flag {
