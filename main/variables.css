@@ -183,28 +183,12 @@ nav > a {
     background-color: var(--mainColor);
     height: 50vh;
     margin: 0 2vw;
-    overflow-y: scroll;
     scrollbar-width: thin; 
     
 }
 .programbox > div:last-child {
     margin-bottom: 0;
 }
-
-/* button {
-    
-    border: none;
-    margin-right: 5px;
-    border-radius: 2px;
-    transition-duration: 0.4s;
-    
-}
-
-button:focus {
-    background-color: black;
-    hej
-} */
-
 
 .programContent {
     background-color: blueviolet;
@@ -227,10 +211,14 @@ button:focus {
 
 #programmeName {
     width: auto;
-    padding-bottom: 5px;
     font-weight: bold;
 }
 
 #programmeInfo > div:first-child {
     flex-basis: 50vw;
 }
+
+.scroll {
+    overflow-y: scroll;
+}
+
