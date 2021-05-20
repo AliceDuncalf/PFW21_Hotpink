@@ -34,13 +34,13 @@ function DOMcategoryDiv() {
         let programmeContentDiv = document.createElement("div");
         programmeContentDiv.classList.add("programmeContentDiv")
         programmeContentDiv.innerHTML = `
-              <div id="programmeName">${program.name}</div>
-              <div id="programmeInfo">
-                <div id="university">${GetUniversityNameFromProgramme(program.universityID)}</div>
-                <div id="country">${getCountryFromUniverityID(program.universityID)}</div>
-                <div id="city">${GetCityFromUniverityID(program.universityID)}</div>
-              </div>
-            `;
+        <div id="programmeName">${program.name}</div>
+        <div id="programmeInfo">
+          <div id="university">${GetUniversityNameFromProgramme(program.universityID)}</div>
+          <div id="city">${GetCityFromUniverityID(program.universityID)}</div>
+          <div id="country">${getCountryFromUniverityID(program.universityID)}</div><img class="countryFlag" src="filer/Images/${getCountryFlagFromUniverityID(program.universityID)}">
+        </div>
+      `;
         document.querySelector(".programbox").append(programmeContentDiv);
       });
       
