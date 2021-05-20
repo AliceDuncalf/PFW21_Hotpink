@@ -8,9 +8,7 @@ function DOMcategoryDiv() {
   document.querySelector("#HittaProgram").append(categoryDiv);
   document.querySelector("#HittaProgram").append(programBox);
 
-  let categoryName = FIELDS.map(obj => obj);
-  //console.log(categoryName);
-  categoryName.forEach(category => {
+  FIELDS.forEach(category => {
 
     let div = document.createElement("div");
     div.classList.add("categoryBox")
