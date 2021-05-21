@@ -197,7 +197,7 @@ function getProgrammes(universityid) {
             let option = document.createElement("OPTION");
             selectProgrammes.append(option);
             option.innerHTML = `${program.name}`;
-            programmes.push(program)
+            programmes.push(program);
         }
      
         programmes.forEach(program => {
@@ -214,10 +214,9 @@ function getProgrammes(universityid) {
         
     })
     document.querySelectorAll(".checkbox").forEach(checkbox => {
+        //checkbox.checked = false;
         checkbox.addEventListener("click", (level) => { 
-    
             selectProgrammes.innerHTML = "";
-            console.log("clicked");
             console.log(level.target.value);
     
             programmes.filter(chosen => {
@@ -228,6 +227,11 @@ function getProgrammes(universityid) {
                    
                 }
             });
+            checkbox.checked = false;
+            if (checkbox.checked = true) {
+                document.getElementById("resultsProgram").innerHTML="";
+                
+            }
         });
     })
  
@@ -335,7 +339,9 @@ function getVisa(countryVisa){
 
 //fixa entrygrades och successrate
 
-//levels - fixa så att första option går att trycka på 
+//fixa så att recensionerna har stjärnor? 
+
+//levels - fixa så att första option går att trycka på - ha en Alla knapp?
 
 //lägga till text när ingenting har blivit klickat på eller om recensioner inte finns
 

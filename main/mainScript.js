@@ -51,7 +51,6 @@ function categoriesAndProgrammes() {
 categoriesAndProgrammes();
 
 
-
 //Hittar namnet på de univesitet som programmet är på
 function GetUniversityNameFromProgramme(id) {
   let UniversityObject = UNIVERSITIES.find(university => university.id === id);
@@ -86,7 +85,6 @@ function getCountryFlagFromUniverityID(id) {
 function clearAll() {
   document.querySelector(".programbox").innerHTML = "";
 };
-
 
 
 function createLevelOptions(checkbox){
