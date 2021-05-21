@@ -338,3 +338,5 @@ function getVisa(countryVisa){
 //levels - fixa så att första option går att trycka på 
 
 //lägga till text när ingenting har blivit klickat på eller om recensioner inte finns
+
+//ska kommentarerna var sorterade i år-ordning? 

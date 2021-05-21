@@ -49,7 +49,7 @@
 }
 
 .countryLanguageWrapper > div{
-    background-color: var(--accentColor);
+    background-color: var(--mainColor);
     padding: 16px 10px;
     border-radius: 5px;
     margin-bottom: 10px;
@@ -70,7 +70,7 @@
     padding: 10px 10px;
     height: 15vh;
     border-radius: 5px;
-    background-color: var(--accentColor);
+    background-color: var(--mainColor);
     font-size: var(--breadFontSz);
 
     /*display: grid;
@@ -117,7 +117,7 @@ img {
 #nameAndMembers {
     display: flex;
     justify-content: space-between;
-    background-color: var(--accentColor);
+    background-color: var(--mainColor);
     padding: 16px 10px;
     border-radius: 5px;
     margin-bottom: 10px;
@@ -129,7 +129,7 @@ option {
 }
 
 .programLanguageWrapper, .programInfoBox > div {
-    background-color: var(--accentColor);
+    background-color: var(--mainColor);
     padding: 16px 10px;
     border-radius: 5px;
     margin-bottom: 10px;
