@@ -74,6 +74,14 @@ function getCountryFromUniverityID(id) {
 }
 //console.log(getCountryFromUniverityID(10));
 
+//tar fram flagga till vaje land
+function getCountryFlagFromUniverityID(id) {
+  let cityID = UNIVERSITIES.find(uni => uni.id === id).cityID; //cityID 0
+  let countryID = CITIES.find(city => city.id === cityID).countryID // countryID 0
+  let countryFlag = COUNTRIES.find(country => country.id === countryID).flag
+  return countryFlag
+}
+
 //Nollställa programmen
 function clearAll() {
   document.querySelector(".programbox").innerHTML = "";
@@ -84,6 +92,7 @@ function clearAll() {
 function createLevelOptions(checkbox){
 
   LEVELS.forEach(level => {
+   
     checkbox = document.createElement("INPUT")
     
     checkbox.setAttribute("type", "checkbox");
