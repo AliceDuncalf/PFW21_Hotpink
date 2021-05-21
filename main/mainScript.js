@@ -10,18 +10,18 @@ function categoriesAndProgrammes() {
 
   FIELDS.forEach(category => {
 
-    let div = document.createElement("div");
-    div.classList.add("categoryBox")
-    document.querySelector(".categories").append(div);
-    div.innerHTML = `<input type="checkbox" value="${category.name}" class="categoryname" id="${category.name}"><label for="${category.name}">${category.name}</label></input>`;
+    let categoryBox = document.createElement("div");
+    categoryBox.classList.add("categoryBox")
+    document.querySelector(".categories").append(categoryBox);
+    categoryBox.innerHTML = `<input type="checkbox" value="${category.name}" class="categoryname" id="${category.name}"><label for="${category.name}">${category.name}</label></input>`;
 
-    div.querySelector(`#${category.name}`).addEventListener("click", () => {
+    categoryBox.querySelector(`#${category.name}`).addEventListener("click", () => {
       document.querySelector(".programbox").classList.add("scroll");
       document.querySelectorAll(".categoryname").forEach(knapp => {
         knapp.checked = false
       });
 
-      div.querySelector(`#${category.name}`).checked = true
+      categoryBox.querySelector(`#${category.name}`).checked = true
       if (programBox.innerHTML !== "") {
         document.querySelector(".programbox").innerHTML = "";
         programBox.scrollTop =0;
@@ -54,7 +54,7 @@ categoriesAndProgrammes();
 
 //Hittar namnet på de univesitet som programmet är på
 function GetUniversityNameFromProgramme(id) {
-  let UniversityObject = UNIVERSITIES.find(univerity => univerity.id === id);
+  let UniversityObject = UNIVERSITIES.find(university => university.id === id);
   return UniversityObject.name;
 };
 
