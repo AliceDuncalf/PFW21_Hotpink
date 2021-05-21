@@ -1,6 +1,6 @@
 "use strict";
 
-function DOMcategoryDiv() {
+function categoriesAndProgrammes() {
   let categoryDiv = document.createElement("div");
   let programBox = document.createElement("div");
   programBox.classList.add("programbox");
@@ -8,22 +8,22 @@ function DOMcategoryDiv() {
   document.querySelector("#HittaProgram").append(categoryDiv);
   document.querySelector("#HittaProgram").append(programBox);
 
-  let categoryName = FIELDS.map(obj => obj);
-  //console.log(categoryName);
-  categoryName.forEach(category => {
+  FIELDS.forEach(category => {
 
     let div = document.createElement("div");
     div.classList.add("categoryBox")
     document.querySelector(".categories").append(div);
-    div.innerHTML = `<input type="checkbox" value="${category.name}" id="${category.name}"><label for="${category.name}">${category.name}</label></input>`;
-
-
+    div.innerHTML = `<input type="checkbox" value="${category.name}" class="categoryname" id="${category.name}"><label for="${category.name}">${category.name}</label></input>`;
 
     div.querySelector(`#${category.name}`).addEventListener("click", () => {
+      document.querySelector(".programbox").classList.add("scroll");
+      document.querySelectorAll(".categoryname").forEach(knapp => {
+        knapp.checked = false
+      });
 
-
+      div.querySelector(`#${category.name}`).checked = true
       if (programBox.innerHTML !== "") {
-        clearAll(); 
+        document.querySelector(".programbox").innerHTML = "";
         programBox.scrollTop =0;
       } 
 
@@ -34,22 +34,21 @@ function DOMcategoryDiv() {
         let programmeContentDiv = document.createElement("div");
         programmeContentDiv.classList.add("programmeContentDiv")
         programmeContentDiv.innerHTML = `
-              <div id="programmeName">${program.name}</div>
-              <div id="programmeInfo">
-                <div id="university">${GetUniversityNameFromProgramme(program.universityID)}</div>
-                <div id="country">${getCountryFromUniverityID(program.universityID)}</div>
-                <div id="city">${GetCityFromUniverityID(program.universityID)}</div>
-              </div>
-            `;
+        <div id="programmeName">${program.name}</div>
+        <div id="programmeInfo">
+          <div id="university">${GetUniversityNameFromProgramme(program.universityID)}</div>
+          <div id="city">${GetCityFromUniverityID(program.universityID)}</div>
+          <div id="FlagAndCountry">
+            <div id="country">${getCountryFromUniverityID(program.universityID)}</div><img class="countryFlag" src="filer/Images/${getCountryFlagFromUniverityID(program.universityID)}">
+          </div>
+        </div>
+      `;
         document.querySelector(".programbox").append(programmeContentDiv);
       });
-      
     });
-
-
   });
 };
-DOMcategoryDiv();
+categoriesAndProgrammes();
 
 
 

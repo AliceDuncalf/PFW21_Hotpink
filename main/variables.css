@@ -32,6 +32,13 @@ body {
     justify-content: space-between;
 } 
 
+.countryFlag {
+    width: 5vw;
+}
+#country {
+    margin-right: 15px;
+}
+
 .checkbox {
     width: 20px;
     background-color: black;
@@ -230,14 +237,19 @@ button:focus {
 #programmeInfo {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 #programmeName {
     width: auto;
-    padding-bottom: 5px;
     font-weight: bold;
 }
 
-#programmeInfo > div {
-    width: 40%;
+#programmeInfo > div:first-child {
+    flex-basis: 50vw;
 }
+
+.scroll {
+    overflow-y: scroll;
+}
+
