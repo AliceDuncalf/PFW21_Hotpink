@@ -196,7 +196,6 @@ nav > a {
 .programbox {
     height: 50vh;
     margin: 0 10vw;
-    overflow-y: scroll;
     scrollbar-width: thin; 
     
 }
