@@ -58,7 +58,7 @@ function contentUniversity(titel, element = "") {
     content.innerHTML =`<div class="name">
                             <h3>${titel}</h3>
                         </div>
-                        <div><img src="filer/Images/annons_kvadratis.jpg">`;
+                        `;
 
     document.getElementById(`resultsUniversity`).append(content);
 
@@ -215,10 +215,11 @@ function getProgrammes(universityid) {
         
     })
     document.querySelectorAll(".checkbox").forEach(checkbox => {
-        //checkbox.checked = false;
+        //checkbox.checked = true;
         checkbox.addEventListener("click", (level) => { 
+           checkbox.checked = false;
+            
             selectProgrammes.innerHTML = "";
-            console.log(level.target.value);
     
             programmes.filter(chosen => {
                 if (chosen.level == LEVELS.indexOf(level.target.value)) {
@@ -228,24 +229,26 @@ function getProgrammes(universityid) {
                    
                 }
             });
-            checkbox.checked = false;
-            if (checkbox.checked = true) {
-                document.getElementById("resultsProgram").innerHTML="";
-                
-            }
+         
         });
+        let levelsDiv = document.getElementById("levelsDiv");
+        levelsDiv.querySelector(".checkboxes").checked = true;
+        
+
     })
  
     return programmes;
 }
 
 function getClubsforUniversity(universityid) {
+    document.querySelector
     let clubsAndMembers = document.createElement("div");
     clubsAndMembers.innerHTML = `
         <div id="clubsAndMembers">
             <div>Klubbar</div>
             <div>Medlemmar</div>
         </div>
+        <a href="https://mau.se/"><img class="advertisementInUniversity" src="filer/Images/annons_kvadratisk.jpg"></a>
     `;
     document.querySelector(".universityWrapper").append(clubsAndMembers)
     let universityClubs = CLUBS.forEach(club => {
@@ -260,7 +263,7 @@ function getClubsforUniversity(universityid) {
                     <div>${club.name}</div>
                     <div>${club.memberCount}</div>
                 </div>
-            `;
+            `;      
         }
     })
 
@@ -279,6 +282,7 @@ function getLanguage(id, type = "") {
 }
 
 function getCommentsforCity(cityid) {
+    //sortNames(COMMENTS_CITY);
     let cityComments = COMMENTS_CITY.forEach(comment => {
         if (comment.cityID == cityid) {
             let commentCityWrapper = document.createElement("div");
@@ -296,13 +300,16 @@ function getCommentsforCity(cityid) {
                                             Boende: ${comment.stars["accomodation"]}</div>
                                         </div>`;
         }
+        //else if (!comment.cityID.contains(cityid)) {
+            //document.getElementById("commentsCityWrapper").innerHTML = "Finns tyvärr inga kommentarer för den här staden";
+        //}
     })
     return cityComments;
 }
 
 function getCommentsforProgram(programid) {
     let programComments = COMMENTS_PROGRAMME.forEach(comment => {
-        if (comment.programmeID == programid) {
+        if (comment.programmeID == programid) {            
             let commentProgramWrapper = document.createElement("div");
             document.getElementById("commentsProgramWrapper").append(commentProgramWrapper);
             commentProgramWrapper.innerHTML =`<div class="reviewTop">

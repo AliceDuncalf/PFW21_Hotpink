@@ -91,15 +91,18 @@ function createLevelOptions(checkbox){
 
   LEVELS.forEach(level => {
    
-    checkbox = document.createElement("INPUT")
+    checkbox = document.createElement("div")
     
     checkbox.setAttribute("type", "checkbox");
     checkbox.setAttribute("value", `${level}`)
     checkbox.classList.add(`checkbox`);
+    //checkbox.classList.add(`${level}`);
+
+    checkbox.innerHTML = `<input type="checkbox" value="${level}" class="checkboxes" id="${level}"><label for="${level}">${level}</label></input>`;
     
-    let levelNameTag = document.createElement("DIV");
-    levelNameTag.innerHTML = `${level}`;
-    document.querySelector("#levelsDiv").append(checkbox, levelNameTag);
+    //let levelNameTag = document.createElement("DIV");
+    //levelNameTag.innerHTML = `${level}`; 
+    document.querySelector("#levelsDiv").append(checkbox);
   
   });
   return checkbox;
