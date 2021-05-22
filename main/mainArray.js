@@ -145,7 +145,7 @@ function getCities(countryid) {
         selectCities.addEventListener("change", (e) => {
             if (city.name == e.target.value) {
                 document.getElementById("resultsCity").innerHTML = "";
-                console.log(e.target.value);
+                //console.log(e.target.value);
                 document.getElementById("resultsUniversity").innerHTML = "";
                 document.getElementById("resultsProgram").innerHTML = "";
 
@@ -281,6 +281,21 @@ function getLanguage(id, type = "") {
 function getCommentsforCity(cityid) {
     let cityComments = COMMENTS_CITY.forEach(comment => {
         if (comment.cityID == cityid) {
+            //console.log(comment.stars["out"]);
+
+
+            //     for (let raiting in comment.stars) {
+            //         console.log(comment.stars[raiting]);
+            //         }
+                
+        
+            for (let i = 0; i < comment.stars.length; i++) {
+                console.log(comment.stars.length);
+            //    let span = document.createElement("span");
+            //    span.classList.add("fa fa-star");
+            //    document.querySelector("#starsCityWrapper").append
+            }
+
             let commentCityWrapper = document.createElement("div");
             document.getElementById("commentsCityWrapper").append(commentCityWrapper);
             commentCityWrapper.innerHTML = `
@@ -291,7 +306,12 @@ function getCommentsforCity(cityid) {
                                         <div>${comment.text}</div>
                                         <div id="starsCityWrapper">
                                             <div>Betyg:</div>
-                                            <div>Uteliv: ${comment.stars["out"]}
+                                            <div>Uteliv: ${comment.stars["out"]} 
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
                                             Mat: ${comment.stars["food"]}
                                             Boende: ${comment.stars["accomodation"]}</div>
                                         </div>`;
@@ -299,6 +319,42 @@ function getCommentsforCity(cityid) {
     })
     return cityComments;
 }
+
+function getStars() {
+    let starTotal = 5;
+    
+    COMMENTS_CITY.forEach(comment => {
+        let commentNumber = comment.stars["out"]
+        //console.log(commentNumber);
+        
+        for (let raiting in commentNumber) {
+            console.log(commentNumber["out"]);
+            let procent = (commentNumber[raiting] / starTotal) * 100;
+            // const starPercentageRounded = `${(Math.round(procent / 10) * 10)}%`;
+             console.log(procent);
+
+            // document.querySelector(`.stars-inner`).style.width = starPercentageRounded;
+            //console.log(commentNumber[raiting]);
+            }
+    })
+}
+
+
+
+
+function getStarsS(comments) {
+
+    comments = COMMENTS_CITY.forEach(comment => {
+        comment = document.createElement("span");
+        document.querySelector("#HittaProgram").append(comment)
+        comment.classList.add("star")
+    });
+    return comments
+
+}
+
+getStarsS();
+
 
 function getCommentsforProgram(programid) {
     let programComments = COMMENTS_PROGRAMME.forEach(comment => {

@@ -158,3 +158,6 @@ option {
     font-family: var(--eFont);
 }
 
+.star {
+    color: orange;
+}
