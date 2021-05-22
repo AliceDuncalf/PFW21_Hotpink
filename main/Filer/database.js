@@ -13058,7 +13058,7 @@ const LEVELS = [
     "Bachelor",
     "Master",
     "Doctorate"
-];
+]()
 const CLUBS = [
     {
         "id": 0,

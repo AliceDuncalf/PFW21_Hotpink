@@ -281,20 +281,19 @@ function getLanguage(id, type = "") {
 function getCommentsforCity(cityid) {
     let cityComments = COMMENTS_CITY.forEach(comment => {
         if (comment.cityID == cityid) {
-            //console.log(comment.stars["out"]);
 
-
-            //     for (let raiting in comment.stars) {
-            //         console.log(comment.stars[raiting]);
-            //         }
-                
-        
-            for (let i = 0; i < comment.stars.length; i++) {
-                console.log(comment.stars.length);
-            //    let span = document.createElement("span");
-            //    span.classList.add("fa fa-star");
-            //    document.querySelector("#starsCityWrapper").append
-            }
+            // let commentNumber = comment.stars
+            // let starTotal = 5;
+            // for (let raiting in commentNumber) {
+            //     //console.log(commentNumber["out"]);
+            //     let procent = (commentNumber[raiting] / starTotal) * 100;
+            //     const starPercentageRounded = `${(Math.round(procent / 10) * 10)}%`;
+            //     //console.log(procent);
+    
+            //     document.querySelector(`.stars-inner`).style.width = starPercentageRounded;
+            //     //console.log(commentNumber[raiting]);
+            //     }
+            
 
             let commentCityWrapper = document.createElement("div");
             document.getElementById("commentsCityWrapper").append(commentCityWrapper);
@@ -307,53 +306,70 @@ function getCommentsforCity(cityid) {
                                         <div id="starsCityWrapper">
                                             <div>Betyg:</div>
                                             <div>Uteliv: ${comment.stars["out"]} 
-                                            <span class="fa fa-star"></span>
-                                            <span class="fa fa-star"></span>
-                                            <span class="fa fa-star"></span>
-                                            <span class="fa fa-star"></span>
-                                            <span class="fa fa-star"></span>
+                                            <div class="stars-outer">
+                                                <div class="stars-out-inner"></div>
+                                            </div>
                                             Mat: ${comment.stars["food"]}
+                                            <div class="stars-outer">
+                                            <div class="stars-food-inner"></div>
+                                        </div>
+
                                             Boende: ${comment.stars["accomodation"]}</div>
                                         </div>`;
+             
+            let commentStars = comment.stars
+            let starTotal = 5;
+            for (let raiting in commentStars) {
+            //console.log(commentStars["out"]);
+            console.log(commentStars[raiting]);
+            let procent = (commentStars[raiting] / starTotal) * 100;
+            const starPercentageRounded = `${(Math.round(procent / 10) * 10)}%`;
+            console.log(procent);
+                                    
+            document.querySelector(`.stars-out-inner`).style.width = starPercentageRounded;
+            document.querySelector(`.stars-food-inner`).style.width = starPercentageRounded;
+            //console.log(commentNumber[raiting]);
+            }
+                                        
         }
     })
     return cityComments;
 }
 
-function getStars() {
-    let starTotal = 5;
+// function getStars() {
+//     let starTotal = 5;
     
-    COMMENTS_CITY.forEach(comment => {
-        let commentNumber = comment.stars["out"]
-        //console.log(commentNumber);
+//     COMMENTS_CITY.forEach(comment => {
+//         let commentNumber = comment.stars
+//         //console.log(commentNumber);
         
-        for (let raiting in commentNumber) {
-            console.log(commentNumber["out"]);
-            let procent = (commentNumber[raiting] / starTotal) * 100;
-            // const starPercentageRounded = `${(Math.round(procent / 10) * 10)}%`;
-             console.log(procent);
+//         for (let raiting in commentNumber) {
+//             console.log(commentNumber["out"]);
+//             let procent = (commentNumber[raiting] / starTotal) * 100;
+//             const starPercentageRounded = `${(Math.round(procent / 10) * 10)}%`;
+//              console.log(procent);
 
-            // document.querySelector(`.stars-inner`).style.width = starPercentageRounded;
-            //console.log(commentNumber[raiting]);
-            }
-    })
-}
+//             document.querySelector(`.stars-inner`).style.width = starPercentageRounded;
+//             console.log(commentNumber[raiting]);
+//             }
+//     })
+// }
+
+// getStars();
 
 
+// function getStarsS(comments) {
 
+//     comments = COMMENTS_CITY.forEach(comment => {
+//         comment = document.createElement("span");
+//         document.querySelector("#HittaProgram").append(comment)
+//         comment.classList.add("star")
+//     });
+//     return comments
 
-function getStarsS(comments) {
+// }
 
-    comments = COMMENTS_CITY.forEach(comment => {
-        comment = document.createElement("span");
-        document.querySelector("#HittaProgram").append(comment)
-        comment.classList.add("star")
-    });
-    return comments
-
-}
-
-getStarsS();
+// getStarsS();
 
 
 function getCommentsforProgram(programid) {
