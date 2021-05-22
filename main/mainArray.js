@@ -57,7 +57,8 @@ function contentUniversity(titel, element = "") {
     content.classList.add(`${element}Wrapper`);
     content.innerHTML =`<div class="name">
                             <h3>${titel}</h3>
-                        </div>`;
+                        </div>
+                        <div><img src="filer/Images/annons_kvadratis.jpg">`;
 
     document.getElementById(`resultsUniversity`).append(content);
 
