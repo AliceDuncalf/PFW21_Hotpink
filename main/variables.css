@@ -32,6 +32,10 @@ body {
     display: flex;
 }
 
+.categoryBox > input {
+    margin-right: 7px;
+}
+
 .categories {
     /*background-color: var(--mainColor);*/
     height: 50px;
@@ -45,6 +49,7 @@ body {
 .countryFlag {
     width: 5vw;
 }
+
 #country {
     margin-right: 15px;
 }
@@ -53,8 +58,15 @@ body {
     width: 20px;
 }
 
+#FlagAndCountry {
+    display: flex;
+    align-items: center;
+}
+
 .FooterContents {
     display: flex;
+    justify-content: space-between;
+    margin: 30px;
 }
 
 footer {
@@ -65,6 +77,11 @@ footer {
     display: flex;
     flex-direction: column;
     font-family: var(--eFont);
+}
+
+footer > h3 {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .footerSocialMediaLinks {
@@ -105,6 +122,11 @@ header {
     padding-top: 20px;
     padding-bottom: 100px;
     
+}
+#HittaProgram > p {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
 }
 
 #HittaUtbildning {padding-bottom: 100px;}
@@ -207,7 +229,11 @@ nav > a {
 .socialMediaWrapper {
     display: flex;
     align-items: center;
-    flex-direction: column;
+    justify-content: center;
+}
+
+.socialMediaWrapper  img {
+    width: 50px;
 }
 
 .programbox {
