@@ -153,6 +153,7 @@ function getCities(countryid) {
 
                 getCommentsforCity(city.id);
                 selectUniversities.innerHTML = "";
+                selectProgrammes.innerHTML = "";
                 selectUniversities.append(getUniversities(city.id));
             }
         })
@@ -215,16 +216,11 @@ function getProgrammes(universityid) {
         
     })
     document.querySelectorAll(".checkbox").forEach(checkbox => {
-        checkbox.checked = false;
-        checkbox.addEventListener("click", (level) => { 
-            console.log(level.target)
-            level.target.checked = true;
-            
+        checkbox.addEventListener("click", (level) => {             
             selectProgrammes.innerHTML = "";
     
             programmes.filter(chosen => {
                 if (chosen.level == LEVELS.indexOf(level.target.value)) {
-                    //level.target.checked = false;
                     let levOption = document.createElement("OPTION");
                     selectProgrammes.append(levOption);
                     levOption.innerHTML = `${chosen.name}`;
@@ -339,30 +335,11 @@ function getVisa(countryVisa){
     return countryVisa;
 }
 
-function check (category) {
-    let checkbuttons = document.querySelectorAll(`input[value="${category}"]`);
-    checkbuttons.forEach(button => {
-        button.checked = false;   
-    });
-    document.querySelectorAll(`input[value="${category}"]`).checked = true;
-    //checkbuttons.querySelector(`${level}`).checked = true;
-} 
-
-/*function unCheck (checked = false) {
-    let checkbuttons = document.querySelectorAll('.checkboxes');
-    checkbuttons.forEach(button => {
-        console.log(button);
-        button.checked = false;
-    });
-}*/
-
 
 //fixa entrygrades och successrate
-
-//fixa så att recensionerna har stjärnor? 
-
+ 
 //levels - fixa så att första option går att trycka på - ha en Alla knapp?
 
 //lägga till text när ingenting har blivit klickat på eller om recensioner inte finns
 
-//ska kommentarerna var sorterade i år-ordning? 
+

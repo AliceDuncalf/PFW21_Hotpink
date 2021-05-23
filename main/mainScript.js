@@ -87,24 +87,25 @@ function clearAll() {
 };
 
 
-function createLevelOptions(checkbox){
-
+function createLevelOptions() {
   LEVELS.forEach(level => {
    
-    checkbox = document.createElement("div")
-    
-    checkbox.setAttribute("type", "checkbox");
-    checkbox.setAttribute("value", `${level}`)
+    let checkbox = document.createElement("div")
     checkbox.classList.add(`checkbox`);
-    //checkbox.classList.add(`${level}`);
 
     checkbox.innerHTML = `<input type="checkbox" value="${level}" class="checkboxes" name="checkbutton" id="${level}"><label for="${level}">${level}</label></input>`;
-    
-    //let levelNameTag = document.createElement("DIV");
-    //levelNameTag.innerHTML = `${level}`; 
-    document.querySelector("#levelsDiv").append(checkbox);
   
+    document.querySelector("#levelsDiv").append(checkbox);
+
+    let levelsdiv = document.querySelector("#levelsDiv");
+    levelsdiv.querySelector(`#${level}`).addEventListener("click", () => {
+        document.querySelectorAll(".checkboxes").forEach(checkbox => {
+            checkbox.checked = false;
+        })
+        levelsdiv.querySelector(`#${level}`).checked = true;
+        console.log(levelsdiv);
+    })
   });
-  return checkbox;
-}; 
-console.log(createLevelOptions());
+}
+
+createLevelOptions();
