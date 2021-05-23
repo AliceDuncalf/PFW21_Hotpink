@@ -214,27 +214,61 @@ function getProgrammes(universityid) {
         })
         
     })
-    document.querySelectorAll(".checkbox").forEach(checkbox => {
-        //checkbox.checked = false;
-        checkbox.addEventListener("click", (level) => { 
-            selectProgrammes.innerHTML = "";
-            console.log(level.target.value);
+    // document.querySelectorAll(".checkbox").forEach(checkbox => {
+    //     checkbox.checked = false;
+    // })
+    LEVELS.forEach(level => {
+   
+        let checkbox = document.createElement("div")
+        checkbox.classList.add(`checkbox`);
     
-            programmes.filter(chosen => {
-                if (chosen.level == LEVELS.indexOf(level.target.value)) {
-                    let levOption = document.createElement("OPTION");
-                    selectProgrammes.append(levOption);
-                    levOption.innerHTML = `${chosen.name}`;
+        checkbox.innerHTML = `<input type="checkbox" value="${level}" class="checkboxes" name="checkbutton" id="${level}"><label for="${level}">${level}</label></input>`;
+        
+
+        document.querySelector("#levelsDiv").append(checkbox);
+
+        let levelsdiv = document.querySelector("#levelsDiv");
+        levelsdiv.querySelector(`#${level}`).addEventListener("click", () => {
+            document.querySelectorAll(".checkboxes").forEach(checkbox => {
+                checkbox.checked = false;
+            })
+            levelsdiv.querySelector(`#${level}`).checked = true
+        })
+      
+      });
+      
+    // let levelsdiv = document.querySelector("#levelsDiv");
+    // levelsdiv.querySelector(`#${level}`).addEventListener("click", () => {
+    //     document.querySelectorAll(".checkbox").forEach(checkbox => {
+    //         checkbox.checked = false;
+    //     })
+    //     levelsdiv.querySelector(`#${level}`).checked = true
+    // })
+
+        // checkbox.addEventListener("click", (level) => { 
+        //     document.querySelectorAll(".checkbox").forEach(checkbox => {
+        //         checkbox.checked = false;
+        //     })
+        //     let levelsdiv = document.querySelector("#levelsDiv");
+        //     levelsdiv.querySelector(`#${level}`).checked = true
+        //     selectProgrammes.innerHTML = "";
+        //     console.log(level.target.value);
+    
+        //     programmes.filter(chosen => {
+        //         if (chosen.level == LEVELS.indexOf(level.target.value)) {
+        //             let levOption = document.createElement("OPTION");
+        //             selectProgrammes.append(levOption);
+        //             levOption.innerHTML = `${chosen.name}`;
                    
-                }
-            });
-            checkbox.checked = false;
-            if (checkbox.checked = true) {
-                document.getElementById("resultsProgram").innerHTML="";
+        //         }
+        //     });
+        //     checkbox.checked = false;
+        //     if (checkbox.checked = true) {
+        //         document.getElementById("resultsProgram").innerHTML="";
                 
-            }
-        });
-    })
+        //     }
+        // });
+    
  
     return programmes;
 }

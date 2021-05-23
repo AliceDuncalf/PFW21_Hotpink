@@ -87,24 +87,24 @@ function clearAll() {
 };
 
 
-function createLevelOptions(checkbox){
+// function createLevelOptions(){
 
-  LEVELS.forEach(level => {
+//   LEVELS.forEach(level => {
    
-    checkbox = document.createElement("div")
+//     let checkbox = document.createElement("div")
     
-    checkbox.setAttribute("type", "checkbox");
-    checkbox.setAttribute("value", `${level}`)
-    checkbox.classList.add(`checkbox`);
-    //checkbox.classList.add(`${level}`);
+//     // checkbox.setAttribute("type", "checkbox");
+//     // checkbox.setAttribute("value", `${level}`)
+//     checkbox.classList.add(`checkbox`);
+//     //checkbox.classList.add(`${level}`);
 
-    checkbox.innerHTML = `<input type="checkbox" value="${level}" class="checkboxes" name="checkbutton" id="${level}"><label for="${level}">${level}</label></input>`;
+//     checkbox.innerHTML = `<input type="checkbox" value="${level}" class="checkboxes" name="checkbutton" id="${level}"><label for="${level}">${level}</label></input>`;
     
-    //let levelNameTag = document.createElement("DIV");
-    //levelNameTag.innerHTML = `${level}`; 
-    document.querySelector("#levelsDiv").append(checkbox);
+//     //let levelNameTag = document.createElement("DIV");
+//     //levelNameTag.innerHTML = `${level}`; 
+//     document.querySelector("#levelsDiv").append(checkbox);
   
-  });
-  return checkbox;
-}; 
-console.log(createLevelOptions());
+//   });
+//   return checkbox;
+// }; 
+// console.log(createLevelOptions());
