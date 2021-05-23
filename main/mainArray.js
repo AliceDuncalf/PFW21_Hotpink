@@ -215,9 +215,8 @@ function getProgrammes(universityid) {
         
     })
     document.querySelectorAll(".checkbox").forEach(checkbox => {
-        //checkbox.checked = true;
         checkbox.addEventListener("click", (level) => { 
-           checkbox.checked = false;
+            unCheck(checkbox);
             
             selectProgrammes.innerHTML = "";
     
@@ -231,10 +230,6 @@ function getProgrammes(universityid) {
             });
          
         });
-        let levelsDiv = document.getElementById("levelsDiv");
-        levelsDiv.querySelector(".checkboxes").checked = true;
-        
-
     })
  
     return programmes;
@@ -295,9 +290,9 @@ function getCommentsforCity(cityid) {
                                         <div>${comment.text}</div>
                                         <div id="starsCityWrapper">
                                             <div class="rating">Betyg:</div>
-                                            <div class="ratingFigures">Uteliv: ${comment.stars["out"]}/5
-                                            Mat: ${comment.stars["food"]}/5
-                                            Boende: ${comment.stars["accomodation"]}/5</div>
+                                            <div class="ratingFigures">Uteliv: <span>${comment.stars["out"]}/5</span>
+                                            Mat: <span>${comment.stars["food"]}/5</span>
+                                            Boende: <span>${comment.stars["accomodation"]}/5</span></div>
                                         </div>`;
         }
        
@@ -341,6 +336,22 @@ function getVisa(countryVisa){
     return countryVisa;
 }
 
+/*function check (checked = true) {
+    let checkbuttons = document.querySelectorAll('.checkboxes');
+    checkbuttons.forEach(button => {
+        if (button.checked = checked)
+        unCheck(button);
+    });
+    //checkbuttons.querySelector(`${level}`).checked = true;
+} */
+
+function unCheck (checked = false) {
+    let checkbuttons = document.querySelectorAll('.checkboxes');
+    checkbuttons.forEach(button => {
+        console.log(button);
+        button.checked = false;
+    });
+}
 
 
 //fixa entrygrades och successrate

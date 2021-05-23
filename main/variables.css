@@ -8,8 +8,6 @@
     --eFont:'Poppins', sans-serif;
     --pFont: 'Open Sans', sans-serif;
 
-    --testFont: 'Jost', sans-serif ; 
-
     --titelFontSz: 3vw;
     --secondFontSz: 4vw;
     --breadFontSz: 85%;
@@ -173,7 +171,7 @@ input:after {
 }
 
 .mapsLogo {
-    width: 6%;
+    width: 9%;
 }
 
 header > .mapsLogo {
@@ -296,4 +294,8 @@ button:focus {
 
 .ratingFigures {
     font-size: 11px;
+}
+
+.ratingFigures > span {
+    font-weight: bold;
 }

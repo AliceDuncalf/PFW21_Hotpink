@@ -156,5 +156,6 @@ option {
 #selectWrapper > select {
     height: 5vh;
     font-family: var(--eFont);
+    border: solid 2px var(--mainColor);
 }
 

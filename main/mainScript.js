@@ -98,7 +98,7 @@ function createLevelOptions(checkbox){
     checkbox.classList.add(`checkbox`);
     //checkbox.classList.add(`${level}`);
 
-    checkbox.innerHTML = `<input type="checkbox" value="${level}" class="checkboxes" id="${level}"><label for="${level}">${level}</label></input>`;
+    checkbox.innerHTML = `<input type="checkbox" value="${level}" class="checkboxes" name="checkbutton" id="${level}"><label for="${level}">${level}</label></input>`;
     
     //let levelNameTag = document.createElement("DIV");
     //levelNameTag.innerHTML = `${level}`; 
