@@ -294,15 +294,13 @@ function getCommentsforCity(cityid) {
                                         </div>    
                                         <div>${comment.text}</div>
                                         <div id="starsCityWrapper">
-                                            <div>Betyg:</div>
-                                            <div>Uteliv: ${comment.stars["out"]}
-                                            Mat: ${comment.stars["food"]}
-                                            Boende: ${comment.stars["accomodation"]}</div>
+                                            <div class="rating">Betyg:</div>
+                                            <div class="ratingFigures">Uteliv: ${comment.stars["out"]}/5
+                                            Mat: ${comment.stars["food"]}/5
+                                            Boende: ${comment.stars["accomodation"]}/5</div>
                                         </div>`;
         }
-        //else if (!comment.cityID.contains(cityid)) {
-            //document.getElementById("commentsCityWrapper").innerHTML = "Finns tyvärr inga kommentarer för den här staden";
-        //}
+       
     })
     return cityComments;
 }
