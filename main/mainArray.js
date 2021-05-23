@@ -215,13 +215,16 @@ function getProgrammes(universityid) {
         
     })
     document.querySelectorAll(".checkbox").forEach(checkbox => {
+        checkbox.checked = false;
         checkbox.addEventListener("click", (level) => { 
-            unCheck(checkbox);
+            console.log(level.target)
+            level.target.checked = true;
             
             selectProgrammes.innerHTML = "";
     
             programmes.filter(chosen => {
                 if (chosen.level == LEVELS.indexOf(level.target.value)) {
+                    //level.target.checked = false;
                     let levOption = document.createElement("OPTION");
                     selectProgrammes.append(levOption);
                     levOption.innerHTML = `${chosen.name}`;
@@ -336,22 +339,22 @@ function getVisa(countryVisa){
     return countryVisa;
 }
 
-/*function check (checked = true) {
-    let checkbuttons = document.querySelectorAll('.checkboxes');
+function check (category) {
+    let checkbuttons = document.querySelectorAll(`input[value="${category}"]`);
     checkbuttons.forEach(button => {
-        if (button.checked = checked)
-        unCheck(button);
+        button.checked = false;   
     });
+    document.querySelectorAll(`input[value="${category}"]`).checked = true;
     //checkbuttons.querySelector(`${level}`).checked = true;
-} */
+} 
 
-function unCheck (checked = false) {
+/*function unCheck (checked = false) {
     let checkbuttons = document.querySelectorAll('.checkboxes');
     checkbuttons.forEach(button => {
         console.log(button);
         button.checked = false;
     });
-}
+}*/
 
 
 //fixa entrygrades och successrate
