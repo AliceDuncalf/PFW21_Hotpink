@@ -58,7 +58,7 @@ function contentUniversity(titel, element = "") {
     content.innerHTML =`<div class="name">
                             <h3>${titel}</h3>
                         </div>
-                        `;
+                        <div><img src="filer/Images/annons_kvadratis.jpg">`;
 
     document.getElementById(`resultsUniversity`).append(content);
 
@@ -145,7 +145,7 @@ function getCities(countryid) {
         selectCities.addEventListener("change", (e) => {
             if (city.name == e.target.value) {
                 document.getElementById("resultsCity").innerHTML = "";
-                console.log(e.target.value);
+                //console.log(e.target.value);
                 document.getElementById("resultsUniversity").innerHTML = "";
                 document.getElementById("resultsProgram").innerHTML = "";
 
@@ -215,10 +215,10 @@ function getProgrammes(universityid) {
         
     })
     document.querySelectorAll(".checkbox").forEach(checkbox => {
+        //checkbox.checked = false;
         checkbox.addEventListener("click", (level) => { 
-            unCheck(checkbox);
-            
             selectProgrammes.innerHTML = "";
+            console.log(level.target.value);
     
             programmes.filter(chosen => {
                 if (chosen.level == LEVELS.indexOf(level.target.value)) {
@@ -228,7 +228,11 @@ function getProgrammes(universityid) {
                    
                 }
             });
-         
+            checkbox.checked = false;
+            if (checkbox.checked = true) {
+                document.getElementById("resultsProgram").innerHTML="";
+                
+            }
         });
     })
  
@@ -236,14 +240,12 @@ function getProgrammes(universityid) {
 }
 
 function getClubsforUniversity(universityid) {
-    document.querySelector
     let clubsAndMembers = document.createElement("div");
     clubsAndMembers.innerHTML = `
         <div id="clubsAndMembers">
             <div>Klubbar</div>
             <div>Medlemmar</div>
         </div>
-        <a href="https://mau.se/"><img class="advertisementInUniversity" src="filer/Images/annons_kvadratisk.jpg"></a>
     `;
     document.querySelector(".universityWrapper").append(clubsAndMembers)
     let universityClubs = CLUBS.forEach(club => {
@@ -258,7 +260,7 @@ function getClubsforUniversity(universityid) {
                     <div>${club.name}</div>
                     <div>${club.memberCount}</div>
                 </div>
-            `;      
+            `;
         }
     })
 
@@ -277,9 +279,13 @@ function getLanguage(id, type = "") {
 }
 
 function getCommentsforCity(cityid) {
-    //sortNames(COMMENTS_CITY);
+    let array = [];
     let cityComments = COMMENTS_CITY.forEach(comment => {
+        
         if (comment.cityID == cityid) {
+            array.push(comment);
+
+
             let commentCityWrapper = document.createElement("div");
             document.getElementById("commentsCityWrapper").append(commentCityWrapper);
             commentCityWrapper.innerHTML = `
@@ -289,20 +295,100 @@ function getCommentsforCity(cityid) {
                                         </div>    
                                         <div>${comment.text}</div>
                                         <div id="starsCityWrapper">
-                                            <div class="rating">Betyg:</div>
-                                            <div class="ratingFigures">Uteliv: <span>${comment.stars["out"]}/5</span>
-                                            Mat: <span>${comment.stars["food"]}/5</span>
-                                            Boende: <span>${comment.stars["accomodation"]}/5</span></div>
+                                            <div>Betyg:</div>
+
+                                            <div class="out">Uteliv: ${comment.stars["out"]} 
+                                            <div class="stars-outer">
+                                                <div class="out stars-inner"></div>
+                                            </div>
+                                            </div>
+                                            
+                                            <div class="food">Mat: ${comment.stars["food"]}
+                                            <div class="stars-outer">
+                                                <div class="stars-inner"></div>
+                                            </div>
+                                            </div>
+                                            
+                                            <div class="accomodation">Boende: ${comment.stars["accomodation"]}
+                                            <div class="stars-outer">
+                                                <div class="stars-inner"></div>
+                                            </div>
+                                            </div>
+
                                         </div>`;
+
+            
+            // let commentStars = comment.stars
+            // let starTotal = 5;
+            // for (let raiting in commentStars) {
+            // //console.log(raiting);
+            // //console.log(commentStars[raiting]);
+            // let procent = (commentStars[raiting] / starTotal) * 100;
+            // const starPercentageRounded = `${(Math.round(procent / 10) * 10)}%`;
+            // console.log(procent);
+                                    
+            // document.querySelector(`.${raiting} .stars-inner`).style.width = starPercentageRounded;
+
+            // //console.log(commentNumber[raiting]);
+            // }
+            
+                                        
         }
-       
+        
     })
+
+    //console.log(array);
+    array.forEach(comment => {
+    let commentStars = comment.stars
+    console.log(commentStars);
+    let starTotal = 5;
+        for (let raiting in commentStars) {
+        //console.log(raiting);
+        //console.log(commentStars[raiting]);
+        let procent = (commentStars[raiting] / starTotal) * 100;
+        const starPercentageRounded = `${(Math.round(procent / 10) * 10)}%`;
+        //console.log(procent);
+                                
+        document.querySelector(`.${raiting} .stars-inner`).style.width = starPercentageRounded;
+
+        //console.log(commentNumber[raiting]);
+        }
+        
+    })
+
+ 
     return cityComments;
 }
 
+
+
+// function getStars() {
+    
+//     COMMENTS_CITY.forEach(comment => {
+//         let commentStars = comment.stars
+//         let starTotal = 5;
+//         for (let raiting in commentStars) {
+//         //console.log(raiting);
+//         //console.log(commentStars[raiting]);
+//         let procent = (commentStars[raiting] / starTotal) * 100;
+//         const starPercentageRounded = `${(Math.round(procent / 10) * 10)}%`;
+//         console.log(procent);
+                                
+//         //document.querySelector(`.${raiting} .stars-inner`).style.width = starPercentageRounded;
+
+//         //console.log(commentNumber[raiting]);
+//         }
+//     })
+//     return document.querySelector(`.${raiting} .stars-inner`).style.width = starPercentageRounded;
+// }
+
+
+
+
+
 function getCommentsforProgram(programid) {
     let programComments = COMMENTS_PROGRAMME.forEach(comment => {
-        if (comment.programmeID == programid) {            
+        if (comment.programmeID == programid) {
             let commentProgramWrapper = document.createElement("div");
             document.getElementById("commentsProgramWrapper").append(commentProgramWrapper);
             commentProgramWrapper.innerHTML =`<div class="reviewTop">
@@ -336,22 +422,6 @@ function getVisa(countryVisa){
     return countryVisa;
 }
 
-/*function check (checked = true) {
-    let checkbuttons = document.querySelectorAll('.checkboxes');
-    checkbuttons.forEach(button => {
-        if (button.checked = checked)
-        unCheck(button);
-    });
-    //checkbuttons.querySelector(`${level}`).checked = true;
-} */
-
-function unCheck (checked = false) {
-    let checkbuttons = document.querySelectorAll('.checkboxes');
-    checkbuttons.forEach(button => {
-        console.log(button);
-        button.checked = false;
-    });
-}
 
 
 //fixa entrygrades och successrate
