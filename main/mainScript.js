@@ -89,7 +89,7 @@ function clearAll() {
 
 function createLevelOptions() {
   LEVELS.forEach(level => {
-   
+  
     let checkbox = document.createElement("div")
     checkbox.classList.add(`checkbox`);
 
@@ -98,12 +98,14 @@ function createLevelOptions() {
     document.querySelector("#levelsDiv").append(checkbox);
 
     let levelsdiv = document.querySelector("#levelsDiv");
-    levelsdiv.querySelector(`#${level}`).addEventListener("click", () => {
-        document.querySelectorAll(".checkboxes").forEach(checkbox => {
-            checkbox.checked = false;
-        })
-        levelsdiv.querySelector(`#${level}`).checked = true;
-        console.log(levelsdiv);
+    levelsdiv.querySelector(`#${level}`).addEventListener("click", (event) => {
+      
+      document.querySelectorAll(".checkboxes").forEach(checkbox => {
+        checkbox.checked = false;
+        levelsdiv.querySelector(`#${level}`).checked = false;
+      })
+      levelsdiv.querySelector(`#${level}`).checked = true;
+      console.log(levelsdiv);
     })
   });
 }

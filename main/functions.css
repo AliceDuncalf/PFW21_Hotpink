@@ -84,6 +84,11 @@
 #sucessRateContent {grid-area: 2/2/3/3;}
 #programYearContent {grid-area: 1/2/1/3;}
 
+#entryGradesContent, #sucessRateContent, #programYearContent {
+    display: flex;
+    justify-content: space-between;
+}
+
 #programYear {
     grid-area: 1/1/2/2;
 }

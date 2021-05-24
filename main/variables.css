@@ -31,6 +31,10 @@ body {
     display: flex;
 }
 
+.categoryBox > label {
+    margin-left: 5px;
+}
+
 .categories {
     /*background-color: var(--mainColor);*/
     height: 50px;
@@ -40,6 +44,20 @@ body {
     align-items: center;
     justify-content: space-between;
 } 
+
+.checkbox {
+    display: flex;
+}
+
+.checkboxes {
+    margin-left: 10px;
+}
+
+.checkbox > label {
+    font-size: 12px;
+    margin-left: 3px;
+}
+
 
 .countryFlag {
     width: 5vw;
@@ -156,7 +174,7 @@ input:after {
 
 .infobox > p {
     padding: 20px;
-    line-height: 4vh;
+    line-height: 4vmin;
     font-family: var(--pFont);
     font-size: 2vmin;
 }

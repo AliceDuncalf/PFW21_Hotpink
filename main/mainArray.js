@@ -66,6 +66,7 @@ function contentUniversity(titel, element = "") {
 }
 
 function contentProgram(titel, element = "", exchangeSt, localSt, level, entrygrades, sucess) {
+
     let content = document.createElement("div");
     content.classList.add(`${element}Wrapper`);
     content.innerHTML =`<div class="name">
@@ -81,15 +82,25 @@ function contentProgram(titel, element = "", exchangeSt, localSt, level, entrygr
                             <div id="programYear">År:</div>  
                             <div id="programYearContent">${getYearforSuccesRate()}</div> 
                             <div id="entryGrades">Behörighetskrav:</div>
-                            <div id="entryGradesContent">${entrygrades}</div>
+                            <div id="entryGradesContent"></div>
                         
                             <div id="sucessRate">Sucess Rate:</div>
-                            <div id="sucessRateContent">${sucess}</div>
+                            <div id="sucessRateContent"></div>
                         </div>    
                         <div id="commentsProgramWrapper"></div>`;
 
     document.getElementById(`resultsProgram`).append(content);
-    return titel, element, exchangeSt, localSt, level, entrygrades, sucess;
+    sucess.forEach(rate => {
+        let rates = document.createElement("div");
+        document.getElementById("sucessRateContent").append(rates);
+        rates.innerHTML = `${[rate]}%`;
+    })
+    entrygrades.forEach(grade => {
+        let grades = document.createElement("div");
+        document.getElementById("entryGradesContent").append(grades);
+        grades.innerHTML = `${grade}`;
+    })
+    return titel, element, exchangeSt, localSt, level;
 }
 
 
@@ -122,7 +133,6 @@ function selectionCountry(countries) {
                 getLanguage(country.languageID, "country");
                 getVisa(country.id);
                 
-                //selectCities.textContent ="";  
                 selectCities.append(getCities(country.id));
             }
         })
@@ -192,7 +202,7 @@ function getUniversities(cityid) {
 function getProgrammes(universityid) {
     sortNames(PROGRAMMES);
     selectProgrammes.innerHTML = `<option>Välj program</option>`;
-    
+
     let programmes = [];
     
     PROGRAMMES.forEach(program => {
@@ -214,16 +224,16 @@ function getProgrammes(universityid) {
             })
         })     
     })
+
     document.querySelectorAll(".checkbox").forEach(checkbox => {
         checkbox.addEventListener("click", (level) => {             
-            selectProgrammes.innerHTML = "<option>Välj program</option>";
+            selectProgrammes.innerHTML = `<option>Välj program</option>`;
     
             programmes.filter(chosen => {
                 if (chosen.level == LEVELS.indexOf(level.target.value)) {
                     let levOption = document.createElement("OPTION");
                     selectProgrammes.append(levOption);
-                    levOption.innerHTML = `${chosen.name}`;
-                   
+                    levOption.innerHTML = `${chosen.name}`;   
                 }
             });
          
@@ -338,19 +348,36 @@ function getYearforSuccesRate(year){
     year = [];
     let date = new Date();
     let thisYear = date.getFullYear();
-    let levelArray = [];
-    for(let i=0; i<5; i++){
-        thisYear -=1;
+    //let levelArray = [];
+    for(let i = 0; i < 5; i++){
+        thisYear -= 1;
         year.push(thisYear);
     }
     year.sort();
     return year;
 }
 
-console.log(getYearforSuccesRate())
-//fixa entrygrades och successrate
- 
-//levels - fixa så att första option går att trycka på - ha en Alla knapp?
+/*function clearLevels(universityid){
+    let clearAll = document.createElement("div");
+    document.querySelector("#levelsDiv").append(clearAll);
+    clearAll.innerHTML="<p>Återställ val</p>";
+    let t = clearAll.addEventListener("click", () => {
+        let programmes = [];
+    
+        PROGRAMMES.forEach(program => {
+            if(program.universityID == universityid) {
+                let option = document.createElement("OPTION");
+                selectProgrammes.append(option);
+                option.innerHTML = `${program.name}`;
+                programmes.push(program);
+            }
+        }) 
+        return t;
+    })
+}
+
+clearLevels(); */
+//levels - ha en Alla knapp?
 
 //lägga till text när ingenting har blivit klickat på eller om recensioner inte finns
 
