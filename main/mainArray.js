@@ -78,7 +78,8 @@ function contentProgram(titel, element = "", exchangeSt, localSt, level, entrygr
                             <div>Nivå: ${level}</div>
                         </div> 
                         <div class="entryAndSucessWrapper">
-                            <div id="programYear">År:</div>   
+                            <div id="programYear">År:</div>  
+                            <div id="programYearContent">${getYearforSuccesRate()}</div> 
                             <div id="entryGrades">Behörighetskrav:</div>
                             <div id="entryGradesContent">${entrygrades}</div>
                         
@@ -211,13 +212,11 @@ function getProgrammes(universityid) {
                     getCommentsforProgram(program.id);
                 }
             })
-
-        })
-        
+        })     
     })
     document.querySelectorAll(".checkbox").forEach(checkbox => {
         checkbox.addEventListener("click", (level) => {             
-            selectProgrammes.innerHTML = "";
+            selectProgrammes.innerHTML = "<option>Välj program</option>";
     
             programmes.filter(chosen => {
                 if (chosen.level == LEVELS.indexOf(level.target.value)) {
@@ -311,10 +310,10 @@ function getCommentsforProgram(programid) {
                                               <div>${comment.text}</div>
                                             
                                               <div id="starsProgramWrapper">
-                                                  <div>Betyg:</div>
-                                                  <div>Lärare: ${comment.stars["teachers"]}
-                                                  Studenter: ${comment.stars["students"]}
-                                                  Kurser: ${comment.stars["courses"]}</div>
+                                                  <div class="rating">Betyg:</div>
+                                                  <div class="ratingFigures">Lärare: <span>${comment.stars["teachers"]}/5</span>
+                                                  Studenter: <span>${comment.stars["students"]}/5</span>
+                                                  Kurser: <span>${comment.stars["courses"]}/5 </span></div>
                                               </div>`;
 
         }
@@ -335,7 +334,20 @@ function getVisa(countryVisa){
     return countryVisa;
 }
 
+function getYearforSuccesRate(year){
+    year = [];
+    let date = new Date();
+    let thisYear = date.getFullYear();
+    let levelArray = [];
+    for(let i=0; i<5; i++){
+        thisYear -=1;
+        year.push(thisYear);
+    }
+    year.sort();
+    return year;
+}
 
+console.log(getYearforSuccesRate())
 //fixa entrygrades och successrate
  
 //levels - fixa så att första option går att trycka på - ha en Alla knapp?
