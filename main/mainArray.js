@@ -234,22 +234,6 @@ function getProgrammes(universityid, programmes) {
             })
         })     
     })
-
-    document.querySelectorAll(".checkbox").forEach(checkbox => {
-        checkbox.addEventListener("click", (level) => {    
-            level.stopPropagation();     
-            selectProgrammes.innerHTML = `<option>Välj program</option>`;
-    
-            programmes.filter(chosen => {
-                if (chosen.level == LEVELS.indexOf(level.target.value)) {
-                    let levOption = document.createElement("OPTION");
-                    selectProgrammes.append(levOption);
-                    levOption.innerHTML = `${chosen.name}`;   
-                } 
-            });
-         
-        });
-    })
  
     return programmes;
 }
