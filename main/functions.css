@@ -23,8 +23,12 @@
     font-size: 13px;
     overflow-y: scroll;
     scrollbar-width: thin; 
-    height: 20vh;
+    height: 31vh;
     padding: 0 10px;
+}
+
+#commentsProgramWrapper {
+    height: 43vh;
 }
 
 #commentsCityWrapper > div, #commentsProgramWrapper > div {
@@ -44,6 +48,9 @@
     border: solid 3px var(--accentColor);
     background-color: white;
     border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
 }
 
 .commentsText {

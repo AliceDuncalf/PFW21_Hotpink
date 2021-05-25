@@ -136,10 +136,12 @@ function selectionCountry(countries) {
                 selectProgrammes.innerHTML="";
 
                 contentCountry(country.name, "country", country.flag, country.imagesNormal[0], country.text, country.visa);
+               
                 getLanguage(country.languageID, "country");
                 getVisa(country.id);
-                
                 selectCities.append(getCities(country.id));
+               
+
             }
         })
     })
@@ -169,6 +171,7 @@ function getCities(countryid) {
                 contentCity(city.name, "city", city.imagesNormal[0], city.text, city.sun);
 
                 getCommentsforCity(city.id);
+                document.getElementById("commentsCityWrapper").scrollTop = 0;
                 selectUniversities.innerHTML = "";
                 selectProgrammes.innerHTML = "";
                 selectUniversities.append(getUniversities(city.id));
@@ -226,6 +229,7 @@ function getProgrammes(universityid, programmes) {
                     contentProgram(program.name, "program", program.exchangeStudents, program.localStudents, program.level, program.entryGrades, program.successRate);
                     getLanguage(program.language, "program");
                     getCommentsforProgram(program.id);
+                    document.getElementById("commentsProgramWrapper").scrollTop = 0;
                 }
             })
         })     

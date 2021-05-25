@@ -1,6 +1,7 @@
 :root {
     --mainColor: #9688E5;
     --accentColor: #ebe9f9;
+    --hoverColor: #b1a5f5;
 
     --titleFont:'Monoton', cursive;
     --hFont: 'Paytone One', sans-serif;
@@ -169,10 +170,12 @@ header {
 }
 
 .infoProgramArray {
-    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    margin-top: 20px;
+    font-size: var(--breadFontSz);
 }
 
 input:focus {
@@ -235,6 +238,9 @@ nav > a {
 nav > a:last-child {
     margin-right: 2vw;
 }
+nav > a:hover {
+    background-color: var(--hoverColor);
+}
 
 .name > p {
     font-size: 11px;
@@ -246,10 +252,9 @@ nav > a:last-child {
 }
 
 .programbox {
-    height: 50vh;
+    height: 0vh;
     margin: 0 10vw;
-    scrollbar-width: thin; 
-    
+    scrollbar-width: thin;
 }
 .programbox > div:last-child {
     margin-bottom: 0;

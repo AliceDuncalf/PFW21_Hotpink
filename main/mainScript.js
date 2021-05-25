@@ -19,6 +19,8 @@ function categoriesAndProgrammes() {
 
     categoryBox.querySelector(`#${category.name}`).addEventListener("click", () => {
       document.querySelector(".programbox").classList.add("scroll");
+      document.querySelector(".programbox").style.height ="50vh";
+      document.querySelector(".programbox").style.transition ="height 2s";
       document.querySelectorAll(".categoryname").forEach(knapp => {
         knapp.checked = false
       });
