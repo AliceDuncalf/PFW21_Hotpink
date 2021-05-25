@@ -27,8 +27,6 @@
     padding: 0 10px;
 }
 
-#commentsProgramWrapper {height: 30vh;}
-
 #commentsCityWrapper > div, #commentsProgramWrapper > div {
     border: solid 1px var(--mainColor);
     padding: 10px 10px;
@@ -48,11 +46,7 @@
     border-radius: 5px;
 }
 
-.countryLanguageWrapper > div{
-    background-color: var(--mainColor);
-    padding: 16px 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
+.commentsText {
     font-size: var(--breadFontSz);
 }
 
@@ -68,37 +62,23 @@
 
 .entryAndSucessWrapper {
     padding: 10px 10px;
-    height: 15vh;
+    height: 10vh;
     border-radius: 5px;
     background-color: var(--mainColor);
     font-size: var(--breadFontSz);
 
     display: grid;
     grid-template-columns: 7vw 11vw;
-    /*grid-template-rows: repeat(3, 1fr);*/
     margin-bottom: 10px;
     font-size: 9px;
 }
 
+#entryGrades {grid-area: 3/1/4/2;}
 #entryGradesContent {grid-area: 3/2/4/3;}
-#sucessRateContent {grid-area: 2/2/3/3;}
-#programYearContent {grid-area: 1/2/1/3;}
 
 #entryGradesContent, #sucessRateContent, #programYearContent {
     display: flex;
     justify-content: space-between;
-}
-
-#programYear {
-    grid-area: 1/1/2/2;
-}
-
-#sucessRate {
-    grid-area: 2/1/3/2;
-}
-
-#entryGrades {
-    grid-area: 3/1/4/2;
 }
 
 .flag {
@@ -125,7 +105,7 @@ img {
     display: flex;
     justify-content: space-between;
     background-color: var(--mainColor);
-    padding: 16px 10px;
+    padding: 1vw 10px;
     border-radius: 5px;
     margin-bottom: 10px;
     font-size: var(--breadFontSz);
@@ -135,24 +115,19 @@ option {
     font-family: var(--eFont);
 }
 
-.programLanguageWrapper, .programInfoBox > div {
+.programLanguageWrapper, .programInfoBox > div, .reviewTitle, .countryLanguageWrapper > div {
     background-color: var(--mainColor);
-    padding: 16px 10px;
+    padding: 1vw 10px;
     border-radius: 5px;
     margin-bottom: 10px;
     font-size: var(--breadFontSz);
 }
+
+#programYear {grid-area: 1/1/2/2;}
+#programYearContent {grid-area: 1/2/1/3;}
 
 .reviewName {
     font-weight: bold;
-}
-
-.reviewTitle {
-    background-color: var(--mainColor);
-    padding: 16px 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    font-size: var(--breadFontSz);
 }
 
 .reviewTop {
@@ -165,4 +140,7 @@ option {
     font-family: var(--eFont);
     border: solid 2px var(--mainColor);
 }
+
+#sucessRate {grid-area: 2/1/3/2;}
+#sucessRateContent {grid-area: 2/2/3/3;}
 

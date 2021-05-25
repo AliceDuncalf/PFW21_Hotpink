@@ -80,7 +80,13 @@ function contentProgram(titel, element = "", exchangeSt, localSt, level, entrygr
                         </div> 
                         <div class="entryAndSucessWrapper">
                             <div id="programYear">År:</div>  
-                            <div id="programYearContent">${getYearforSuccesRate()}</div> 
+                            <div id="programYearContent">
+                                <div>2016</div>
+                                <div>2017</div> 
+                                <div>2018</div> 
+                                <div>2019</div> 
+                                <div>2020</div>
+                            </div>  
                             <div id="entryGrades">Behörighetskrav:</div>
                             <div id="entryGradesContent"></div>
                         
@@ -252,7 +258,6 @@ function getClubsforUniversity(universityid) {
             <div>Klubbar</div>
             <div>Medlemmar</div>
         </div>
-        <a href="https://mau.se/"><img class="advertisementInUniversity" src="filer/Images/annons_kvadratisk.jpg"></a>
     `;
     document.querySelector(".universityWrapper").append(clubsAndMembers)
     let universityClubs = CLUBS.forEach(club => {
@@ -296,7 +301,7 @@ function getCommentsforCity(cityid) {
                                             <div class="reviewName">${comment.alias}</div>
                                             <div>${comment.date["year"]}/${comment.date["month"]}/${comment.date["day"]}</div>
                                         </div>    
-                                        <div>${comment.text}</div>
+                                        <p class="commentsText">${comment.text}</p>
                                         <div id="starsCityWrapper">
                                             <div class="rating">Betyg:</div>
                                             <div class="ratingFigures">Uteliv: <span>${comment.stars["out"]}/5</span>
@@ -318,7 +323,7 @@ function getCommentsforProgram(programid) {
                                                 <div class="reviewName">${comment.alias}</div>
                                                 <div>${comment.date["year"]}/${comment.date["month"]}/${comment.date["day"]}</div>
                                             </div>   
-                                              <div>${comment.text}</div>
+                                              <p class="commentsText">${comment.text}</p>
                                             
                                               <div id="starsProgramWrapper">
                                                   <div class="rating">Betyg:</div>
@@ -345,41 +350,5 @@ function getVisa(countryVisa){
     return countryVisa;
 }
 
-function getYearforSuccesRate(year){
-    year = [];
-    let date = new Date();
-    let thisYear = date.getFullYear();
-    //let levelArray = [];
-    for(let i = 0; i < 5; i++){
-        thisYear -= 1;
-        year.push(thisYear);
-    }
-    year.sort();
-    return year;
-}
-
-/*function clearLevels(universityid){
-    let clearAll = document.createElement("div");
-    document.querySelector("#levelsDiv").append(clearAll);
-    clearAll.innerHTML="<p>Återställ val</p>";
-    let t = clearAll.addEventListener("click", () => {
-        let programmes = [];
-    
-        PROGRAMMES.forEach(program => {
-            if(program.universityID == universityid) {
-                let option = document.createElement("OPTION");
-                selectProgrammes.append(option);
-                option.innerHTML = `${program.name}`;
-                programmes.push(program);
-            }
-        }) 
-        return t;
-    })
-}
-
-clearLevels(); */
-//levels - ha en Alla knapp?
-
-//lägga till text när ingenting har blivit klickat på eller om recensioner inte finns
 
 

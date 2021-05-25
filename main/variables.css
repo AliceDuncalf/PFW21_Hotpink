@@ -1,7 +1,6 @@
 :root {
     --mainColor: #9688E5;
     --accentColor: #ebe9f9;
-    --detailColor: #7fff0094;
 
     --titleFont:'Monoton', cursive;
     --hFont: 'Paytone One', sans-serif;
@@ -10,13 +9,12 @@
 
     --titelFontSz: 3vw;
     --secondFontSz: 4vw;
-    --breadFontSz: 85%;
+    --breadFontSz: 80%;
 
 }
 
 .advertisement {
-    margin-top: 30px;
-    margin-bottom: 150px;
+    margin: 104px 0px;
 }
 
 .advertisementInUniversity {
@@ -36,7 +34,6 @@ body {
 }
 
 .categories {
-    /*background-color: var(--mainColor);*/
     height: 50px;
     margin: 0 10vw;
     display: flex;
@@ -67,10 +64,6 @@ body {
     margin-right: 15px;
 }
 
-.checkbox {
-    width: 20px;
-}
-
 #FlagAndCountry {
     display: flex;
     align-items: center;
@@ -79,7 +72,8 @@ body {
 .FooterContents {
     display: flex;
     justify-content: space-between;
-    margin: 30px;
+    align-items: center;
+    margin: 2vw;
 }
 
 footer {
@@ -133,21 +127,19 @@ header {
 #HittaProgram, #HittaUtbildning {
     font-family: var(--pFont);
     background-color: var(--accentColor);
-    /*border-bottom: 5px solid var(--accentColor);
-    border-top: 5px solid var(--accentColor); */
 
-    margin-top: 150px;
     padding-top: 20px;
     padding-bottom: 100px;
     
 }
+
+#HittaProgram {margin-top: 150px;}
+
 #HittaProgram > p {
     display: flex;
     justify-content: center;
     font-weight: bold;
 }
-
-#HittaUtbildning {padding-bottom: 100px;}
 
 #HittaProgram > h2, #HittaUtbildning > h2 {
     display: flex;
@@ -176,6 +168,13 @@ header {
     margin-top: 20px;
 }
 
+.infoProgramArray {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 input:focus {
     background-color: black;
 }
@@ -190,7 +189,7 @@ input:after {
     padding: 20px;
     line-height: 4vmin;
     font-family: var(--pFont);
-    font-size: 2vmin;
+    font-size: var(--breadFontSz);
 }
 
 #levelsDiv {
@@ -246,19 +245,6 @@ nav > a:last-child {
     display: flex;
 }
 
-.selectBox {
-    background-color: black;
-    width: 10px;
-    height: 10px;
-}
-
-.socialMediaWrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 12px;
-}
-
 .programbox {
     height: 50vh;
     margin: 0 10vw;
@@ -269,24 +255,7 @@ nav > a:last-child {
     margin-bottom: 0;
 }
 
-
-/* button {
-    
-    border: none;
-    margin-right: 5px;
-    border-radius: 2px;
-    transition-duration: 0.4s;
-    
-}
-
-button:focus {
-    background-color: black;
-    hej
-} */
-
-
 .programContent {
-    /*background-color: blueviolet;*/
     height: 20px;
 }
 
@@ -314,10 +283,6 @@ button:focus {
     flex-basis: 50vw;
 }
 
-.scroll {
-    overflow-y: scroll;
-}
-
 .rating {
     font-weight: bold;
     font-size: 12px;
@@ -331,3 +296,23 @@ button:focus {
 .ratingFigures > span {
     font-weight: bold;
 }
+
+.selectBox {
+    background-color: black;
+    width: 10px;
+    height: 10px;
+}
+
+.socialMediaWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 25vw;
+    margin: auto;
+    padding-top: 20px;
+}
+
+.scroll {
+    overflow-y: scroll;
+}
+

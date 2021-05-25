@@ -8,6 +8,8 @@ function categoriesAndProgrammes() {
   document.querySelector("#HittaProgram").append(categoryDiv);
   document.querySelector("#HittaProgram").append(programBox);
 
+  programBox.innerHTML =`<p class="infoProgramArray">Kryssa i den kategori som du är intresserad av för att få information om vilka program som erbjuds för varje ämne!</p>`
+
   FIELDS.forEach(category => {
 
     let categoryBox = document.createElement("div");
@@ -81,14 +83,6 @@ function getCountryFlagFromUniverityID(id) {
   return countryFlag
 }
 
-//Nollställa programmen
-function clearAll() {
-  document.querySelector(".programbox").innerHTML = "";
-};
-
-let checkButton = document.createElement("button");
-checkButton.innerHTML="Återställ val";
-document.querySelector("#levelsDiv").append(checkButton);
 
 function createLevelOptions() {
   LEVELS.forEach(level => {
@@ -110,10 +104,6 @@ function createLevelOptions() {
       event.target.checked = true;
       console.log(event.target.checked);
 
-      checkButton.addEventListener("click", ()=> {
-        event.target.checked = false;
-      })
-      
      
         /*if(event.target.checked) {
          checkboxes[i].checked == false;
@@ -137,38 +127,5 @@ function createLevelOptions() {
 }
 
 createLevelOptions();
-
-
-
-/*LEVELS.forEach(level => {
-    
-  let checkbox = document.createElement("div")
-  checkbox.classList.add(`checkbox`);
-  let checkButton = document.createElement("button");
-  checkbox.innerHTML = `<input type="checkbox" value="${level}" class="checkboxes" name="checkbutton" id="${level}"><label for="${level}">${level}</label></input>`;
-
-  document.querySelector("#levelsDiv").append(checkbox, checkButton);
-  //let checkboxes = document.getElementsByName(`checkbutton`);
-  let levelsdiv = document.querySelector("#levelsDiv");
-  
-  levelsdiv.querySelector(`#${level}`).addEventListener("click", (event) => {
-    event.stopPropagation();
-    document.querySelectorAll(".checkboxes").forEach(checkbox => {
-      checkbox.checked = false;
-    })
-    levelsdiv.querySelector(`#${level}`).checked = true;    
-    console.log(level);
-
-    levelsdiv.querySelector(`#${level}`).addEventListener("click", ()=> {
-      levelsdiv.querySelector(`#${level}`).checked = false;
-    })
-    levelsdiv.querySelector(`#${level}`).checked = true; 
-  
-  
-  })
-});
-}
-
-createLevelOptions(); */
 
 
