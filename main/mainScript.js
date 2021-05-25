@@ -86,25 +86,89 @@ function clearAll() {
   document.querySelector(".programbox").innerHTML = "";
 };
 
+let checkButton = document.createElement("button");
+checkButton.innerHTML="Återställ val";
+document.querySelector("#levelsDiv").append(checkButton);
 
-function createLevelOptions(checkbox){
-
+function createLevelOptions() {
   LEVELS.forEach(level => {
-   
-    checkbox = document.createElement("div")
     
-    checkbox.setAttribute("type", "checkbox");
-    checkbox.setAttribute("value", `${level}`)
+    let checkbox = document.createElement("div")
     checkbox.classList.add(`checkbox`);
-    //checkbox.classList.add(`${level}`);
-
-    checkbox.innerHTML = `<input type="checkbox" value="${level}" class="checkboxes" id="${level}"><label for="${level}">${level}</label></input>`;
-    
-    //let levelNameTag = document.createElement("DIV");
-    //levelNameTag.innerHTML = `${level}`; 
-    document.querySelector("#levelsDiv").append(checkbox);
   
+    checkbox.innerHTML = `<input type="checkbox" value="${level}" class="checkboxes" name="checkbutton" id="${level}"><label for="${level}">${level}</label></input>`;
+  
+    document.querySelector("#levelsDiv").append(checkbox);
+    let checkboxes = document.getElementsByName(`checkbutton`);
+    let levelsdiv = document.querySelector("#levelsDiv");
+    
+    levelsdiv.querySelector(`#${level}`).addEventListener("change", (event) => {
+      for (let i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].checked = false;
+        console.log(checkboxes[i].checked)
+      }  
+      event.target.checked = true;
+      console.log(event.target.checked);
+
+      checkButton.addEventListener("click", ()=> {
+        event.target.checked = false;
+      })
+      
+     
+        /*if(event.target.checked) {
+         checkboxes[i].checked == false;
+         console.log(event.target.checked);
+         console.log(checkboxes[i].checked)
+  
+        } else if (!event.target.checked) {
+          event.target.checked == false;
+          console.log(event.target.checked);
+          //andra vara falska 
+        }  */
+        
+      
+      
+    
+    
+    })
+ //när event.target.checked == true så vill jag att de andra ska vara falska
   });
-  return checkbox;
-}; 
-console.log(createLevelOptions());
+  
+}
+
+createLevelOptions();
+
+
+
+/*LEVELS.forEach(level => {
+    
+  let checkbox = document.createElement("div")
+  checkbox.classList.add(`checkbox`);
+  let checkButton = document.createElement("button");
+  checkbox.innerHTML = `<input type="checkbox" value="${level}" class="checkboxes" name="checkbutton" id="${level}"><label for="${level}">${level}</label></input>`;
+
+  document.querySelector("#levelsDiv").append(checkbox, checkButton);
+  //let checkboxes = document.getElementsByName(`checkbutton`);
+  let levelsdiv = document.querySelector("#levelsDiv");
+  
+  levelsdiv.querySelector(`#${level}`).addEventListener("click", (event) => {
+    event.stopPropagation();
+    document.querySelectorAll(".checkboxes").forEach(checkbox => {
+      checkbox.checked = false;
+    })
+    levelsdiv.querySelector(`#${level}`).checked = true;    
+    console.log(level);
+
+    levelsdiv.querySelector(`#${level}`).addEventListener("click", ()=> {
+      levelsdiv.querySelector(`#${level}`).checked = false;
+    })
+    levelsdiv.querySelector(`#${level}`).checked = true; 
+  
+  
+  })
+});
+}
+
+createLevelOptions(); */
+
+

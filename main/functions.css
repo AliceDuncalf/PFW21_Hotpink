@@ -73,14 +73,21 @@
     background-color: var(--mainColor);
     font-size: var(--breadFontSz);
 
-    /*display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(3, 1fr);*/
+    display: grid;
+    grid-template-columns: 7vw 11vw;
+    /*grid-template-rows: repeat(3, 1fr);*/
     margin-bottom: 10px;
+    font-size: 9px;
 }
 
 #entryGradesContent {grid-area: 3/2/4/3;}
 #sucessRateContent {grid-area: 2/2/3/3;}
+#programYearContent {grid-area: 1/2/1/3;}
+
+#entryGradesContent, #sucessRateContent, #programYearContent {
+    display: flex;
+    justify-content: space-between;
+}
 
 #programYear {
     grid-area: 1/1/2/2;
@@ -141,7 +148,7 @@ option {
 }
 
 .reviewTitle {
-    background-color: var(--accentColor);
+    background-color: var(--mainColor);
     padding: 16px 10px;
     border-radius: 5px;
     margin-bottom: 10px;
@@ -156,5 +163,6 @@ option {
 #selectWrapper > select {
     height: 5vh;
     font-family: var(--eFont);
+    border: solid 2px var(--mainColor);
 }
 

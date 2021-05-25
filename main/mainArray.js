@@ -66,6 +66,7 @@ function contentUniversity(titel, element = "") {
 }
 
 function contentProgram(titel, element = "", exchangeSt, localSt, level, entrygrades, sucess) {
+
     let content = document.createElement("div");
     content.classList.add(`${element}Wrapper`);
     content.innerHTML =`<div class="name">
@@ -78,17 +79,28 @@ function contentProgram(titel, element = "", exchangeSt, localSt, level, entrygr
                             <div>Nivå: ${level}</div>
                         </div> 
                         <div class="entryAndSucessWrapper">
-                            <div id="programYear">År:</div>   
+                            <div id="programYear">År:</div>  
+                            <div id="programYearContent">${getYearforSuccesRate()}</div> 
                             <div id="entryGrades">Behörighetskrav:</div>
-                            <div id="entryGradesContent">${entrygrades}</div>
+                            <div id="entryGradesContent"></div>
                         
                             <div id="sucessRate">Sucess Rate:</div>
-                            <div id="sucessRateContent">${sucess}</div>
+                            <div id="sucessRateContent"></div>
                         </div>    
                         <div id="commentsProgramWrapper"></div>`;
 
     document.getElementById(`resultsProgram`).append(content);
-    return titel, element, exchangeSt, localSt, level, entrygrades, sucess;
+    sucess.forEach(rate => {
+        let rates = document.createElement("div");
+        document.getElementById("sucessRateContent").append(rates);
+        rates.innerHTML = `${[rate]}%`;
+    })
+    entrygrades.forEach(grade => {
+        let grades = document.createElement("div");
+        document.getElementById("entryGradesContent").append(grades);
+        grades.innerHTML = `${grade}`;
+    })
+    return titel, element, exchangeSt, localSt, level;
 }
 
 
@@ -121,7 +133,6 @@ function selectionCountry(countries) {
                 getLanguage(country.languageID, "country");
                 getVisa(country.id);
                 
-                //selectCities.textContent ="";  
                 selectCities.append(getCities(country.id));
             }
         })
@@ -153,6 +164,7 @@ function getCities(countryid) {
 
                 getCommentsforCity(city.id);
                 selectUniversities.innerHTML = "";
+                selectProgrammes.innerHTML = "";
                 selectUniversities.append(getUniversities(city.id));
             }
         })
@@ -187,11 +199,10 @@ function getUniversities(cityid) {
     return universities;
 }
 
-function getProgrammes(universityid) {
+function getProgrammes(universityid, programmes) {
     sortNames(PROGRAMMES);
     selectProgrammes.innerHTML = `<option>Välj program</option>`;
-    
-    let programmes = [];
+    programmes = [];
     
     PROGRAMMES.forEach(program => {
         if(program.universityID == universityid) {
@@ -200,6 +211,7 @@ function getProgrammes(universityid) {
             option.innerHTML = `${program.name}`;
             programmes.push(program);
         }
+
      
         programmes.forEach(program => {
             selectProgrammes.addEventListener("change", (e)=> {
@@ -210,31 +222,23 @@ function getProgrammes(universityid) {
                     getCommentsforProgram(program.id);
                 }
             })
-
-        })
-        
+        })     
     })
+
     document.querySelectorAll(".checkbox").forEach(checkbox => {
-        //checkbox.checked = true;
-        checkbox.addEventListener("click", (level) => { 
-           checkbox.checked = false;
-            
-            selectProgrammes.innerHTML = "";
+        checkbox.addEventListener("click", (level) => {    
+            level.stopPropagation();     
+            selectProgrammes.innerHTML = `<option>Välj program</option>`;
     
             programmes.filter(chosen => {
                 if (chosen.level == LEVELS.indexOf(level.target.value)) {
                     let levOption = document.createElement("OPTION");
                     selectProgrammes.append(levOption);
-                    levOption.innerHTML = `${chosen.name}`;
-                   
-                }
+                    levOption.innerHTML = `${chosen.name}`;   
+                } 
             });
          
         });
-        let levelsDiv = document.getElementById("levelsDiv");
-        levelsDiv.querySelector(".checkboxes").checked = true;
-        
-
     })
  
     return programmes;
@@ -294,15 +298,13 @@ function getCommentsforCity(cityid) {
                                         </div>    
                                         <div>${comment.text}</div>
                                         <div id="starsCityWrapper">
-                                            <div>Betyg:</div>
-                                            <div>Uteliv: ${comment.stars["out"]}
-                                            Mat: ${comment.stars["food"]}
-                                            Boende: ${comment.stars["accomodation"]}</div>
+                                            <div class="rating">Betyg:</div>
+                                            <div class="ratingFigures">Uteliv: <span>${comment.stars["out"]}/5</span>
+                                            Mat: <span>${comment.stars["food"]}/5</span>
+                                            Boende: <span>${comment.stars["accomodation"]}/5</span></div>
                                         </div>`;
         }
-        //else if (!comment.cityID.contains(cityid)) {
-            //document.getElementById("commentsCityWrapper").innerHTML = "Finns tyvärr inga kommentarer för den här staden";
-        //}
+       
     })
     return cityComments;
 }
@@ -319,10 +321,10 @@ function getCommentsforProgram(programid) {
                                               <div>${comment.text}</div>
                                             
                                               <div id="starsProgramWrapper">
-                                                  <div>Betyg:</div>
-                                                  <div>Lärare: ${comment.stars["teachers"]}
-                                                  Studenter: ${comment.stars["students"]}
-                                                  Kurser: ${comment.stars["courses"]}</div>
+                                                  <div class="rating">Betyg:</div>
+                                                  <div class="ratingFigures">Lärare: <span>${comment.stars["teachers"]}/5</span>
+                                                  Studenter: <span>${comment.stars["students"]}/5</span>
+                                                  Kurser: <span>${comment.stars["courses"]}/5 </span></div>
                                               </div>`;
 
         }
@@ -343,14 +345,41 @@ function getVisa(countryVisa){
     return countryVisa;
 }
 
+function getYearforSuccesRate(year){
+    year = [];
+    let date = new Date();
+    let thisYear = date.getFullYear();
+    //let levelArray = [];
+    for(let i = 0; i < 5; i++){
+        thisYear -= 1;
+        year.push(thisYear);
+    }
+    year.sort();
+    return year;
+}
 
+/*function clearLevels(universityid){
+    let clearAll = document.createElement("div");
+    document.querySelector("#levelsDiv").append(clearAll);
+    clearAll.innerHTML="<p>Återställ val</p>";
+    let t = clearAll.addEventListener("click", () => {
+        let programmes = [];
+    
+        PROGRAMMES.forEach(program => {
+            if(program.universityID == universityid) {
+                let option = document.createElement("OPTION");
+                selectProgrammes.append(option);
+                option.innerHTML = `${program.name}`;
+                programmes.push(program);
+            }
+        }) 
+        return t;
+    })
+}
 
-//fixa entrygrades och successrate
-
-//fixa så att recensionerna har stjärnor? 
-
-//levels - fixa så att första option går att trycka på - ha en Alla knapp?
+clearLevels(); */
+//levels - ha en Alla knapp?
 
 //lägga till text när ingenting har blivit klickat på eller om recensioner inte finns
 
-//ska kommentarerna var sorterade i år-ordning? 
+

@@ -8,8 +8,6 @@
     --eFont:'Poppins', sans-serif;
     --pFont: 'Open Sans', sans-serif;
 
-    --testFont: 'Jost', sans-serif ; 
-
     --titelFontSz: 3vw;
     --secondFontSz: 4vw;
     --breadFontSz: 85%;
@@ -17,7 +15,8 @@
 }
 
 .advertisement {
-    margin: 100px 0px;
+    margin-top: 30px;
+    margin-bottom: 150px;
 }
 
 .advertisementInUniversity {
@@ -46,6 +45,20 @@ body {
     justify-content: space-between;
 } 
 
+.checkbox {
+    display: flex;
+}
+
+.checkboxes {
+    margin-left: 10px;
+}
+
+.checkbox > label {
+    font-size: 12px;
+    margin-left: 3px;
+}
+
+
 .countryFlag {
     width: 5vw;
 }
@@ -71,7 +84,7 @@ body {
 
 footer {
     background-color: var(--mainColor);
-    
+    padding-top: 20px;
     margin-top: 100px;
     
     display: flex;
@@ -80,17 +93,22 @@ footer {
 }
 
 footer > h3 {
-    margin-left: auto;
-    margin-right: auto;
+    align-self: center;
 }
 
 .footerSocialMediaLinks {
     width: 50px;
 }
 
+.FooterContents > div:first-child {
+    border: solid 2px var(--accentColor);
+    border-radius: 5px;
+    padding: 7px;
+}
+
 header {
     background-color: var(--mainColor);
-    height: 20vh;
+    height: 30vh;
     
     display: flex;
     justify-content: center;
@@ -118,7 +136,7 @@ header {
     /*border-bottom: 5px solid var(--accentColor);
     border-top: 5px solid var(--accentColor); */
 
-    margin-top: 100px;
+    margin-top: 150px;
     padding-top: 20px;
     padding-bottom: 100px;
     
@@ -170,7 +188,7 @@ input:after {
 
 .infobox > p {
     padding: 20px;
-    line-height: 3vh;
+    line-height: 4vmin;
     font-family: var(--pFont);
     font-size: 2vmin;
 }
@@ -178,14 +196,19 @@ input:after {
 #levelsDiv {
     margin: 0 10vw;
     height: 9vh;
-    /*display: flex;
+    display: flex;
     justify-content: flex-end;
-    align-items: center; */
+    align-items: center; 
     font-family: var(--eFont);
 }
 
 .mapsLogo {
-    width: 6%;
+    width: 9%;
+}
+
+header > .mapsLogo {
+    position: absolute;
+    left: 2vw;
 }
 
 nav {
@@ -208,7 +231,10 @@ nav > a {
     display: flex;
     justify-content: center;
     align-items: center;
+}
 
+nav > a:last-child {
+    margin-right: 2vw;
 }
 
 .name > p {
@@ -230,10 +256,7 @@ nav > a {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.socialMediaWrapper  img {
-    width: 50px;
+    margin-top: 12px;
 }
 
 .programbox {
@@ -295,3 +318,16 @@ button:focus {
     overflow-y: scroll;
 }
 
+.rating {
+    font-weight: bold;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.ratingFigures {
+    font-size: 11px;
+}
+
+.ratingFigures > span {
+    font-weight: bold;
+}
