@@ -199,11 +199,10 @@ function getUniversities(cityid) {
     return universities;
 }
 
-function getProgrammes(universityid) {
+function getProgrammes(universityid, programmes) {
     sortNames(PROGRAMMES);
     selectProgrammes.innerHTML = `<option>Välj program</option>`;
-
-    let programmes = [];
+    programmes = [];
     
     PROGRAMMES.forEach(program => {
         if(program.universityID == universityid) {
@@ -212,6 +211,7 @@ function getProgrammes(universityid) {
             option.innerHTML = `${program.name}`;
             programmes.push(program);
         }
+
      
         programmes.forEach(program => {
             selectProgrammes.addEventListener("change", (e)=> {
@@ -226,7 +226,8 @@ function getProgrammes(universityid) {
     })
 
     document.querySelectorAll(".checkbox").forEach(checkbox => {
-        checkbox.addEventListener("click", (level) => {             
+        checkbox.addEventListener("click", (level) => {    
+            level.stopPropagation();     
             selectProgrammes.innerHTML = `<option>Välj program</option>`;
     
             programmes.filter(chosen => {
@@ -234,7 +235,7 @@ function getProgrammes(universityid) {
                     let levOption = document.createElement("OPTION");
                     selectProgrammes.append(levOption);
                     levOption.innerHTML = `${chosen.name}`;   
-                }
+                } 
             });
          
         });
